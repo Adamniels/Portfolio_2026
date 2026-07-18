@@ -65,21 +65,92 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="case-process">
-        <p className="case-label">02 / Approach</p>
-        <ol>
-          {project.approach.map((step, index) => (
-            <li key={step}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <p>{step}</p>
-            </li>
-          ))}
-        </ol>
+      <section className="case-architecture">
+        <p className="case-label">02 / Architecture</p>
+        <div className="architecture-content">
+          <h2>{project.architecture.title}</h2>
+          <p>{project.architecture.summary}</p>
+
+          <div className="architecture-visual">
+            <div className="architecture-visual-meta">
+              <span>System overview</span>
+              <span>{project.architecture.image ? "Architecture diagram" : "Diagram placeholder"}</span>
+            </div>
+            {project.architecture.image ? (
+              <img src={project.architecture.image} alt={`${project.title} system architecture`} />
+            ) : (
+              <>
+                <div className="architecture-flow" aria-label={`${project.title} architecture flow`}>
+                  {project.architecture.flow.map((step, index) => (
+                    <div className="architecture-step" key={step}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <strong>{step}</strong>
+                      {index < project.architecture.flow.length - 1 && <i>→</i>}
+                    </div>
+                  ))}
+                </div>
+                <p className="replace-note">
+                  Replace with the project architecture diagram
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="case-technical">
+        <p className="case-label">03 / Technical highlights</p>
+        <div className="technical-content">
+          <h2>What was most interesting to build.</h2>
+          <div className="technical-list">
+            {project.technicalHighlights.map((highlight, index) => (
+              <article key={highlight.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{highlight.title}</h3>
+                  <p>{highlight.summary}</p>
+                  <ul>
+                    {highlight.details.map((detail) => <li key={detail}>{detail}</li>)}
+                  </ul>
+                </div>
+                <div className="technical-visual-placeholder">
+                  <span>Supporting visual</span>
+                  <strong>{highlight.title}</strong>
+                  <small>Diagram or code-level walkthrough</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="case-evaluation">
+        <p className="case-label">04 / Evaluation</p>
+        <div className="evaluation-content">
+          <h2>{project.evaluation.title}</h2>
+          <p>{project.evaluation.summary}</p>
+          <div className="evidence-grid">
+            {project.evaluation.evidence.map(({ value, label }) => (
+              <div key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="evaluation-visual-placeholder">
+            <span>Evaluation visual placeholder</span>
+            <p>Replace with an aggregate chart, test result, or comparison from the project.</p>
+          </div>
+        </div>
       </section>
 
       <section className="case-result">
-        <p className="case-label">03 / Outcome</p>
-        <p>{project.outcome}</p>
+        <p className="case-label">05 / Outcome</p>
+        <div className="case-result-copy">
+          {(project.outcomeDetails ?? [project.outcome]).map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </section>
 
       <Link className="next-project" href={`/projects/${nextProject.slug}`}>

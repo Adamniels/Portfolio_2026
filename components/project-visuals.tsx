@@ -72,6 +72,44 @@ export function BeaconVisual() {
   );
 }
 
+export function VendGoVisual() {
+  return (
+    <div className="visual visual-vend" aria-label="Vend and Go mobile customer flow">
+      <div className="visual-topline">
+        <span><i /> VEND &amp; GO / MOBILE FLOW</span>
+        <span>SELECT · BROWSE · CHECKOUT</span>
+      </div>
+      <div className="vend-flow">
+        <figure className="phone-screenshot">
+          <figcaption><span>01</span> Select a machine</figcaption>
+          <img
+            src="/projects/vend-and-go/select_machine.png"
+            alt="Vend and Go screen for selecting a nearby vending machine"
+          />
+        </figure>
+        <div className="flow-arrow">→</div>
+        <figure className="phone-screenshot">
+          <figcaption><span>02</span> Browse offers</figcaption>
+          <img
+            src="/projects/vend-and-go/home.png"
+            alt="Vend and Go home screen showing machine selection, instant buy, assortment, and offers"
+          />
+        </figure>
+        <div className="flow-arrow">→</div>
+        <figure className="phone-screenshot">
+          <figcaption><span>03</span> Checkout and points</figcaption>
+          <img
+            src="/projects/vend-and-go/checkout_points.png"
+            alt="Vend and Go order confirmation showing the charge, discount, and loyalty points earned"
+          />
+        </figure>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectVisual({ slug }: { slug: string }) {
-  return slug === "beacon" ? <BeaconVisual /> : <PulseVisual />;
+  if (slug === "beacon") return <BeaconVisual />;
+  if (slug === "vend-and-go") return <VendGoVisual />;
+  return <PulseVisual />;
 }

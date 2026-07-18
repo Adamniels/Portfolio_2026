@@ -7,6 +7,9 @@ function Arrow() {
 }
 
 export default function Home() {
+  const featuredProjects = projects.filter(({ scope }) => scope === "featured");
+  const compactProjects = projects.filter(({ scope }) => scope === "compact");
+
   return (
     <main id="top">
       <nav className="nav">
@@ -19,7 +22,7 @@ export default function Home() {
 
       <header className="home-hero">
         <div className="hero-meta">
-          <span>Selected work</span>
+          <span>M.Sc. Student in Computer &amp; Information Engineering</span>
           <span>2024—26</span>
           <span>{projects.length.toString().padStart(2, "0")} projects</span>
         </div>
@@ -31,11 +34,11 @@ export default function Home() {
 
       <section className="project-index" id="work">
         <div className="section-heading">
-          <p>Selected projects</p>
-          <span>{projects.length.toString().padStart(2, "0")} projects</span>
+          <p>Featured projects</p>
+          <span>{featuredProjects.length.toString().padStart(2, "0")} projects</span>
         </div>
 
-        {projects.map((project) => (
+        {featuredProjects.map((project) => (
           <article
             className={`project-summary project-${project.slug}`}
             id={project.slug}
@@ -77,6 +80,40 @@ export default function Home() {
             </div>
           </article>
         ))}
+
+        <section className="additional-work">
+          <div className="section-heading additional-heading">
+            <p>Additional work</p>
+            <span>{compactProjects.length.toString().padStart(2, "0")} project</span>
+          </div>
+
+          {compactProjects.map((project) => (
+            <article className="compact-project" id={project.slug} key={project.slug}>
+              <div className="compact-meta">
+                <span>{project.number}</span>
+                <span>{project.kicker}</span>
+                <span>{project.year}</span>
+              </div>
+              <Link className="compact-title" href={`/projects/${project.slug}`}>
+                <h2>{project.title}</h2>
+                <span>↗</span>
+              </Link>
+              <div className="compact-body">
+                <p>{project.summary}</p>
+                <div className="disciplines">
+                  {project.disciplines.map((item) => <span key={item}>{item}</span>)}
+                </div>
+                <div className="compact-result">
+                  <strong>{project.metric}</strong>
+                  <span>{project.metricLabel}</span>
+                </div>
+                <Link className="text-link" href={`/projects/${project.slug}`}>
+                  View team project <Arrow />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </section>
       </section>
 
       <footer>

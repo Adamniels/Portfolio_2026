@@ -183,10 +183,10 @@ export const projects: Project[] = [
       "Combined a 29-person survey and moderated usability sessions with analysis of 7.4 million historical transactions",
     ],
     architecture: {
-      title: "Clean boundaries kept checkout logic stable and integrations replaceable.",
+      title: "A modular architecture connected the mobile experience, business logic, and vending infrastructure.",
       summary:
-        "The checkout use case coordinates pricing, campaigns, payment, dispensing, inventory, and persistence through application interfaces. Payment and physical dispensing are mocked only at the infrastructure boundary, so the core flow can be tested realistically now and connected to real providers later without rewriting its orchestration.",
-      flow: ["Mobile client", "Shared contracts", "Checkout use case", "Domain rules", "Infrastructure adapters"],
+        "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, allowing the clients and external integrations to evolve without moving core business rules out of the application.",
+      flow: ["Customer & refiller clients", "Shared contracts", "Application API", "Core business modules", "Data & integrations"],
     },
     technicalHighlights: [
       {

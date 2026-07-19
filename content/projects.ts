@@ -252,7 +252,7 @@ export const projects: Project[] = [
   },
   {
     slug: "beacon",
-    number: "02",
+    number: "03",
     scope: "featured",
     title: "Beacon",
     kicker: "Event system observability",
@@ -324,8 +324,8 @@ export const projects: Project[] = [
   },
   {
     slug: "vend-and-go",
-    number: "03",
-    scope: "compact",
+    number: "02",
+    scope: "featured",
     title: "Vend & Go",
     kicker: "Bachelor thesis",
     summary:

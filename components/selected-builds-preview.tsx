@@ -82,8 +82,18 @@ export function SelectedBuildsPreview() {
   return (
     <section className="selected-builds-preview" aria-labelledby="selected-builds-heading">
       <div className="section-heading selected-builds-heading">
-        <p id="selected-builds-heading">Selected builds</p>
+        <p>Smaller projects</p>
         <span>03 layout previews</span>
+      </div>
+
+      <div className="selected-builds-intro">
+        <h2 id="selected-builds-heading">
+          Utilities, experiments <em>&amp;</em> embedded builds.
+        </h2>
+        <p>
+          Shorter projects built to explore an idea, solve a personal need, or work
+          with a new technical constraint.
+        </p>
       </div>
 
       <div className="build-preview-notice">

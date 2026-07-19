@@ -8,7 +8,9 @@ function Arrow() {
 }
 
 export default function Home() {
-  const featuredProjects = projects.filter(({ scope }) => scope === "featured");
+  const featuredProjects = projects
+    .filter(({ scope }) => scope === "featured")
+    .sort((a, b) => Number(a.number) - Number(b.number));
   const compactProjects = projects.filter(({ scope }) => scope === "compact");
 
   return (
@@ -88,39 +90,44 @@ export default function Home() {
           </article>
         ))}
 
-        <section className="additional-work">
-          <div className="section-heading additional-heading">
-            <p>Additional work</p>
-            <span>{compactProjects.length.toString().padStart(2, "0")} project</span>
-          </div>
+        {compactProjects.length > 0 && (
+          <section className="additional-work">
+            <div className="section-heading additional-heading">
+              <p>Additional work</p>
+              <span>
+                {compactProjects.length.toString().padStart(2, "0")}{" "}
+                {compactProjects.length === 1 ? "project" : "projects"}
+              </span>
+            </div>
 
-          {compactProjects.map((project) => (
-            <article className="compact-project" id={project.slug} key={project.slug}>
-              <div className="compact-meta">
-                <span>{project.number}</span>
-                <span>{project.kicker}</span>
-                <span>{project.year}</span>
-              </div>
-              <Link className="compact-title" href={`/projects/${project.slug}`}>
-                <h2>{project.title}</h2>
-                <span>↗</span>
-              </Link>
-              <div className="compact-body">
-                <p>{project.summary}</p>
-                <div className="disciplines">
-                  {project.disciplines.map((item) => <span key={item}>{item}</span>)}
+            {compactProjects.map((project) => (
+              <article className="compact-project" id={project.slug} key={project.slug}>
+                <div className="compact-meta">
+                  <span>{project.number}</span>
+                  <span>{project.kicker}</span>
+                  <span>{project.year}</span>
                 </div>
-                <div className="compact-result">
-                  <strong>{project.metric}</strong>
-                  <span>{project.metricLabel}</span>
-                </div>
-                <Link className="text-link" href={`/projects/${project.slug}`}>
-                  View team project <Arrow />
+                <Link className="compact-title" href={`/projects/${project.slug}`}>
+                  <h2>{project.title}</h2>
+                  <span>↗</span>
                 </Link>
-              </div>
-            </article>
-          ))}
-        </section>
+                <div className="compact-body">
+                  <p>{project.summary}</p>
+                  <div className="disciplines">
+                    {project.disciplines.map((item) => <span key={item}>{item}</span>)}
+                  </div>
+                  <div className="compact-result">
+                    <strong>{project.metric}</strong>
+                    <span>{project.metricLabel}</span>
+                  </div>
+                  <Link className="text-link" href={`/projects/${project.slug}`}>
+                    View team project <Arrow />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
 
         <SelectedBuildsPreview />
       </section>

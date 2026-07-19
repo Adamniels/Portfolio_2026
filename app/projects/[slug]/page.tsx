@@ -25,8 +25,11 @@ export default async function ProjectPage({ params }: Props) {
   const project = getProject((await params).slug);
   if (!project) notFound();
 
-  const currentIndex = projects.findIndex(({ slug }) => slug === project.slug);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const orderedProjects = [...projects].sort(
+    (a, b) => Number(a.number) - Number(b.number),
+  );
+  const currentIndex = orderedProjects.findIndex(({ slug }) => slug === project.slug);
+  const nextProject = orderedProjects[(currentIndex + 1) % orderedProjects.length];
 
   return (
     <main className={`case-page case-${project.slug}`} id="top">

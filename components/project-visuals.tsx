@@ -1,76 +1,16 @@
+import { ProductScreenshotCarousel } from "@/components/product-screenshot-carousel";
+
 export function OutreachVisual() {
   return (
     <div
       className="visual visual-outreach"
-      aria-label="Contextual Outreach prospect research and drafting workspace"
+      aria-label="Contextual Outreach product screenshots"
     >
       <div className="visual-topline">
-        <span><i /> CONTEXTUAL OUTREACH / PROSPECT WORKSPACE</span>
-        <span>RESEARCH · CONTACT · DRAFT</span>
+        <span><i /> CONTEXTUAL OUTREACH / PRODUCT WALKTHROUGH</span>
+        <span>04 IMPLEMENTED VIEWS</span>
       </div>
-      <div className="outreach-shell">
-        <aside className="outreach-nav">
-          <strong>CO</strong>
-          <span>Overview</span>
-          <span className="is-active">Prospects</span>
-          <span>Sequences</span>
-          <span>Settings</span>
-          <small>EXPLORATORY PROTOTYPE</small>
-        </aside>
-        <div className="outreach-workspace">
-          <header>
-            <div>
-              <span>PROSPECT / 014</span>
-              <h3>Northstar Energy</h3>
-            </div>
-            <b>RESEARCHED</b>
-          </header>
-          <div className="outreach-columns">
-            <section className="outreach-intelligence">
-              <p>COMPANY INTELLIGENCE</p>
-              <div className="intelligence-card">
-                <span>COMPANY SNAPSHOT</span>
-                <strong>Grid software for distributed energy teams.</strong>
-                <small>4 first-party sources · 3 external signals</small>
-              </div>
-              <div className="signal-list">
-                <div><i>01</i><span>Expansion into two Nordic markets</span><b>RECENT</b></div>
-                <div><i>02</i><span>New reporting requirements</span><b>RELEVANT</b></div>
-              </div>
-              <div className="contact-card">
-                <span>ACTIVE CONTACT</span>
-                <div><strong>Maya Lind</strong><small>Head of Operations</small></div>
-                <b>3 HOOKS</b>
-              </div>
-            </section>
-            <section className="outreach-draft">
-              <p>PERSONALIZED DRAFT</p>
-              <div className="draft-meta">
-                <span>EMAIL · COLLECTED DATA</span>
-                <b>EDITABLE</b>
-              </div>
-              <h4>Making distributed reporting easier</h4>
-              <p>Hi Maya,</p>
-              <p>
-                Your Nordic expansion makes consistent operational reporting
-                harder across teams. We recently helped a distributed service
-                organization simplify a similar workflow.
-              </p>
-              <p>Would a short comparison be useful?</p>
-              <div className="draft-context">
-                <span>CONTEXT USED</span>
-                <i>Research</i><i>Contact</i><i>Previous case</i><i>Voice</i>
-              </div>
-            </section>
-            <aside className="outreach-chat">
-              <p>REFINE</p>
-              <div className="chat-message is-user">Make the opening more direct.</div>
-              <div className="chat-message is-system">Opening revised. Company evidence retained.</div>
-              <small>Human review required</small>
-            </aside>
-          </div>
-        </div>
-      </div>
+      <ProductScreenshotCarousel />
     </div>
   );
 }

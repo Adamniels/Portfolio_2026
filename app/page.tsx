@@ -62,9 +62,15 @@ export default function Home() {
 
             <p className="project-summary-copy">{project.summary}</p>
 
-            <Link className="visual-link" href={`/projects/${project.slug}`} aria-label={`View ${project.title} case study`}>
-              <ProjectVisual slug={project.slug} />
-            </Link>
+            {project.slug === "contextual-outreach" ? (
+              <div className="visual-link is-interactive">
+                <ProjectVisual slug={project.slug} />
+              </div>
+            ) : (
+              <Link className="visual-link" href={`/projects/${project.slug}`} aria-label={`View ${project.title} case study`}>
+                <ProjectVisual slug={project.slug} />
+              </Link>
+            )}
 
             <div className="summary-foot">
               <div className="disciplines">

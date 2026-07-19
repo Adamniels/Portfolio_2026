@@ -64,7 +64,9 @@ export default async function ProjectPage({ params }: Props) {
           <p>{project.challenge}</p>
         </div>
         <div className="case-stat">
-          <strong>{project.metric}</strong>
+          <strong className={project.metric.length > 6 ? "is-textual" : undefined}>
+            {project.metric}
+          </strong>
           <span>{project.metricLabel}</span>
         </div>
       </section>

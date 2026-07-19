@@ -147,31 +147,54 @@ export default async function ProjectPage({ params }: Props) {
 
       <section className="case-evaluation">
         <p className="case-label">04 / Evaluation</p>
-        <div className="evaluation-content">
+        <div className={`evaluation-content${project.evaluation.textOnly ? " is-text-only" : ""}`}>
           <h2>{project.evaluation.title}</h2>
-          <p>{project.evaluation.summary}</p>
-          <div className="evidence-grid">
-            {project.evaluation.evidence.map(({ value, label }) => (
-              <div key={label}>
-                <strong>{value}</strong>
-                <span>{label}</span>
-              </div>
+          <div className="evaluation-copy">
+            {(project.evaluation.details ?? [project.evaluation.summary]).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <div className="evaluation-visual-placeholder">
-            <span>Evaluation visual placeholder</span>
-            <p>Replace with an aggregate chart, test result, or comparison from the project.</p>
-          </div>
+          {!project.evaluation.textOnly && (
+            <>
+              <div className="evidence-grid">
+                {project.evaluation.evidence.map(({ value, label }) => (
+                  <div key={label}>
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="evaluation-visual-placeholder">
+                <span>Evaluation visual placeholder</span>
+                <p>Replace with an aggregate chart, test result, or comparison from the project.</p>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
-      <section className="case-result">
+      <section className="case-result" id="outcome">
         <p className="case-label">05 / Outcome</p>
-        <div className="case-result-copy">
-          {(project.outcomeDetails ?? [project.outcome]).map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        {project.outcomeTitle && project.outcomeSummary && project.outcomeHighlights ? (
+          <div className="case-result-structured">
+            <h2>{project.outcomeTitle}</h2>
+            <p>{project.outcomeSummary}</p>
+            <div className="outcome-highlights">
+              {project.outcomeHighlights.map(({ label, text }) => (
+                <div key={label}>
+                  <span>{label}</span>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="case-result-copy">
+            {(project.outcomeDetails ?? [project.outcome]).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        )}
       </section>
 
       <Link className="next-project" href={`/projects/${nextProject.slug}`}>

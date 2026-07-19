@@ -34,6 +34,8 @@ export type Project = {
   evaluation: {
     title: string;
     summary: string;
+    details?: string[];
+    textOnly?: boolean;
     evidence: Array<{
       value: string;
       label: string;
@@ -41,6 +43,12 @@ export type Project = {
   };
   outcome: string;
   outcomeDetails?: string[];
+  outcomeTitle?: string;
+  outcomeSummary?: string;
+  outcomeHighlights?: Array<{
+    label: string;
+    text: string;
+  }>;
 };
 
 export const projects: Project[] = [
@@ -301,9 +309,14 @@ export const projects: Project[] = [
       },
     ],
     evaluation: {
-      title: "A working system made the evaluation more honest.",
+      title: "A functional prototype made the concept testable.",
       summary:
-        "The concept was evaluated through a pre-launch survey, moderated use of the functional prototype, and analysis of historical transaction patterns.",
+        "Rather than evaluating a static design, we tested a working application connected to its backend, loyalty logic, campaign system, and persistent data. This allowed participants to complete realistic flows and receive actual pricing, discounts, and loyalty feedback.",
+      details: [
+        "Rather than evaluating a static design, we tested a working application connected to its backend, loyalty logic, campaign system, and persistent data. This allowed participants to complete realistic flows and receive actual pricing, discounts, and loyalty feedback.",
+        "The core purchase journey worked well, while registration and some loyalty concepts needed clearer communication. Survey responses and historical sales analysis provided additional context around adoption barriers, reward preferences, and differences between vending environments.",
+      ],
+      textOnly: true,
       evidence: [
         { value: "29", label: "survey participants" },
         { value: "2", label: "moderated usability sessions" },
@@ -312,9 +325,22 @@ export const projects: Project[] = [
     },
     outcome:
       "We delivered and evaluated a functional prototype spanning the customer app, admin interface, backend, and persistent data.",
-    outcomeDetails: [
-      "We delivered and evaluated a functional prototype spanning the customer app, admin interface, backend, and persistent data. In usability testing, the core flows for selecting a machine, browsing products, and completing a purchase were generally easy to understand.",
-      "The evaluation also showed where the concept needed more work. Registration created friction, and participants needed clearer explanations of points, bundles, claims, and tier progression. The transaction analysis revealed useful location-level patterns, but the available contextual data was not strong enough for reliable individual category prediction.",
+    outcomeTitle: "An end-to-end prototype, built to be tested and extended.",
+    outcomeSummary:
+      "Vend & Go connected the customer and refiller experiences to shared backend logic for campaigns, loyalty, checkout, inventory, and persistent data. The historical sales analysis also created a foundation for future tools that could recommend relevant discounts and campaign timing to refillers.",
+    outcomeHighlights: [
+      {
+        label: "Delivered",
+        text: "A functional customer app, refiller interface, backend, campaign and loyalty system, checkout flow, and persistent data layer.",
+      },
+      {
+        label: "Validated",
+        text: "Machine selection, product browsing, and checkout were generally understandable when tested through the working application.",
+      },
+      {
+        label: "Next",
+        text: "Connect production payment and dispensing providers, simplify registration, and communicate loyalty rewards more clearly.",
+      },
     ],
   },
 ];

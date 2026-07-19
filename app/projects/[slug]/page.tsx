@@ -71,15 +71,18 @@ export default async function ProjectPage({ params }: Props) {
           <h2>{project.architecture.title}</h2>
           <p>{project.architecture.summary}</p>
 
-          <div className="architecture-visual">
-            <div className="architecture-visual-meta">
-              <span>System overview</span>
-              <span>{project.architecture.image ? "Architecture diagram" : "Diagram placeholder"}</span>
-            </div>
+          <div className={`architecture-visual${project.architecture.image ? " has-image" : ""}`}>
             {project.architecture.image ? (
-              <img src={project.architecture.image} alt={`${project.title} system architecture`} />
+              <img
+                src={project.architecture.image}
+                alt={`${project.title} system architecture showing actors, clients, backend modules, infrastructure adapters, and external systems`}
+              />
             ) : (
               <>
+                <div className="architecture-visual-meta">
+                  <span>System overview</span>
+                  <span>Diagram placeholder</span>
+                </div>
                 <div className="architecture-flow" aria-label={`${project.title} architecture flow`}>
                   {project.architecture.flow.map((step, index) => (
                     <div className="architecture-step" key={step}>

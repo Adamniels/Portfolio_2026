@@ -315,6 +315,7 @@ footer {
   letter-spacing: -.06em;
   font-weight: 500;
 }
+.architecture-content { min-width: 0; }
 .architecture-content > p,
 .evaluation-content > p {
   max-width: 650px;
@@ -329,6 +330,14 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.architecture-visual.has-image {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 .architecture-visual > img { width: 100%; height: auto; display: block; }
 .architecture-visual-meta {
@@ -536,6 +545,8 @@ footer {
   .architecture-content > p,
   .evaluation-content > p { margin: 32px 0 45px; }
   .architecture-visual { min-height: 560px; padding: 16px; }
+  .architecture-visual.has-image { min-height: 0; }
+  .architecture-visual.has-image > img { width: 900px; max-width: none; }
   .architecture-flow { grid-template-columns: 1fr; gap: 22px; margin: 34px 0; }
   .architecture-step { min-height: 68px; }
   .architecture-step > i {

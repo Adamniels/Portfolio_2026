@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .bg    { fill: #171715; }
+      .fg    { fill: #F0EEE8; }
+      .muted { fill: #8A867C; }
+      .green { fill: #C8FF32; }
+      .coral { fill: #ED5B3A; }
+      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
+      .line  { stroke: #3A3833; stroke-width: 1; }
+      .linec { stroke: #ED5B3A; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+
+  <!-- header -->
+  <text class="lbl muted" x="80" y="78" font-size="15">CAMPAIGN OPTIMIZER</text>
+  <text class="lbl muted" x="1520" y="78" font-size="15" text-anchor="end">01 / SETUP &amp; COMPETING CAMPAIGNS</text>
+  <line class="line" x1="80" y1="100" x2="1520" y2="100"/>
+
+  <!-- title -->
+  <text class="fg" x="78" y="196" font-size="64" font-weight="600">Many campaigns, one cart.</text>
+  <text class="muted" x="80" y="244" font-size="21">The cart is stored as grouped product quantities. Several campaigns want the same units, so they cannot be chosen independently.</text>
+
+  <!-- ===================== LEFT: CART ===================== -->
+  <text class="lbl muted" x="80" y="360" font-size="14">CART — GROUPED QUANTITIES</text>
+  <line class="line" x1="80" y1="378" x2="540" y2="378"/>
+
+  <!-- Soda -->
+  <text class="fg"  x="80"  y="448" font-size="31" font-weight="600">Soda</text>
+  <text class="mono muted" x="80" y="478" font-size="15">id A · 20 kr / unit</text>
+  <rect x="330" y="418" width="46" height="46" fill="none" class="line"/>
+  <rect x="386" y="418" width="46" height="46" fill="none" class="line"/>
+  <text class="mono green" x="500" y="452" font-size="27" text-anchor="end">×2</text>
+
+  <!-- Juice -->
+  <text class="fg"  x="80"  y="540" font-size="31" font-weight="600">Juice</text>
+  <text class="mono muted" x="80" y="570" font-size="15">id B · 30 kr / unit</text>
+  <rect x="330" y="510" width="46" height="46" fill="none" class="line"/>
+  <text class="mono green" x="500" y="544" font-size="27" text-anchor="end">×1</text>
+
+  <!-- Water -->
+  <text class="fg"  x="80"  y="632" font-size="31" font-weight="600">Water</text>
+  <text class="mono muted" x="80" y="662" font-size="15">id C · 20 kr / unit</text>
+  <rect x="330" y="602" width="46" height="46" fill="none" class="line"/>
+  <rect x="386" y="602" width="46" height="46" fill="none" class="line"/>
+  <text class="mono green" x="500" y="636" font-size="27" text-anchor="end">×2</text>
+
+  <line class="line" x1="80" y1="704" x2="540" y2="704"/>
+  <text class="lbl muted" x="80" y="754" font-size="14">STATE KEY</text>
+  <text class="mono green" x="540" y="754" font-size="23" text-anchor="end">A:2 | B:1 | C:2</text>
+  <text class="lbl muted" x="80" y="802" font-size="14">CART TOTAL</text>
+  <text class="mono fg" x="540" y="802" font-size="23" text-anchor="end">110 kr</text>
+
+  <!-- divider -->
+  <line class="line" x1="600" y1="348" x2="600" y2="820"/>
+
+  <!-- ===================== RIGHT: CAMPAIGNS ===================== -->
+  <text class="lbl muted" x="660" y="360" font-size="14">ACTIVE CAMPAIGNS — WHAT EACH ONE CONSUMES</text>
+  <line class="line" x1="660" y1="378" x2="1520" y2="378"/>
+
+  <!-- Row 1: Meal (largest) -->
+  <text class="fg" x="660" y="438" font-size="28" font-weight="600">Soda + Juice Meal</text>
+  <text class="lbl muted" x="660" y="463" font-size="12">BUNDLE · 40% OFF PAIR</text>
+  <g class="mono" font-size="17">
+    <rect x="1086" y="410" width="48" height="36" fill="none" class="linec"/>
+    <text class="coral" x="1110" y="434" text-anchor="middle">A</text>
+    <text class="muted" x="1148" y="434">+</text>
+    <rect x="1168" y="410" width="48" height="36" fill="none" class="linec"/>
+    <text class="coral" x="1192" y="434" text-anchor="middle">B</text>
+  </g>
+  <text class="mono fg" x="1520" y="436" font-size="31" text-anchor="end">−20 kr</text>
+  <text class="lbl coral" x="1520" y="463" font-size="12" text-anchor="end">★ LARGEST SINGLE DISCOUNT</text>
+  <line class="line" x1="660" y1="486" x2="1520" y2="486"/>
+
+  <!-- Row 2: Soda Twins -->
+  <text class="fg" x="660" y="546" font-size="28" font-weight="600">Soda Twins</text>
+  <text class="lbl muted" x="660" y="571" font-size="12">BUNDLE · 30% OFF PAIR</text>
+  <g class="mono" font-size="17">
+    <rect x="1086" y="518" width="48" height="36" fill="none" class="linec"/>
+    <text class="coral" x="1110" y="542" text-anchor="middle">A</text>
+    <text class="muted" x="1148" y="542">+</text>
+    <rect x="1168" y="518" width="48" height="36" fill="none" class="linec"/>
+    <text class="coral" x="1192" y="542" text-anchor="middle">A</text>
+  </g>
+  <text class="mono fg" x="1520" y="544" font-size="31" text-anchor="end">−12 kr</text>
+  <line class="line" x1="660" y1="594" x2="1520" y2="594"/>
+
+  <!-- Row 3: Water Pair -->
+  <text class="fg" x="660" y="654" font-size="28" font-weight="600">Water Pair</text>
+  <text class="lbl muted" x="660" y="679" font-size="12">BUNDLE · 30% OFF PAIR</text>
+  <g class="mono" font-size="17">
+    <rect x="1086" y="626" width="48" height="36" fill="none" class="line"/>
+    <text class="fg" x="1110" y="650" text-anchor="middle">C</text>
+    <text class="muted" x="1148" y="650">+</text>
+    <rect x="1168" y="626" width="48" height="36" fill="none" class="line"/>
+    <text class="fg" x="1192" y="650" text-anchor="middle">C</text>
+  </g>
+  <text class="mono fg" x="1520" y="652" font-size="31" text-anchor="end">−12 kr</text>
+  <line class="line" x1="660" y1="702" x2="1520" y2="702"/>
+
+  <!-- Row 4: Juice Deal -->
+  <text class="fg" x="660" y="762" font-size="28" font-weight="600">Juice Deal</text>
+  <text class="lbl muted" x="660" y="787" font-size="12">PRICE REDUCTION · 30 kr → 12 kr</text>
+  <g class="mono" font-size="17">
+    <rect x="1168" y="734" width="48" height="36" fill="none" class="linec"/>
+    <text class="coral" x="1192" y="758" text-anchor="middle">B</text>
+  </g>
+  <text class="mono fg" x="1520" y="760" font-size="31" text-anchor="end">−18 kr</text>
+  <line class="line" x1="660" y1="810" x2="1520" y2="810"/>
+
+  <!-- contested legend -->
+  <rect x="80" y="854" width="15" height="15" fill="none" class="linec"/>
+  <text class="mono coral" x="108" y="867" font-size="15">contested</text>
+  <text class="mono muted" x="232" y="867" font-size="15">Soda (A) claimed by Meal &amp; Twins · Juice (B) claimed by Meal &amp; Juice Deal — a unit can join only one campaign.</text>
+</svg>

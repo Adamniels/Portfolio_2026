@@ -187,6 +187,7 @@ export const projects: Project[] = [
       summary:
         "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, allowing the clients and external integrations to evolve without moving core business rules out of the application.",
       flow: ["Customer & refiller clients", "Shared contracts", "Application API", "Core business modules", "Data & integrations"],
+      image: "/projects/vend-and-go/portfolio-system-overview.svg",
     },
     technicalHighlights: [
       {

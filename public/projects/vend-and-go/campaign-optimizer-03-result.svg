@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .bg    { fill: #171715; }
+      .fg    { fill: #F0EEE8; }
+      .muted { fill: #8A867C; }
+      .green { fill: #C8FF32; }
+      .coral { fill: #ED5B3A; }
+      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
+      .line  { stroke: #3A3833; stroke-width: 1; }
+      .tileg { fill: #C8FF32; }
+      .tilec { fill: none; stroke: #ED5B3A; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+
+  <!-- header -->
+  <text class="lbl muted" x="80" y="78" font-size="15">CAMPAIGN OPTIMIZER</text>
+  <text class="lbl muted" x="1520" y="78" font-size="15" text-anchor="end">03 / WINNING ASSIGNMENT</text>
+  <line class="line" x1="80" y1="100" x2="1520" y2="100"/>
+
+  <!-- title -->
+  <text class="fg" x="78" y="196" font-size="64" font-weight="600">One unit, one campaign.</text>
+  <text class="muted" x="80" y="244" font-size="21">Every unit is assigned to exactly one campaign. Discounts add across separate groups — they are never stacked on the same unit.</text>
+
+  <!-- ============ LEFT: WINNING ASSIGNMENT ============ -->
+  <text class="lbl green" x="80" y="330" font-size="14">WINNING ASSIGNMENT — NON-OVERLAPPING GROUPS</text>
+  <line class="line" x1="80" y1="348" x2="1000" y2="348"/>
+
+  <!-- Row 1 Soda Twins -->
+  <text class="fg" x="80" y="428" font-size="29" font-weight="600">Soda Twins</text>
+  <text class="lbl muted" x="80" y="453" font-size="12">BUNDLE</text>
+  <rect class="tileg" x="600" y="400" width="46" height="46"/>
+  <text class="mono bg" x="623" y="430" font-size="18" text-anchor="middle" fill="#171715">A</text>
+  <rect class="tileg" x="656" y="400" width="46" height="46"/>
+  <text class="mono" x="679" y="430" font-size="18" text-anchor="middle" fill="#171715">A</text>
+  <text class="mono green" x="1000" y="432" font-size="30" text-anchor="end">−12 kr</text>
+  <line class="line" x1="80" y1="486" x2="1000" y2="486"/>
+
+  <!-- Row 2 Water Pair -->
+  <text class="fg" x="80" y="546" font-size="29" font-weight="600">Water Pair</text>
+  <text class="lbl muted" x="80" y="571" font-size="12">BUNDLE</text>
+  <rect class="tileg" x="600" y="518" width="46" height="46"/>
+  <text class="mono" x="623" y="548" font-size="18" text-anchor="middle" fill="#171715">C</text>
+  <rect class="tileg" x="656" y="518" width="46" height="46"/>
+  <text class="mono" x="679" y="548" font-size="18" text-anchor="middle" fill="#171715">C</text>
+  <text class="mono green" x="1000" y="550" font-size="30" text-anchor="end">−12 kr</text>
+  <line class="line" x1="80" y1="604" x2="1000" y2="604"/>
+
+  <!-- Row 3 Juice Deal -->
+  <text class="fg" x="80" y="664" font-size="29" font-weight="600">Juice Deal</text>
+  <text class="lbl muted" x="80" y="689" font-size="12">PRICE REDUCTION</text>
+  <rect class="tileg" x="600" y="636" width="46" height="46"/>
+  <text class="mono" x="623" y="666" font-size="18" text-anchor="middle" fill="#171715">B</text>
+  <text class="mono green" x="1000" y="666" font-size="30" text-anchor="end">−18 kr</text>
+  <line class="line" x1="80" y1="722" x2="1000" y2="722"/>
+
+  <!-- assigned note -->
+  <rect x="80" y="754" width="15" height="15" class="tileg"/>
+  <text class="mono green" x="108" y="767" font-size="15">assigned</text>
+  <text class="mono muted" x="240" y="767" font-size="15">5 of 5 units assigned · no unit belongs to two campaigns.</text>
+
+  <!-- rejected -->
+  <text class="lbl coral" x="80" y="836" font-size="14">REJECTED — LARGEST SINGLE DISCOUNT</text>
+  <line class="line" x1="80" y1="852" x2="1000" y2="852"/>
+  <text class="coral" x="80" y="908" font-size="24" font-weight="600">Soda + Juice Meal</text>
+  <text class="mono muted" x="80" y="934" font-size="14">−20 kr, unused</text>
+  <rect class="tilec" x="360" y="882" width="42" height="42"/>
+  <text class="mono coral" x="381" y="910" font-size="17" text-anchor="middle">A</text>
+  <line class="line" x1="362" y1="884" x2="400" y2="922" stroke="#ED5B3A"/>
+  <rect class="tilec" x="414" y="882" width="42" height="42"/>
+  <text class="mono coral" x="435" y="910" font-size="17" text-anchor="middle">B</text>
+  <line x1="416" y1="884" x2="454" y2="922" stroke="#ED5B3A"/>
+  <text class="mono muted" x="500" y="908" font-size="15">needs 1 soda + the juice — both already taken.</text>
+  <text class="mono muted" x="500" y="932" font-size="15">On those units, 12 + 18 = 30 beats 20.</text>
+
+  <!-- ============ RIGHT: TOTALS ============ -->
+  <rect x="1080" y="400" width="440" height="300" fill="none" class="line"/>
+  <text class="lbl muted" x="1120" y="452" font-size="13">CART TOTAL</text>
+  <text class="mono fg" x="1480" y="454" font-size="24" text-anchor="end">110 kr</text>
+  <text class="lbl muted" x="1120" y="514" font-size="13">TOTAL DISCOUNT</text>
+  <text class="mono green" x="1480" y="516" font-size="24" text-anchor="end">−42 kr</text>
+  <line class="line" x1="1120" y1="556" x2="1480" y2="556"/>
+  <text class="lbl green" x="1120" y="628" font-size="15">YOU PAY</text>
+  <text class="mono green" x="1480" y="640" font-size="48" text-anchor="end" font-weight="600">68 kr</text>
+  <text class="mono muted" x="1080" y="742" font-size="15">Three campaigns combined. The biggest</text>
+  <text class="mono muted" x="1080" y="766" font-size="15">single discount (−20) is not part of the answer.</text>
+</svg>

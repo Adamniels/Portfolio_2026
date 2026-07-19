@@ -78,11 +78,14 @@ export default async function ProjectPage({ params }: Props) {
             <DiagramViewer
               diagram={{
                 src: project.architecture.image,
-                alt: `${project.title} system architecture showing actors, clients, backend modules, infrastructure adapters, and external systems`,
+                alt:
+                  project.architecture.imageAlt ??
+                  `${project.title} system architecture and its main component boundaries`,
                 caption:
-                  "Whole-system overview — clients, core capabilities, persistence, and replaceable infrastructure boundaries.",
+                  project.architecture.imageCaption ??
+                  "Whole-system overview — core capabilities, persistence, and replaceable infrastructure boundaries.",
                 label: "System architecture",
-                theme: "light",
+                theme: project.architecture.imageTheme ?? "light",
               }}
             />
           ) : (

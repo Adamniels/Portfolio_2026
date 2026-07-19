@@ -18,6 +18,9 @@ export type Project = {
     summary: string;
     flow: string[];
     image?: string;
+    imageTheme?: "light" | "dark";
+    imageAlt?: string;
+    imageCaption?: string;
   };
   technicalHighlights: Array<{
     title: string;
@@ -29,6 +32,7 @@ export type Project = {
       alt: string;
       caption: string;
       label: string;
+      theme?: "light" | "dark";
     }>;
   }>;
   evaluation: {
@@ -51,78 +55,200 @@ export type Project = {
   }>;
 };
 
+// Replace with the approved public client name when attribution is cleared.
+const outreachClient = "an IT consultancy";
+
 export const projects: Project[] = [
   {
-    slug: "pulse",
+    slug: "contextual-outreach",
     number: "01",
     scope: "featured",
-    title: "Pulse",
-    kicker: "Forecasting workspace",
-    summary:
-      "A forecasting workspace that helps small energy teams act before demand spikes—not after.",
+    title: "Contextual Outreach",
+    kicker: "Research-led outreach",
+    summary: `A prototype for ${outreachClient} that researches prospects, identifies relevant contacts, and drafts outreach grounded in company context and previous client work.`,
     status: "Prototype",
-    year: "2026",
+    year: "2025–26",
     disciplines: [
-      "Machine learning",
+      "Software engineering",
+      "Applied AI",
       "Product engineering",
-      "Data visualization",
+      "Workflow automation",
     ],
-    metric: "18%",
-    metricLabel: "lower forecast error in simulation",
-    challengeTitle: "Forecasts existed. Confidence didn’t.",
-    challenge:
-      "Small energy operators often work across spreadsheets, weather feeds, and disconnected dashboards. The data exists, but the decision is still difficult. Pulse explores a calmer workflow: one forecast, its uncertainty made visible, and a clear next action.",
+    metric: "End-to-end",
+    metricLabel: "research-to-outreach prototype built independently",
+    challengeTitle:
+      "Useful personalization required more context than a generic sales sequence could provide.",
+    challenge: `Developed independently through exploratory discussions with ${outreachClient}, the prototype examined how prospect research could become outreach that still felt specific to the sender. It needed to find and enrich relevant contacts, understand the target company, connect its situation to previous client work, and preserve user control over tone. The harder boundary was delivery: LinkedIn restricts unauthorized automation, so generating useful content and safely executing a multi-channel sequence were fundamentally different problems.`,
     approach: [
-      "Frame the operational decision before selecting the model",
-      "Build a reproducible forecasting and evaluation pipeline",
-      "Expose uncertainty directly in the product interface",
+      "Separated prospect intake, enrichment, contact selection, drafting, and workflow scheduling into explicit use cases",
+      "Collected first-party website evidence and external signals before synthesizing reusable company intelligence",
+      "Kept CRM, research, AI, email, and LinkedIn integrations behind replaceable application boundaries",
     ],
     architecture: {
-      title: "One pipeline from raw signals to an actionable forecast.",
+      title:
+        "Explicit boundaries kept research, business rules, generation, and delivery independently replaceable.",
       summary:
-        "Historical demand and weather signals move through a reproducible feature pipeline into a versioned forecasting model. A small prediction API exposes the forecast and its uncertainty to the operator interface.",
+        "A Vue interface calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. This allowed the complete research-to-workflow path to be built while keeping uncertain email and LinkedIn execution at the infrastructure edge.",
       flow: [
-        "Demand history",
-        "Feature pipeline",
-        "Forecast model",
-        "Prediction API",
-        "Operator UI",
+        "Prospect intake",
+        "Authenticated interface",
+        "Application use cases",
+        "Research and generation",
+        "Persistence and adapters",
       ],
+      image: "/projects/contextual-outreach/system-overview.svg",
+      imageTheme: "dark",
+      imageAlt:
+        "System architecture showing prospect intake and the Vue interface flowing through an ASP.NET Core API into application use cases and domain rules, with replaceable persistence, research, AI, and delivery adapters.",
+      imageCaption:
+        "Whole-system overview — stable application rules sit inside volatile research, AI, CRM, and delivery integrations.",
     },
     technicalHighlights: [
       {
-        title: "Reproducible forecasting",
+        title: "Multi-source company and contact enrichment",
+        visualTitle: "Enrichment / Two evidence tracks",
         summary:
-          "Training and backtesting use the same feature definitions, time boundaries, and evaluation windows.",
+          "The enrichment pipeline turns a company name and domain into reusable sales intelligence without treating one source or model response as ground truth.",
         details: [
-          "Time-aware splits avoid leaking future observations into training",
-          "Model versions retain their features, parameters, and evaluation results",
-          "The pipeline can be rerun against a new location without changing the product layer",
+          "First-party website analysis and external signal discovery run concurrently before their evidence is merged",
+          "Synthesis prioritizes company-owned material for stable facts and external sources for recent hooks",
+          "Freshness, source quality, deduplication, and traceability remain production extension points",
+        ],
+        visuals: [
+          {
+            src: "/projects/contextual-outreach/enrichment-01-collect.svg",
+            alt: "Two parallel research tracks collecting first-party website evidence and external market signals for a fictional prospect.",
+            caption:
+              "Collect — parallel evidence tracks reduce dependence on a single source.",
+            label: "Collect",
+            theme: "dark",
+          },
+          {
+            src: "/projects/contextual-outreach/enrichment-02-synthesize.svg",
+            alt: "Collected evidence being ranked and synthesized into a structured company profile, outreach hooks, and contact candidates.",
+            caption:
+              "Synthesize — ranked evidence becomes reusable company and contact context.",
+            label: "Synthesize",
+            theme: "light",
+          },
         ],
       },
       {
-        title: "Uncertainty as product data",
+        title: "Context-aware outreach generation",
+        visualTitle: "Generation / Context before content",
         summary:
-          "The interface presents confidence and contributing signals alongside the point forecast.",
+          "Drafting is treated as context construction rather than a single prompt, preserving user control while grounding suggestions in research and previous work.",
         details: [
-          "Prediction intervals are returned with every forecast",
-          "Operators can distinguish a strong warning from a weak model signal",
-          "The UI translates model output into an operational next step",
+          "The context builder combines prospect intelligence, the active contact, sender identity, company positioning, previous cases, and a channel prompt",
+          "Separate strategies support collected-data and web-search paths for email and LinkedIn content",
+          "Drafts remain editable and support conversational revision, while factual and stylistic review stays human-owned",
+        ],
+        visuals: [
+          {
+            src: "/projects/contextual-outreach/generation-01-context.svg",
+            alt: "Seven explicit sources feeding an outreach context builder before any message is generated.",
+            caption:
+              "Context — research, identity, positioning, cases, and prompt settings become explicit inputs.",
+            label: "Context",
+            theme: "dark",
+          },
+          {
+            src: "/projects/contextual-outreach/generation-02-refine.svg",
+            alt: "A fictional outreach draft beside a conversation panel used to request and apply a focused revision.",
+            caption:
+              "Refine — the generated draft stays editable and can be revised through conversation.",
+            label: "Refine",
+            theme: "light",
+          },
+        ],
+      },
+      {
+        title: "Stateful multi-channel workflow engine",
+        visualTitle: "Workflow / Validate before execution",
+        summary:
+          "Reusable sequences become prospect-specific workflow instances whose content dependencies and schedule are validated before activation.",
+        details: [
+          "Ordered steps support email, LinkedIn messages, connection requests, waits, and lightweight interactions",
+          "Activation validates enrichment and generation requirements before converting local offsets into scheduled timestamps",
+          "A background worker and executor are implemented, but channel actions remain mock adapters rather than production delivery claims",
+        ],
+        visuals: [
+          {
+            src: "/projects/contextual-outreach/workflow-01-lifecycle.svg",
+            alt: "Workflow lifecycle moving from editable draft through dependency validation and timezone scheduling into active, completed, failed, or cancelled states.",
+            caption:
+              "Lifecycle — incomplete sequences are stopped before they can be activated.",
+            label: "Lifecycle",
+            theme: "dark",
+          },
+          {
+            src: "/projects/contextual-outreach/workflow-02-boundary.svg",
+            alt: "Scheduled email and LinkedIn steps reaching explicit mock adapters, with production providers shown as future replacements outside the implemented boundary.",
+            caption:
+              "Boundary — orchestration is implemented while external delivery remains replaceable.",
+            label: "Boundary",
+            theme: "dark",
+          },
+        ],
+      },
+      {
+        title: "Clean Architecture around volatile integrations",
+        visualTitle: "Architecture / Dependencies point inward",
+        summary:
+          "The backend was refactored around domain, application, infrastructure, and API boundaries so external providers do not own the business workflow.",
+        details: [
+          "Domain entities encapsulate prospect ownership, active-contact selection, workflow transitions, ordering, and activation rules",
+          "Single-action use cases expose one entry point while thin endpoints translate HTTP concerns",
+          "The additional types and wiring improve replaceability, but consistent authorization and integration coverage still require production review",
+        ],
+        visuals: [
+          {
+            src: "/projects/contextual-outreach/architecture-dependencies.svg",
+            alt: "Layered backend architecture with domain rules at the center, application contracts around them, infrastructure implementations outside, and API composition at the edge.",
+            caption:
+              "Dependencies — external implementations point toward application contracts and domain rules.",
+            label: "Layers",
+            theme: "dark",
+          },
         ],
       },
     ],
     evaluation: {
-      title: "Measured against the decision, not a leaderboard.",
+      title:
+        "The prototype was evaluated through tests and walkthroughs, not production use.",
       summary:
-        "The prototype was evaluated through time-based backtesting and a simulated operator workflow rather than model accuracy alone.",
+        "The repository contains unit tests for selected domain rules and application use cases, while recurring walkthroughs grounded the workflow in a real consultancy context. These establish implemented behavior and relevance to the explored problem, but not adoption, conversion, deliverability, or business impact.",
+      details: [
+        "The repository contains unit tests for selected domain rules and application use cases, while recurring walkthroughs grounded the workflow in a real consultancy context. These establish implemented behavior and relevance to the explored problem, but not adoption, conversion, deliverability, or business impact.",
+        "The system was never deployed. During development, the consultancy adopted an established commercial platform that already addressed its LinkedIn outreach requirement, so the independent prototype remained exploratory rather than moving toward production.",
+      ],
+      textOnly: true,
       evidence: [
-        { value: "48h", label: "forecast horizon" },
-        { value: "18%", label: "lower simulated forecast error" },
-        { value: "3", label: "operational signals exposed" },
+        { value: "39", label: "unit-test cases present in source" },
+        { value: "6", label: "documented interface states" },
+        { value: "0", label: "production deployments" },
       ],
     },
     outcome:
-      "The prototype reduced simulated forecast error by 18% and turned model confidence into an interface element that operators could actually use.",
+      "The project delivered a working research-to-outreach prototype and made its hardest external integration constraint concrete.",
+    outcomeTitle:
+      "A working prototype that made both the opportunity and the hardest integration constraint concrete.",
+    outcomeSummary:
+      "The project connected prospect intake, company and contact research, previous client work, editable AI drafting, and workflow orchestration. It also showed why build-versus-buy decisions depend on difficult external integrations—not only the quality of the application itself.",
+    outcomeHighlights: [
+      {
+        label: "Delivered",
+        text: "An end-to-end prototype covering prospect intake, research, contact enrichment, personalized drafting, conversational revision, configuration, and workflow orchestration.",
+      },
+      {
+        label: "Validated",
+        text: "Exploratory discussions grounded the workflow in a real consultancy context, while source-level tests and interface walkthroughs established implemented behavior.",
+      },
+      {
+        label: "Next",
+        text: "Production delivery would require approved channel integrations, stronger source traceability, broader integration testing, and evaluation with real users.",
+      },
+    ],
   },
   {
     slug: "beacon",

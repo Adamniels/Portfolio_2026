@@ -141,7 +141,8 @@ Use only `Shipped` or `Prototype` for `status`. Leave `number` as
       "Third component or stage",
       "Fourth component or stage",
       "Optional fifth component or stage"
-    ]
+    ],
+    image: "/projects/PROJECT_SLUG/system-overview.svg"
   },
   technicalHighlights: [
     {
@@ -151,6 +152,15 @@ Use only `Shipped` or `Prototype` for `status`. Leave `number` as
         "A specific implementation detail",
         "A specific decision, algorithm, or boundary",
         "A tradeoff, limitation, or extension point"
+      ],
+      visualTitle: "Short title / Multi-part walkthrough",
+      visuals: [
+        {
+          src: "/projects/PROJECT_SLUG/highlight-01-step-01.svg",
+          alt: "Specific accessible description of what the diagram shows.",
+          caption: "Step label — what this view explains.",
+          label: "Short tab label"
+        }
       ]
     },
     {
@@ -166,6 +176,11 @@ Use only `Shipped` or `Prototype` for `status`. Leave `number` as
   evaluation: {
     title: "A sentence explaining how the project was evaluated.",
     summary: "What was tested, measured, compared, or learned.",
+    details: [
+      "Optional first explanatory paragraph.",
+      "Optional second paragraph covering the result, limitation, or context."
+    ],
+    textOnly: false,
     evidence: [
       { value: "Verified value", label: "Precise explanation" },
       { value: "Verified value", label: "Precise explanation" },
@@ -173,12 +188,26 @@ Use only `Shipped` or `Prototype` for `status`. Leave `number` as
     ]
   },
   outcome: "A concise, evidence-backed description of what worked, changed, or was learned.",
-  outcomeDetails: [
-    "Optional first longer outcome paragraph.",
-    "Optional second paragraph covering limitations, remaining work, or reflection."
+  outcomeTitle: "One strong closing statement.",
+  outcomeSummary: "A concise explanation connecting the delivered work, validation, and remaining direction.",
+  outcomeHighlights: [
+    { label: "Delivered", text: "What was actually built or completed." },
+    { label: "Validated", text: "What evidence, testing, or use established." },
+    { label: "Next", text: "The most important limitation, extension, or next step." }
   ]
 }
 ```
+
+Use `textOnly: true` when a chart or evidence panel would feel forced,
+duplicate the prose, or misrepresent the strength of the evidence. Keep
+verified evidence in the handoff even when the portfolio may present the
+section as text only.
+
+Each technical highlight may use one diagram or a multi-part visual
+walkthrough. Add as many `visuals` entries as the explanation genuinely needs.
+In the visual direction, recommend a `light` or `dark` full-screen overlay for
+each diagram according to where that asset remains clearest. Different diagrams
+within one project may use different overlay themes.
 
 ## One-minute project story
 
@@ -219,13 +248,22 @@ highlights over many shallow ones.
 
 Explain how the project was tested, validated, compared, or studied. Use
 verified evidence. If no quantitative metric exists, describe the evaluation
-method and qualitative result honestly.
+method and qualitative result honestly. Explicitly recommend either a visual
+evaluation treatment or a text-only section, and explain why that treatment is
+the most accurate presentation of the available evidence.
 
 ### 05 — Outcome
 
-Explain what was delivered, what worked, what still needs improvement, and what
-was learned. Use smaller, longer explanatory paragraphs when the outcome cannot
-be expressed honestly as one short metric-led statement.
+Use the portfolio's preferred closing structure:
+
+- One strong closing statement
+- A concise supporting explanation
+- **Delivered** — what was built or completed
+- **Validated** — what testing, evidence, or use established
+- **Next** — the most important limitation, extension, or next step
+
+Do not force the outcome into a metric-led claim. Keep each item concise,
+specific, and evidence-backed.
 
 ## Supporting technical information
 
@@ -245,9 +283,11 @@ Recommend visuals for the full case-study structure:
 
 - One strong homepage visual
 - One architecture diagram or system-flow visual
-- One diagram, code walkthrough, state transition, or comparison for each
-  selected technical highlight
-- One evaluation chart, test result, or evidence summary
+- One diagram or multi-part interactive walkthrough for each selected technical
+  highlight; use multiple views when a sequence, state change, or comparison
+  cannot be explained clearly in one frame
+- An evaluation chart, test result, or evidence summary only when it represents
+  the evidence honestly; otherwise recommend a text-only evaluation section
 
 Prefer visuals that explain how the project works over decorative mockups.
 
@@ -257,6 +297,8 @@ For each proposed visual, include:
 - Which real project data or interface it can use
 - Where the necessary source or asset is located
 - Whether sensitive information needs to be removed or recreated
+- Whether its full-screen overlay should use the portfolio's `light` or `dark`
+  theme, based on the asset's background and contrast
 
 If the repository already contains useful assets, list their exact paths.
 
@@ -303,8 +345,13 @@ Before finishing:
 - Confirm each technical highlight contains implementation detail and a
   tradeoff, limitation, or extension point.
 - Confirm the evaluation and outcome are separate and do not overstate results.
+- Confirm the evaluation is explicitly marked as visual or text-only, with a
+  reason grounded in the available evidence.
+- Confirm the outcome uses the preferred closing statement, supporting
+  explanation, Delivered, Validated, and Next structure.
 - Confirm unfinished elements are clearly identified.
-- Confirm the proposed visuals can be created from available material.
+- Confirm the proposed visuals can be created from available material and each
+  diagram has a justified light or dark overlay theme.
 - Remove duplicated ideas and generic filler.
 
 Finish by telling me where `PORTFOLIO_HANDOFF.md` was created and summarize any

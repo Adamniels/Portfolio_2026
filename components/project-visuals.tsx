@@ -1,35 +1,73 @@
-export function PulseVisual() {
-  const bars = [34, 48, 41, 62, 55, 78, 67, 84, 73, 91, 64, 70];
-
+export function OutreachVisual() {
   return (
-    <div className="visual visual-pulse" aria-label="Pulse forecasting interface">
+    <div
+      className="visual visual-outreach"
+      aria-label="Contextual Outreach prospect research and drafting workspace"
+    >
       <div className="visual-topline">
-        <span><i /> PULSE / LIVE MODEL</span>
-        <span>STOCKHOLM · 14:32</span>
+        <span><i /> CONTEXTUAL OUTREACH / PROSPECT WORKSPACE</span>
+        <span>RESEARCH · CONTACT · DRAFT</span>
       </div>
-      <div className="pulse-grid">
-        <div className="forecast">
-          <p>48H FORECAST</p>
-          <strong>42.8</strong>
-          <span>MWh predicted demand</span>
-          <div className="chart" aria-hidden="true">
-            {bars.map((height, index) => (
-              <i
-                key={index}
-                style={{ height: `${height}%`, animationDelay: `${index * 45}ms` }}
-              />
-            ))}
-          </div>
-          <div className="axis"><span>NOW</span><span>+24H</span><span>+48H</span></div>
-        </div>
-        <div className="signals">
-          <p>MODEL SIGNALS</p>
-          <div><span>Temperature</span><b>−3.2°</b></div>
-          <div><span>Grid pressure</span><b>Elevated</b></div>
-          <div><span>Confidence</span><b>92.4%</b></div>
-          <div className="pulse-alert">
-            <small>DEMAND EVENT</small>
-            <strong>Spike expected<br />tomorrow at 08:00</strong>
+      <div className="outreach-shell">
+        <aside className="outreach-nav">
+          <strong>CO</strong>
+          <span>Overview</span>
+          <span className="is-active">Prospects</span>
+          <span>Sequences</span>
+          <span>Settings</span>
+          <small>EXPLORATORY PROTOTYPE</small>
+        </aside>
+        <div className="outreach-workspace">
+          <header>
+            <div>
+              <span>PROSPECT / 014</span>
+              <h3>Northstar Energy</h3>
+            </div>
+            <b>RESEARCHED</b>
+          </header>
+          <div className="outreach-columns">
+            <section className="outreach-intelligence">
+              <p>COMPANY INTELLIGENCE</p>
+              <div className="intelligence-card">
+                <span>COMPANY SNAPSHOT</span>
+                <strong>Grid software for distributed energy teams.</strong>
+                <small>4 first-party sources · 3 external signals</small>
+              </div>
+              <div className="signal-list">
+                <div><i>01</i><span>Expansion into two Nordic markets</span><b>RECENT</b></div>
+                <div><i>02</i><span>New reporting requirements</span><b>RELEVANT</b></div>
+              </div>
+              <div className="contact-card">
+                <span>ACTIVE CONTACT</span>
+                <div><strong>Maya Lind</strong><small>Head of Operations</small></div>
+                <b>3 HOOKS</b>
+              </div>
+            </section>
+            <section className="outreach-draft">
+              <p>PERSONALIZED DRAFT</p>
+              <div className="draft-meta">
+                <span>EMAIL · COLLECTED DATA</span>
+                <b>EDITABLE</b>
+              </div>
+              <h4>Making distributed reporting easier</h4>
+              <p>Hi Maya,</p>
+              <p>
+                Your Nordic expansion makes consistent operational reporting
+                harder across teams. We recently helped a distributed service
+                organization simplify a similar workflow.
+              </p>
+              <p>Would a short comparison be useful?</p>
+              <div className="draft-context">
+                <span>CONTEXT USED</span>
+                <i>Research</i><i>Contact</i><i>Previous case</i><i>Voice</i>
+              </div>
+            </section>
+            <aside className="outreach-chat">
+              <p>REFINE</p>
+              <div className="chat-message is-user">Make the opening more direct.</div>
+              <div className="chat-message is-system">Opening revised. Company evidence retained.</div>
+              <small>Human review required</small>
+            </aside>
           </div>
         </div>
       </div>
@@ -109,7 +147,8 @@ export function VendGoVisual() {
 }
 
 export function ProjectVisual({ slug }: { slug: string }) {
+  if (slug === "contextual-outreach") return <OutreachVisual />;
   if (slug === "beacon") return <BeaconVisual />;
   if (slug === "vend-and-go") return <VendGoVisual />;
-  return <PulseVisual />;
+  return null;
 }

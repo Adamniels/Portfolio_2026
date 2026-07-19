@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProjectVisual } from "@/components/project-visuals";
+import { SelectedBuildsPreview } from "@/components/selected-builds-preview";
 import { projects } from "@/content/projects";
 
 function Arrow() {
@@ -120,6 +121,8 @@ export default function Home() {
             </article>
           ))}
         </section>
+
+        <SelectedBuildsPreview />
       </section>
 
       <footer>

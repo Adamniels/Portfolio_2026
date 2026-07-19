@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .bg    { fill: #171715; }
+      .fg    { fill: #F0EEE8; }
+      .muted { fill: #8A867C; }
+      .green { fill: #C8FF32; }
+      .coral { fill: #ED5B3A; }
+      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
+      .line  { stroke: #3A3833; stroke-width: 1; }
+      .nbox  { fill: none; stroke: #3A3833; stroke-width: 1; }
+      .nboxg { fill: none; stroke: #C8FF32; stroke-width: 1.5; }
+      .nboxc { fill: none; stroke: #ED5B3A; stroke-width: 1.5; }
+      .egreen{ stroke: #C8FF32; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C8FF32"/></marker>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#8A867C"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+
+  <!-- header -->
+  <text class="lbl muted" x="80" y="78" font-size="15">CHECKOUT · MOCKED EDGES</text>
+  <text class="lbl muted" x="1520" y="78" font-size="15" text-anchor="end">01 / AUTHORITATIVE PRE-FLIGHT</text>
+  <line class="line" x1="80" y1="100" x2="1520" y2="100"/>
+
+  <!-- title -->
+  <text class="fg" x="78" y="196" font-size="60" font-weight="600">Verify everything before money moves.</text>
+  <text class="muted" x="80" y="240" font-size="21">The server never trusts client totals. It reloads state, recomputes pricing, and matches the client snapshot before reserving.</text>
+
+  <!-- lane label -->
+  <text class="lbl green" x="80" y="330" font-size="14">GUARD SEQUENCE — ALL PASS BEFORE PAYMENT IS TOUCHED</text>
+  <line class="line" x1="80" y1="348" x2="1520" y2="348"/>
+
+  <!-- client node -->
+  <rect class="nbox" x="80" y="400" width="200" height="96"/>
+  <text class="fg" x="180" y="440" font-size="19" text-anchor="middle">Client request</text>
+  <text class="mono muted" x="180" y="466" font-size="12" text-anchor="middle">cart id · machine id</text>
+  <text class="mono muted" x="180" y="484" font-size="12" text-anchor="middle">pricing snapshot</text>
+
+  <!-- arrow into guards -->
+  <path class="egreen" marker-end="url(#ag)" d="M280,448 L352,448"/>
+
+  <!-- 5 guard steps as a vertical-ish numbered stack across two rows -->
+  <!-- Step boxes -->
+  <!-- Row of 5 steps -->
+  <g>
+    <!-- Step 1 -->
+    <rect class="nbox" x="360" y="392" width="240" height="112"/>
+    <text class="mono green" x="378" y="422" font-size="14">01</text>
+    <text class="fg" x="378" y="452" font-size="19">Load cart</text>
+    <text class="mono muted" x="378" y="478" font-size="12">cartRepository</text>
+    <text class="mono muted" x="378" y="495" font-size="12">non-empty · machine match</text>
+
+    <!-- Step 2 -->
+    <rect class="nbox" x="640" y="392" width="240" height="112"/>
+    <text class="mono green" x="658" y="422" font-size="14">02</text>
+    <text class="fg" x="658" y="452" font-size="19">Live stock check</text>
+    <text class="mono muted" x="658" y="478" font-size="12">productBatchRepository</text>
+    <text class="mono muted" x="658" y="495" font-size="12">available ≥ requested</text>
+
+    <!-- Step 3 -->
+    <rect class="nbox" x="920" y="392" width="240" height="112"/>
+    <text class="mono green" x="938" y="422" font-size="14">03</text>
+    <text class="fg" x="938" y="452" font-size="19">Recompute price</text>
+    <text class="mono muted" x="938" y="478" font-size="12">best-campaign use case</text>
+    <text class="mono muted" x="938" y="495" font-size="12">server-side, authoritative</text>
+
+    <!-- Step 4 -->
+    <rect class="nboxg" x="1200" y="392" width="240" height="112"/>
+    <text class="mono green" x="1218" y="422" font-size="14">04</text>
+    <text class="fg" x="1218" y="452" font-size="19">Match snapshot</text>
+    <text class="mono muted" x="1218" y="478" font-size="12">recomputed == client?</text>
+    <text class="mono coral" x="1218" y="495" font-size="12">else PricingMismatch → 409</text>
+  </g>
+
+  <!-- connectors between steps -->
+  <path class="egreen" marker-end="url(#ag)" d="M600,448 L632,448"/>
+  <path class="egreen" marker-end="url(#ag)" d="M880,448 L912,448"/>
+  <path class="egreen" marker-end="url(#ag)" d="M1160,448 L1192,448"/>
+
+  <!-- down to step 5 (persist) -->
+  <path class="egreen" marker-end="url(#ag)" d="M1320,504 L1320,566"/>
+
+  <!-- Step 5 persist -->
+  <rect class="nbox" x="1080" y="574" width="360" height="128"/>
+  <text class="mono green" x="1104" y="606" font-size="14">05</text>
+  <text class="fg" x="1104" y="636" font-size="20">Persist order — before payment</text>
+  <text class="mono muted" x="1104" y="664" font-size="13">orderRepository.create(order)</text>
+  <rect class="nboxc" x="1104" y="678" width="150" height="18"/>
+  <text class="mono coral" x="1179" y="691" font-size="11" text-anchor="middle">status FAILED</text>
+  <rect class="nboxc" x="1266" y="678" width="160" height="18"/>
+  <text class="mono coral" x="1346" y="691" font-size="11" text-anchor="middle">RESERVE_FAILED</text>
+
+  <!-- explanation of persist-as-failed -->
+  <text class="mono muted" x="80" y="612" font-size="14">Why persist first, as FAILED?</text>
+  <text class="muted" x="80" y="646" font-size="17">The order row is written in a safe terminal state</text>
+  <text class="muted" x="80" y="672" font-size="17">before the payment provider is contacted. If the</text>
+  <text class="muted" x="80" y="698" font-size="17">process dies mid-flight, there is no phantom</text>
+  <text class="muted" x="80" y="724" font-size="17">“pending” transaction to reconcile — only a clean</text>
+  <text class="muted" x="80" y="750" font-size="17">FAILED record that a retry can supersede.</text>
+
+  <!-- handoff to frame 2 -->
+  <line class="line" x1="80" y1="800" x2="1520" y2="800"/>
+  <path class="egreen" marker-end="url(#ag)" d="M1260,846 L1440,846"/>
+  <text class="lbl green" x="80" y="852" font-size="14">PASSED ALL GUARDS</text>
+  <text class="mono muted" x="360" y="852" font-size="15">Only now does the use case reserve payment and start dispensing — continued in frame 02.</text>
+  <text class="lbl green" x="1440" y="835" font-size="12" text-anchor="end">02</text>
+</svg>

@@ -23,6 +23,13 @@ export type Project = {
     title: string;
     summary: string;
     details: string[];
+    visualTitle?: string;
+    visuals?: Array<{
+      src: string;
+      alt: string;
+      caption: string;
+      label: string;
+    }>;
   }>;
   evaluation: {
     title: string;
@@ -47,7 +54,11 @@ export const projects: Project[] = [
       "A forecasting workspace that helps small energy teams act before demand spikes—not after.",
     status: "Prototype",
     year: "2026",
-    disciplines: ["Machine learning", "Product engineering", "Data visualization"],
+    disciplines: [
+      "Machine learning",
+      "Product engineering",
+      "Data visualization",
+    ],
     metric: "18%",
     metricLabel: "lower forecast error in simulation",
     challengeTitle: "Forecasts existed. Confidence didn’t.",
@@ -62,7 +73,13 @@ export const projects: Project[] = [
       title: "One pipeline from raw signals to an actionable forecast.",
       summary:
         "Historical demand and weather signals move through a reproducible feature pipeline into a versioned forecasting model. A small prediction API exposes the forecast and its uncertainty to the operator interface.",
-      flow: ["Demand history", "Feature pipeline", "Forecast model", "Prediction API", "Operator UI"],
+      flow: [
+        "Demand history",
+        "Feature pipeline",
+        "Forecast model",
+        "Prediction API",
+        "Operator UI",
+      ],
     },
     technicalHighlights: [
       {
@@ -109,7 +126,11 @@ export const projects: Project[] = [
       "A developer tool for tracing failures across asynchronous services without searching through five different dashboards.",
     status: "Prototype",
     year: "2026",
-    disciplines: ["Distributed systems", "Developer tooling", "Interface design"],
+    disciplines: [
+      "Distributed systems",
+      "Developer tooling",
+      "Interface design",
+    ],
     metric: "4.6×",
     metricLabel: "faster root-cause discovery in testing",
     challengeTitle: "The error was visible. The cause wasn’t.",
@@ -124,7 +145,13 @@ export const projects: Project[] = [
       title: "Events become traces without blocking application work.",
       summary:
         "Services emit a compact shared event envelope to an asynchronous collector. The collector links related events, stores the resulting trace, and serves a causality-first view to the debugging interface.",
-      flow: ["Application event", "Shared envelope", "Async collector", "Trace store", "Debug interface"],
+      flow: [
+        "Application event",
+        "Shared envelope",
+        "Async collector",
+        "Trace store",
+        "Debug interface",
+      ],
     },
     technicalHighlights: [
       {
@@ -171,10 +198,17 @@ export const projects: Project[] = [
       "A mobile payment and loyalty prototype for vending customers and machine refillers.",
     status: "Prototype",
     year: "2026",
-    disciplines: ["Software engineering", "UX research", "Data science"],
+    disciplines: [
+      "Software engineering",
+      "Backend engineering",
+      "Software architecture",
+      "UX research",
+      "Data science",
+    ],
     metric: "7.4M",
     metricLabel: "historical vending sale rows analyzed",
-    challengeTitle: "An app had to offer more value than an effortless card tap.",
+    challengeTitle:
+      "An app had to offer more value than an effortless card tap.",
     challenge:
       "Existing vending machines offered a familiar card-terminal experience that was already quick, but added transaction costs for operators. The thesis examined whether mobile payment and visible loyalty rewards could make switching worthwhile without adding too much registration, navigation, or reward complexity.",
     approach: [
@@ -183,15 +217,23 @@ export const projects: Project[] = [
       "Combined a 29-person survey and moderated usability sessions with analysis of 7.4 million historical transactions",
     ],
     architecture: {
-      title: "A modular architecture connected the mobile experience, business logic, and vending infrastructure.",
+      title:
+        "A modular architecture connected the mobile experience, business logic, and vending infrastructure.",
       summary:
         "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, allowing the clients and external integrations to evolve without moving core business rules out of the application.",
-      flow: ["Customer & refiller clients", "Shared contracts", "Application API", "Core business modules", "Data & integrations"],
+      flow: [
+        "Customer & refiller clients",
+        "Shared contracts",
+        "Application API",
+        "Core business modules",
+        "Data & integrations",
+      ],
       image: "/projects/vend-and-go/portfolio-system-overview.svg",
     },
     technicalHighlights: [
       {
         title: "Campaign optimization algorithm",
+        visualTitle: "Campaign optimizer / Three-part walkthrough",
         summary:
           "Bundle offers and product discounts can compete for the same items, so choosing each campaign independently can produce the wrong total.",
         details: [
@@ -199,15 +241,62 @@ export const projects: Project[] = [
           "A memoized recursive search evaluates valid, non-overlapping campaign assignments",
           "The grouped state avoids the previous unit-level 2ⁿ growth while preserving the best valid discount",
         ],
+        visuals: [
+          {
+            src: "/projects/vend-and-go/campaign-optimizer-01-setup.svg",
+            alt: "A cart with two Sodas, one Juice, and two Waters represented as grouped quantities, alongside four overlapping campaigns competing for the same units.",
+            caption:
+              "Setup — grouped quantities expose competing campaign claims.",
+            label: "Setup",
+          },
+          {
+            src: "/projects/vend-and-go/campaign-optimizer-02-search.svg",
+            alt: "A recursive search over grouped cart states where two optimal paths converge on the memoized state B:1, while the greedy largest-discount-first branch is rejected.",
+            caption:
+              "Search — recursive branches converge on a memoized state.",
+            label: "Search",
+          },
+          {
+            src: "/projects/vend-and-go/campaign-optimizer-03-result.svg",
+            alt: "The winning non-overlapping campaign assignment applies Soda Twins, Water Pair, and Juice Deal for a total discount of 42 kronor and a final total of 68 kronor.",
+            caption:
+              "Result — the best non-overlapping assignment saves 42 kr.",
+            label: "Result",
+          },
+        ],
       },
       {
         title: "Checkout with mocked edges",
+        visualTitle: "Checkout / Mocked-edges walkthrough",
         summary:
           "The application flow stays authoritative while external payment and machine dispensing remain replaceable adapters.",
         details: [
           "The server recomputes prices and chooses the best campaign assignment before payment",
           "The use case reserves payment, invokes dispensing, updates inventory and payment state, and returns item-level results",
           "Mock services implement the same interfaces intended for future providers, keeping integration changes at the edges",
+        ],
+        visuals: [
+          {
+            src: "/projects/vend-and-go/checkout-mocked-edges-01-authority.svg",
+            alt: "A left-to-right checkout guard sequence showing the server loading the cart, checking machine and stock, recomputing prices, matching the client snapshot, and persisting an order in a safe failed state before contacting payment.",
+            caption:
+              "Authority — the server verifies the cart, stock, and pricing before any money moves.",
+            label: "Authority",
+          },
+          {
+            src: "/projects/vend-and-go/checkout-mocked-edges-02-orchestration.svg",
+            alt: "A checkout execution walkthrough showing reserve, per-unit dispensing, settlement, inventory updates, persistence, and finalization, with a synthetic partial-dispense example that captures 36 kronor and refunds 12 kronor.",
+            caption:
+              "Orchestration — one jammed unit becomes an item-level partial result and proportional refund.",
+            label: "Orchestration",
+          },
+          {
+            src: "/projects/vend-and-go/checkout-mocked-edges-03-replaceability.svg",
+            alt: "A ports-and-adapters diagram showing CheckoutCartUseCase depending on payment and machine-dispensing interfaces, with current mock adapters, a real points processor, Prisma repositories, and possible future provider replacements.",
+            caption:
+              "Replaceability — stable interfaces keep payment and machine integrations at the edges.",
+            label: "Replaceability",
+          },
         ],
       },
     ],

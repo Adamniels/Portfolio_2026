@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .bg    { fill: #171715; }
+      .fg    { fill: #F0EEE8; }
+      .muted { fill: #8A867C; }
+      .green { fill: #C8FF32; }
+      .coral { fill: #ED5B3A; }
+      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
+      .line  { stroke: #3A3833; stroke-width: 1; }
+      .nbox  { fill: none; stroke: #3A3833; stroke-width: 1; }
+      .nboxg { fill: none; stroke: #C8FF32; stroke-width: 1.5; }
+      .nboxc { fill: none; stroke: #ED5B3A; stroke-width: 1.5; }
+      .dash  { stroke-dasharray: 5 4; }
+    </style>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C8FF32"/></marker>
+    <marker id="af" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#F0EEE8"/></marker>
+    <marker id="acm" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#ED5B3A"/></marker>
+    <marker id="am" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8A867C"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+
+  <!-- header -->
+  <text class="lbl muted" x="80" y="78" font-size="15">CHECKOUT · MOCKED EDGES</text>
+  <text class="lbl muted" x="1520" y="78" font-size="15" text-anchor="end">03 / REPLACEABLE EDGES</text>
+  <line class="line" x1="80" y1="100" x2="1520" y2="100"/>
+
+  <!-- title -->
+  <text class="fg" x="78" y="188" font-size="60" font-weight="600">The core stays; the edges swap.</text>
+  <text class="muted" x="80" y="230" font-size="21">Checkout depends on interfaces, not providers. Mocks sit outside the core today; a real provider implements the same interface.</text>
+
+  <!-- zone labels -->
+  <text class="lbl green"  x="80"  y="300" font-size="13">APPLICATION CORE</text>
+  <text class="lbl fg"     x="472" y="300" font-size="13">PORTS · INTERFACES</text>
+  <text class="lbl coral"  x="800" y="300" font-size="13">INFRASTRUCTURE · EDGE</text>
+  <line class="line" x1="80" y1="316" x2="1520" y2="316"/>
+
+  <!-- boundary dashed verticals -->
+  <line class="line dash" x1="440" y1="336" x2="440" y2="720"/>
+  <line class="line dash" x1="770" y1="336" x2="770" y2="720"/>
+
+  <!-- ===== CORE ===== -->
+  <rect class="nboxg" x="80" y="360" width="320" height="232"/>
+  <text class="fg" x="100" y="398" font-size="22" font-weight="600">CheckoutCartUseCase</text>
+  <text class="mono muted" x="100" y="432" font-size="13">· guards + pricing authority</text>
+  <text class="mono muted" x="100" y="456" font-size="13">· reserve → dispense → settle</text>
+  <text class="mono muted" x="100" y="480" font-size="13">· inventory, state, item results</text>
+  <line class="line" x1="100" y1="506" x2="380" y2="506"/>
+  <text class="mono green" x="100" y="536" font-size="13">unchanged when a</text>
+  <text class="mono green" x="100" y="556" font-size="13">provider changes</text>
+
+  <!-- core depends-on arrows to ports -->
+  <path stroke="#C8FF32" stroke-width="1.5" fill="none" marker-end="url(#ag)" d="M400,430 L468,430"/>
+  <path stroke="#C8FF32" stroke-width="1.5" fill="none" marker-end="url(#ag)" d="M400,556 L468,556"/>
+  <text class="mono green" x="404" y="420" font-size="11">depends on</text>
+  <text class="mono green" x="404" y="546" font-size="11">depends on</text>
+
+  <!-- ===== PORTS ===== -->
+  <rect class="nbox" x="472" y="388" width="278" height="92"/>
+  <text class="fg" x="490" y="418" font-size="18">IPaymentService</text>
+  <text class="mono muted" x="490" y="444" font-size="12.5">reserve() · capture() · refund()</text>
+  <text class="mono muted" x="490" y="466" font-size="12">stable contract</text>
+
+  <rect class="nbox" x="472" y="512" width="278" height="82"/>
+  <text class="fg" x="490" y="542" font-size="18">IMachineDispenseService</text>
+  <text class="mono muted" x="490" y="568" font-size="12.5">dispenseOne()</text>
+  <text class="mono muted" x="490" y="586" font-size="12">stable contract</text>
+
+  <!-- implements arrows (adapters -> ports), pointing left -->
+  <path stroke="#F0EEE8" stroke-width="1.5" fill="none" marker-end="url(#af)" d="M800,434 L754,434"/>
+  <path stroke="#ED5B3A" stroke-width="1.5" fill="none" marker-end="url(#acm)" d="M800,548 L754,548"/>
+  <text class="mono muted" x="792" y="424" font-size="11" text-anchor="end">implements</text>
+  <text class="mono muted" x="792" y="538" font-size="11" text-anchor="end">implements</text>
+
+  <!-- ===== ADAPTERS ===== -->
+  <!-- payment adapter (router) -->
+  <rect class="nbox" x="800" y="392" width="250" height="84"/>
+  <text class="fg" x="818" y="420" font-size="17">CheckoutPaymentService</text>
+  <text class="mono muted" x="818" y="444" font-size="12">routes by method /</text>
+  <text class="mono muted" x="818" y="461" font-size="12">providerRef prefix</text>
+
+  <!-- processors -->
+  <rect class="nboxc" x="1090" y="366" width="220" height="46"/>
+  <text class="fg" x="1104" y="390" font-size="15">MockPaymentProcessor</text>
+  <text class="mono coral" x="1104" y="406" font-size="11">MOCK · card placeholder</text>
+
+  <rect class="nbox" x="1090" y="420" width="220" height="46"/>
+  <text class="fg" x="1104" y="444" font-size="15">PointsPaymentProcessor</text>
+  <text class="mono green" x="1104" y="460" font-size="11">REAL · loyalty points</text>
+
+  <rect class="nbox dash" x="1090" y="474" width="220" height="44" stroke="#8A867C"/>
+  <text class="muted" x="1104" y="497" font-size="15">Real card PSP adapter</text>
+  <text class="mono muted" x="1104" y="513" font-size="11">FUTURE · same shape</text>
+
+  <!-- router -> processors connectors -->
+  <path stroke="#8A867C" stroke-width="1" fill="none" marker-end="url(#am)" d="M1050,410 L1086,389"/>
+  <path stroke="#8A867C" stroke-width="1" fill="none" marker-end="url(#am)" d="M1050,434 L1086,443"/>
+  <path stroke="#8A867C" stroke-width="1" fill="none" stroke-dasharray="5 4" marker-end="url(#am)" d="M1050,458 L1086,496"/>
+
+  <!-- machine adapters -->
+  <rect class="nboxc" x="800" y="522" width="250" height="52"/>
+  <text class="fg" x="818" y="548" font-size="16">MockMachineDispenseService</text>
+  <text class="mono coral" x="818" y="566" font-size="11">MOCK · hardware placeholder</text>
+
+  <rect class="nbox dash" x="1090" y="524" width="220" height="48" stroke="#8A867C"/>
+  <text class="muted" x="1104" y="549" font-size="15">Real machine adapter</text>
+  <text class="mono muted" x="1104" y="565" font-size="11">FUTURE · same interface</text>
+  <path stroke="#8A867C" stroke-width="1" fill="none" stroke-dasharray="5 4" marker-end="url(#am)" d="M1090,548 L1054,548"/>
+
+  <!-- persistence note -->
+  <rect class="nbox" x="800" y="612" width="510" height="52"/>
+  <text class="fg" x="818" y="638" font-size="15">Prisma repositories</text>
+  <text class="mono muted" x="818" y="656" font-size="11.5">IOrderRepository · ICartRepository · IProductBatchRepository — REAL, no mock</text>
+
+  <!-- ===== legend ===== -->
+  <line class="line" x1="80" y1="720" x2="1520" y2="720"/>
+  <rect class="nboxg" x="80"  y="742" width="16" height="16"/>
+  <text class="mono muted" x="104" y="755" font-size="13">application core</text>
+  <rect class="nbox"  x="300" y="742" width="16" height="16"/>
+  <text class="mono muted" x="324" y="755" font-size="13">interface / real adapter</text>
+  <rect class="nboxc" x="620" y="742" width="16" height="16"/>
+  <text class="mono muted" x="644" y="755" font-size="13">mock adapter (placeholder)</text>
+  <rect class="nbox dash" x="960" y="742" width="16" height="16" stroke="#8A867C"/>
+  <text class="mono muted" x="984" y="755" font-size="13">future integration</text>
+
+  <!-- honest caveat -->
+  <text class="lbl green" x="80" y="828" font-size="14">WHAT SWAPPING ACTUALLY COSTS</text>
+  <line class="line" x1="80" y1="844" x2="1520" y2="844"/>
+  <text class="muted" x="80" y="882" font-size="18">Going live means writing one adapter to the existing interface and registering it. Payment also adds a route and a providerRef</text>
+  <text class="muted" x="80" y="910" font-size="18">prefix in the router above. The guard sequence, orchestration, and state machine in the use case are not rewritten.</text>
+</svg>

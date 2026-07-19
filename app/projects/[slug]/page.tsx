@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DiagramCarousel, DiagramViewer } from "@/components/diagram-viewer";
 import { ProjectVisual } from "@/components/project-visuals";
 import { getProject, projects } from "@/content/projects";
 
@@ -70,34 +71,40 @@ export default async function ProjectPage({ params }: Props) {
         <div className="architecture-content">
           <h2>{project.architecture.title}</h2>
           <p>{project.architecture.summary}</p>
+        </div>
 
-          <div className={`architecture-visual${project.architecture.image ? " has-image" : ""}`}>
-            {project.architecture.image ? (
-              <img
-                src={project.architecture.image}
-                alt={`${project.title} system architecture showing actors, clients, backend modules, infrastructure adapters, and external systems`}
-              />
-            ) : (
-              <>
-                <div className="architecture-visual-meta">
-                  <span>System overview</span>
-                  <span>Diagram placeholder</span>
-                </div>
-                <div className="architecture-flow" aria-label={`${project.title} architecture flow`}>
-                  {project.architecture.flow.map((step, index) => (
-                    <div className="architecture-step" key={step}>
-                      <span>{String(index + 1).padStart(2, "0")}</span>
-                      <strong>{step}</strong>
-                      {index < project.architecture.flow.length - 1 && <i>→</i>}
-                    </div>
-                  ))}
-                </div>
-                <p className="replace-note">
-                  Replace with the project architecture diagram
-                </p>
-              </>
-            )}
-          </div>
+        <div className={`architecture-visual${project.architecture.image ? " has-image" : ""}`}>
+          {project.architecture.image ? (
+            <DiagramViewer
+              diagram={{
+                src: project.architecture.image,
+                alt: `${project.title} system architecture showing actors, clients, backend modules, infrastructure adapters, and external systems`,
+                caption:
+                  "Whole-system overview — clients, core capabilities, persistence, and replaceable infrastructure boundaries.",
+                label: "System architecture",
+                theme: "light",
+              }}
+            />
+          ) : (
+            <>
+              <div className="architecture-visual-meta">
+                <span>System overview</span>
+                <span>Diagram placeholder</span>
+              </div>
+              <div className="architecture-flow" aria-label={`${project.title} architecture flow`}>
+                {project.architecture.flow.map((step, index) => (
+                  <div className="architecture-step" key={step}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{step}</strong>
+                    {index < project.architecture.flow.length - 1 && <i>→</i>}
+                  </div>
+                ))}
+              </div>
+              <p className="replace-note">
+                Replace with the project architecture diagram
+              </p>
+            </>
+          )}
         </div>
       </section>
 
@@ -106,23 +113,34 @@ export default async function ProjectPage({ params }: Props) {
         <div className="technical-content">
           <h2>What was most interesting to build.</h2>
           <div className="technical-list">
-            {project.technicalHighlights.map((highlight, index) => (
-              <article key={highlight.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{highlight.title}</h3>
-                  <p>{highlight.summary}</p>
-                  <ul>
-                    {highlight.details.map((detail) => <li key={detail}>{detail}</li>)}
-                  </ul>
-                </div>
-                <div className="technical-visual-placeholder">
-                  <span>Supporting visual</span>
-                  <strong>{highlight.title}</strong>
-                  <small>Diagram or code-level walkthrough</small>
-                </div>
-              </article>
-            ))}
+            {project.technicalHighlights.map((highlight, index) => {
+              const diagrams = highlight.visuals ?? [];
+
+              return (
+                <article className={diagrams.length ? "has-visuals" : ""} key={highlight.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{highlight.title}</h3>
+                    <p>{highlight.summary}</p>
+                    <ul>
+                      {highlight.details.map((detail) => <li key={detail}>{detail}</li>)}
+                    </ul>
+                  </div>
+                  {diagrams.length ? (
+                    <DiagramCarousel
+                      title={highlight.visualTitle ?? `${highlight.title} / Technical walkthrough`}
+                      diagrams={diagrams}
+                    />
+                  ) : (
+                    <div className="technical-visual-placeholder">
+                      <span>Supporting visual</span>
+                      <strong>{highlight.title}</strong>
+                      <small>Diagram or code-level walkthrough</small>
+                    </div>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

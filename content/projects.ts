@@ -5,9 +5,15 @@ export type Project = {
   title: string;
   kicker: string;
   summary: string;
+  /** Plain-language one sentence, no jargon. Drives the index row and the case-page intro. */
+  oneLiner: string;
   status: "Shipped" | "Prototype";
   year: string;
+  /** Who built it and in what capacity, e.g. "Solo build". */
+  role: string;
   disciplines: string[];
+  /** Real technologies, most significant first. */
+  stack: string[];
   metric: string;
   metricLabel: string;
   challengeTitle: string;
@@ -66,14 +72,18 @@ export const projects: Project[] = [
     title: "Contextual Outreach",
     kicker: "Research-led outreach",
     summary: `A prototype for ${outreachClient} that researches prospects, identifies relevant contacts, and drafts outreach grounded in company context and previous client work.`,
+    oneLiner:
+      "A research-to-outreach tool that studies a prospect and their company, then drafts channel-specific messages grounded in that research and previous client work.",
     status: "Prototype",
     year: "2025–26",
+    role: "Solo build",
     disciplines: [
       "Software engineering",
       "Applied AI",
       "Product engineering",
       "Workflow automation",
     ],
+    stack: ["Vue", "ASP.NET Core", "C#", "PostgreSQL", "LLM APIs"],
     metric: "End-to-end",
     metricLabel: "research-to-outreach prototype built independently",
     challengeTitle:
@@ -258,8 +268,11 @@ export const projects: Project[] = [
     kicker: "Bachelor thesis",
     summary:
       "A mobile payment and loyalty prototype for vending customers and machine refillers.",
+    oneLiner:
+      "A mobile payment and loyalty prototype for vending customers and machine refillers, tested end to end against real pricing, campaign, and loyalty logic.",
     status: "Prototype",
     year: "2026",
+    role: "Bachelor thesis · two-person team",
     disciplines: [
       "Software engineering",
       "Backend engineering",
@@ -267,6 +280,7 @@ export const projects: Project[] = [
       "UX research",
       "Data science",
     ],
+    stack: ["TypeScript", "React Native", "Node.js", "Prisma", "PostgreSQL"],
     metric: "7.4M",
     metricLabel: "historical vending sale rows analyzed",
     challengeTitle:
@@ -405,13 +419,17 @@ export const projects: Project[] = [
     kicker: "Knowledge engine for codebases",
     summary:
       "A knowledge engine that distils a multi-repo project's git and Notion sources into a concept graph with provenance back to each source symbol, keeps it current as the code changes, and serves it to coding agents over MCP and to a person through a browser and chat.",
+    oneLiner:
+      "A knowledge engine that distils a multi-repo codebase and its docs into a concept graph with provenance to every source, kept current as the code changes, and served to coding agents over MCP and to people through a browser and chat.",
     status: "Prototype",
     year: "2026",
+    role: "Solo build",
     disciplines: [
       "Backend & systems engineering",
       "Applied AI",
       "Developer tooling",
     ],
+    stack: ["Python", "FastAPI", "LangGraph", "Postgres / pgvector", "MCP"],
     metric: "68 / 69",
     metricLabel: "requirements verified by a requirement-tagged test",
     challengeTitle:

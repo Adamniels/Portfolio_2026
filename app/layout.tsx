@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Adam Nielsen — Software Engineer & Data Scientist",
+  title: "Adam Nielsen — Software engineer",
   description:
-    "Portfolio concept for Adam Nielsen, a software engineer and data science student.",
+    "Software engineer building real systems end to end: backend architecture, applied AI, and the product around them.",
 };
 
 export default function RootLayout({

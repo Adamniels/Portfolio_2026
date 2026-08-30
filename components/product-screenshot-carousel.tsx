@@ -3,49 +3,20 @@
 import { KeyboardEvent, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-type ProductScreenshot = {
+export type ProductScreenshot = {
   src: string;
   alt: string;
   label: string;
   caption: string;
 };
 
-const screenshots: ProductScreenshot[] = [
-  {
-    src: "/projects/contextual-outreach/Screenshot%202026-07-19%20at%2011.31.50.png",
-    alt: "Contextual Outreach email workspace showing an AI-generated Swedish draft for a prospect beside the conversational refinement panel.",
-    label: "Draft",
-    caption:
-      "Draft — review generated outreach beside the conversational refinement workspace.",
-  },
-  {
-    src: "/projects/contextual-outreach/Screenshot%202026-07-19%20at%2011.27.41.png",
-    alt: "Contextual Outreach user settings showing separate configurable prompts for email and LinkedIn outreach.",
-    label: "Voice",
-    caption:
-      "Voice — maintain channel-specific instructions for email and LinkedIn outreach.",
-  },
-  {
-    src: "/projects/contextual-outreach/Screenshot%202026-07-19%20at%2011.27.24.png",
-    alt: "Contextual Outreach company settings showing positioning fields and a section for previous project cases.",
-    label: "Company",
-    caption:
-      "Company context — store positioning and previous cases as reusable generation inputs.",
-  },
-  {
-    src: "/projects/contextual-outreach/Screenshot%202026-07-19%20at%2011.33.06.png",
-    alt: "Contextual Outreach prospect list showing search, filtering, sorting, and several prospect records.",
-    label: "Prospects",
-    caption:
-      "Prospects — manage manually created and CRM-sourced targets from one workspace.",
-  },
-];
-
 function ScreenshotModal({
+  screenshots,
   activeIndex,
   onChange,
   onClose,
 }: {
+  screenshots: ProductScreenshot[];
   activeIndex: number | null;
   onChange: (index: number) => void;
   onClose: () => void;
@@ -74,7 +45,7 @@ function ScreenshotModal({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex, onChange, onClose]);
+  }, [activeIndex, onChange, onClose, screenshots.length]);
 
   if (activeIndex === null || typeof document === "undefined") return null;
 
@@ -133,7 +104,13 @@ function ScreenshotModal({
   );
 }
 
-export function ProductScreenshotCarousel() {
+export function ProductScreenshotCarousel({
+  screenshots,
+  regionLabel,
+}: {
+  screenshots: ProductScreenshot[];
+  regionLabel: string;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [modalIndex, setModalIndex] = useState<number | null>(null);
   const track = useRef<HTMLDivElement>(null);
@@ -192,7 +169,7 @@ export function ProductScreenshotCarousel() {
         className="product-carousel"
         role="region"
         aria-roledescription="carousel"
-        aria-label="Contextual Outreach product walkthrough"
+        aria-label={regionLabel}
         tabIndex={0}
         onKeyDown={handleKeyDown}
       >
@@ -268,6 +245,7 @@ export function ProductScreenshotCarousel() {
       </div>
 
       <ScreenshotModal
+        screenshots={screenshots}
         activeIndex={modalIndex}
         onChange={setModalIndex}
         onClose={() => setModalIndex(null)}

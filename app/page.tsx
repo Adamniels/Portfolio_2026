@@ -65,7 +65,8 @@ export default function Home() {
 
             <p className="project-summary-copy">{project.summary}</p>
 
-            {project.slug === "contextual-outreach" ? (
+            {project.slug === "contextual-outreach" ||
+            project.slug === "project-wiki" ? (
               <div className="visual-link is-interactive">
                 <ProjectVisual slug={project.slug} />
               </div>

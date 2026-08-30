@@ -251,78 +251,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "beacon",
-    number: "03",
-    scope: "featured",
-    title: "Beacon",
-    kicker: "Event system observability",
-    summary:
-      "A developer tool for tracing failures across asynchronous services without searching through five different dashboards.",
-    status: "Prototype",
-    year: "2026",
-    disciplines: [
-      "Distributed systems",
-      "Developer tooling",
-      "Interface design",
-    ],
-    metric: "4.6×",
-    metricLabel: "faster root-cause discovery in testing",
-    challengeTitle: "The error was visible. The cause wasn’t.",
-    challenge:
-      "In event-driven systems, one user action can cross queues, workers, and external services. Logs show fragments of the journey, but rarely the full story. Beacon connects those fragments into a single trace built around the event itself.",
-    approach: [
-      "Design a compact event envelope shared across services",
-      "Stream and index traces without blocking application work",
-      "Show causality and payload changes in one visual timeline",
-    ],
-    architecture: {
-      title: "Events become traces without blocking application work.",
-      summary:
-        "Services emit a compact shared event envelope to an asynchronous collector. The collector links related events, stores the resulting trace, and serves a causality-first view to the debugging interface.",
-      flow: [
-        "Application event",
-        "Shared envelope",
-        "Async collector",
-        "Trace store",
-        "Debug interface",
-      ],
-    },
-    technicalHighlights: [
-      {
-        title: "Causality over log order",
-        summary:
-          "Beacon reconstructs the event journey using identifiers and parent relationships instead of relying on timestamp order.",
-        details: [
-          "Each event carries trace, parent, service, and attempt identifiers",
-          "Retries remain attached to the operation that caused them",
-          "Skipped downstream work is visible instead of disappearing from the timeline",
-        ],
-      },
-      {
-        title: "Low-overhead collection",
-        summary:
-          "Application services emit small envelopes and leave indexing and trace reconstruction to the collector.",
-        details: [
-          "Collection does not block the request or worker path",
-          "Payload changes can be sampled independently from core trace metadata",
-          "Storage and interface concerns stay outside application services",
-        ],
-      },
-    ],
-    evaluation: {
-      title: "Tested with incidents, not ideal paths.",
-      summary:
-        "A simulated incident set compared the event-centered workflow with a conventional search across separate service logs.",
-      evidence: [
-        { value: "4.6×", label: "faster root-cause discovery" },
-        { value: "11m", label: "previous median investigation" },
-        { value: "2.4m", label: "Beacon median investigation" },
-      ],
-    },
-    outcome:
-      "In a simulated incident set, the event-centered workflow cut median root-cause discovery from eleven minutes to under two and a half.",
-  },
-  {
     slug: "vend-and-go",
     number: "02",
     scope: "featured",
@@ -466,6 +394,184 @@ export const projects: Project[] = [
       {
         label: "Next",
         text: "Connect production payment and dispensing providers, simplify registration, and communicate loyalty rewards more clearly.",
+      },
+    ],
+  },
+  {
+    slug: "project-wiki",
+    number: "03",
+    scope: "featured",
+    title: "Project Wiki",
+    kicker: "Knowledge engine for codebases",
+    summary:
+      "A knowledge engine that distils a multi-repo project's git and Notion sources into a concept graph with provenance back to each source symbol, keeps it current as the code changes, and serves it to coding agents over MCP and to a person through a browser and chat.",
+    status: "Prototype",
+    year: "2026",
+    disciplines: [
+      "Backend & systems engineering",
+      "Applied AI",
+      "Developer tooling",
+    ],
+    metric: "68 / 69",
+    metricLabel: "requirements verified by a requirement-tagged test",
+    challengeTitle:
+      "Every engineer and every coding agent re-learns a multi-repo project by reading the same files again.",
+    challenge:
+      "On a project spread across several repositories and a Notion workspace, the understanding of how it fits together lives nowhere durable. A person rebuilds it by reading source. A coding agent rebuilds it every session by pulling raw files into a context window, paying for the same reading each time. Generated API docs mirror the folder tree and decay with it, and full-text search returns text rather than understanding. Nothing captures what no single file states, such as a wire contract that two repositories both depend on. The goal was a knowledge base organised by concept rather than by file, where every concept links back to the exact symbol it was distilled from, that stays current as the sources move, and that serves both a human and an agent without either re-reading the raw material.",
+    approach: [
+      "Separate raw info from distilled knowledge by modelling the wiki as a graph of typed concept nodes stored in the product, each carrying at least one provenance link to a source coordinate",
+      "Make guided init resumable and human-in-the-loop: file-aware batched LLM distillation with a per-batch transaction and failure-aware retry, wrapped in a checkpointed graph that pauses for a person only on a genuine contradiction",
+      "Keep the wiki current incrementally by computing what changed from git, re-examining only the concepts whose provenance points at touched files, and never removing knowledge the system cannot prove is gone",
+    ],
+    architecture: {
+      title:
+        "A strict hexagonal core with three thin entry points, so every surface and the maintenance loop are adapters over one read model rather than parallel implementations.",
+      summary:
+        "Four rings with dependencies pointing inward only, enforced by two import-linter contracts: an ordinary layer contract, and a forbidden-imports contract that names every framework, database driver, and model SDK the domain and application rings may not touch. Sources enter through pluggable connectors as stable coordinates in Postgres. A retrieval index and a batched distillation engine turn them into a provenance-linked concept graph, while an organisation pass and a review queue add domains, cross-source edges, and human adjudication of anything contested. A Typer CLI, a FastAPI read API, and an MCP server are transport-agnostic drivers over the same application use cases. Maintenance re-runs a narrow slice of that pipeline whenever a source moves.",
+      flow: [
+        "Git & Notion connectors",
+        "Retrieval index",
+        "Batched distillation",
+        "Organise & review",
+        "Serve & maintain",
+      ],
+      image: "/projects/project-wiki/system-overview.svg",
+      imageTheme: "light",
+      imageAlt:
+        "A four-column flow: git and Notion connectors feeding Postgres coordinates, a retrieval index and batched distillation engine, a small typed concept graph, and three consumers, with an info-versus-knowledge divider through the middle and dashed provenance threads running from the graph back to the source coordinates.",
+      imageCaption:
+        "Whole-system overview — sources become a graph of named concepts that the browser, chat, and MCP server read instead of the files.",
+    },
+    technicalHighlights: [
+      {
+        title: "Batched, resumable, self-correcting distillation pipeline",
+        visualTitle: "Distillation pipeline / Three-part walkthrough",
+        summary:
+          "Init is a long, paid, failure-prone job. One model call over a whole repository truncates at the output cap, loses everything on a single failure, and spreads the model's attention thin. The pipeline turns it into bounded work that survives partial failure.",
+        details: [
+          "File-aware packing groups a file's units together up to a token budget and sub-splits a single oversized unit, so the model always distils a symbol alongside its local context",
+          "Each batch commits in its own transaction, so partial progress survives a later failure and re-running init skips batches already done; a failed batch is isolated, recorded with its failure kind, and the run finishes the rest",
+          "Retry depends on why the batch failed: a truncated reply is re-planned into smaller sub-batches with the budget halved per attempt, a transient error backs off, invalid JSON retries once and then stays visibly failed, capped at three attempts",
+          "A batch is identified by its packing ordinal, not by the set of coordinates it covers, because sub-split pieces share one parent coordinate and keying by coordinate re-distilled a whole oversized file once per piece",
+        ],
+        visuals: [
+          {
+            src: "/projects/project-wiki/highlight-01-step-01.svg",
+            alt: "Three documents drawn as stacks of source units flow into a size budget and out as batches: two documents pack together into ordinal 0, and one oversized unit is sub-split into three pieces at ordinals 1 to 3 that all keep their parent's coordinate.",
+            caption:
+              "Packing — a file's units travel together up to a token budget, and an oversized unit is sub-split.",
+            label: "Packing",
+            theme: "light",
+          },
+          {
+            src: "/projects/project-wiki/highlight-01-step-02.svg",
+            alt: "Three lanes through the same four steps: batch 0 commits, batch 1 comes back cut off at the model's output cap and is recorded as failed with kind truncated and skipped, batch 2 commits, beside the batch table's three rows and the run's report of two done and one failed with the retry command.",
+            caption:
+              "Commit loop — each batch is its own transaction, so a failed batch is isolated and the run finishes.",
+            label: "Commit loop",
+            theme: "light",
+          },
+          {
+            src: "/projects/project-wiki/highlight-01-step-03.svg",
+            alt: "A three-way fork on the recorded failure kind: truncated re-plans the batch's units into smaller sub-batches with the budget halved per prior attempt, a transient failure backs off and retries as-is, and invalid JSON is retried once and then left visibly failed, with attempts capped at three.",
+            caption:
+              "Retry — the recovery path is chosen from the recorded failure kind.",
+            label: "Retry policy",
+            theme: "light",
+          },
+        ],
+      },
+      {
+        title: "Provenance and incremental maintenance from git",
+        visualTitle: "Maintenance / A merged pull request through the loop",
+        summary:
+          "Keeping the wiki current without redoing it is the harder half of the product. Maintenance is driven from git itself, scoped to what a change actually touched, and constrained so a change can only ever cost knowledge the system can prove is gone.",
+        details: [
+          "What changed is computed from git directly, never from a webhook payload, because a pull-request payload carries no file list and a push payload truncates past 20 commits",
+          "Only the touched documents are re-ingested, and only the concepts whose provenance points at those coordinates are re-examined, through the same batch path init uses, so the two cannot drift",
+          "Evidence is retired only when its content is provably gone, asked of the coordinate's identity rather than a line range; a concept left with no live evidence is proposed for deprecation, never deleted",
+          "A concept that its own changed source now contradicts is corrected, quoting the document's new sentence, rather than retired; a source that merely stops mentioning a concept is never treated as a verdict",
+        ],
+        visuals: [
+          {
+            src: "/projects/project-wiki/highlight-02-flow.svg",
+            alt: "A four-step chain from a merged pull request through a git diff, re-ingestion of the touched documents, and provenance-based selection of concepts, forking into three outcomes (corrected, proposed for deprecation, or queued as contested) with a worked case where a retention period moved from 30 to 45 calendar days and the concept was corrected rather than retired.",
+            caption:
+              "Maintenance flow — a git diff selects documents, provenance selects concepts, each is corrected, deprecation-proposed, or queued.",
+            label: "Maintenance flow",
+            theme: "light",
+          },
+        ],
+      },
+      {
+        title: "Architecture and verification discipline as a system",
+        visualTitle: "Verification / The build gate",
+        summary:
+          "The project treats its own correctness and honesty as testable properties, after a concrete case where a green build lied.",
+        details: [
+          "Strict hexagonal, four rings, enforced by two import-linter contracts, one of them a forbidden-imports list naming every framework, driver, and model SDK the domain and application rings may not import",
+          "A test that stubs the seam it is testing proves nothing: browser-driven init passed its gate for months while never working, because the endpoint flushed instead of committing and the fake background task never touched the database; every scheduling site now commits before scheduling and a test drives real scheduled work against Postgres",
+          "A requirement counts as verified only through a passing test tagged with its ID: a pytest plugin writes a verification map and a generator rolls it into the status page, which is never hand-edited",
+          "Four documentation-honesty gates run inside the single build command: the migration head must match the ORM metadata, .env.example must document every settings field, the generated agent context must match its source, and every internal doc link and repository path must resolve",
+        ],
+        visuals: [
+          {
+            src: "/projects/project-wiki/highlight-03-gate.svg",
+            alt: "A six-stage pipeline from formatting to the frontend build, with a callout listing the four documentation-honesty guards that run inside the test stage and a second callout describing the browser-driven init that passed its gate for months while never working, fixed by committing before scheduling.",
+            caption:
+              "make check — six stages, with the four documentation-honesty guards running inside the test stage.",
+            label: "make check",
+            theme: "dark",
+          },
+        ],
+      },
+    ],
+    evaluation: {
+      title:
+        "Validated by a requirement-tagged test suite and two end-to-end runs against real models, each scored against a key written before the run.",
+      summary:
+        "The engine and surfaces are covered by a green build gate. The parts a fake cannot judge honestly were driven by hand against the real language and embedding models and scored against a pre-written assessment key.",
+      details: [
+        "The gate is the single build command: roughly 775 backend tests and 127 frontend tests, plus ruff, strict pyright, and the import-linter dependency rule, all green. 68 of 69 registered requirements are verified by a requirement-tagged test. The 69th, engine-proposed reading paths, is deliberately unbuilt and named as such on the generated status page, so the denominator is every requirement the project knows about.",
+        "The proof runs drove guided init and the full maintenance loop end to end against a two-repository fixture pair with real Anthropic and OpenAI models, on 1 and 14 August 2026. Each run was scored against an assessment key written beforehand. In the maintenance run, 8 of 9 checks passed, 1 was unevaluable, and 1 surfaced a real defect: a concept left asserting what its source no longer said, because the reconciliation judge was scoped by source reference rather than by document. That was fixed. Measured cost for both fixtures was about $1.10.",
+        "Not yet evaluated is behaviour at the scale of a real multi-repo project, including review-queue volume, coverage skewed toward prose, and the single-process maintenance bound. That evaluation comes next, by using the tool on my own multi-repo platform and improving it from what that surfaces, not as a one-off result to claim now.",
+      ],
+      textOnly: false,
+      evidence: [
+        {
+          value: "68 / 69",
+          label:
+            "requirements verified by a requirement-tagged test, on the generated status page",
+        },
+        {
+          value: "8 / 9",
+          label:
+            "maintenance checks passing in the 14 August 2026 proof run, scored against a key written beforehand",
+        },
+        {
+          value: "~775 + 127",
+          label: "backend tests and frontend tests in the green build gate",
+        },
+      ],
+    },
+    outcome:
+      "The engine and all four v1 surfaces are built on a strict hexagonal core with a self-checking build, and two end-to-end runs against real models, scored against pre-written keys, validated the pipeline and caught a real defect. No real project has been pointed at it yet, and that is the deliberate next step.",
+    outcomeTitle:
+      "An unfinished knowledge engine that proves its own claims, now going into real use on my own projects.",
+    outcomeSummary:
+      "The distinctive engineering is in place and tested: a resumable, self-correcting paid-LLM pipeline, provenance-tracked incremental maintenance constrained so it cannot lose unprovable knowledge, and a build that fails when its own documentation drifts from the code. It is not finished. The next phase is to run it against my own multi-repo platform, judge what is actually there against real work, and improve it incrementally from that use rather than in the abstract.",
+    outcomeHighlights: [
+      {
+        label: "Delivered",
+        text: "The full engine (ingest, index, distil, merge, organise, review, light divergence) and all four v1 surfaces (guided init and review queue, visual browser, MCP server, in-product chat with server-side history), plus self-maintenance from merged pull requests.",
+      },
+      {
+        label: "Validated",
+        text: "68 of 69 requirements green by requirement-tagged tests, plus two end-to-end proof runs against real Anthropic and OpenAI models scored against assessment keys written before each run; one run caught and led to the fix of a real reconciliation-scope defect.",
+      },
+      {
+        label: "Next",
+        text: "Project Wiki is not a finished product. I am putting it to work on my own multi-repo platform, using that to evaluate what exists today and to improve it over time as real use shows what matters (review-queue volume, prose-skewed coverage, single-process maintenance). The one unbuilt requirement, engine-proposed reading paths, comes first.",
       },
     ],
   },

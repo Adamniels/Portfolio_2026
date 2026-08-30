@@ -163,20 +163,14 @@ export default async function ProjectPage({ params }: Props) {
             ))}
           </div>
           {!project.evaluation.textOnly && (
-            <>
-              <div className="evidence-grid">
-                {project.evaluation.evidence.map(({ value, label }) => (
-                  <div key={label}>
-                    <strong>{value}</strong>
-                    <span>{label}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="evaluation-visual-placeholder">
-                <span>Evaluation visual placeholder</span>
-                <p>Replace with an aggregate chart, test result, or comparison from the project.</p>
-              </div>
-            </>
+            <div className="evidence-grid">
+              {project.evaluation.evidence.map(({ value, label }) => (
+                <div key={label}>
+                  <strong>{value}</strong>
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </section>

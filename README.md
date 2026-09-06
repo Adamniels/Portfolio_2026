@@ -22,9 +22,30 @@ fonts, and a restrained project list. Case studies put architecture and engineer
 before product screenshots, with expandable implementation details. Theme tokens
 and responsive styles live in `app/globals.css`.
 
-Original diagram artwork is preserved pending review of the new theme. The unused
-`selected-builds-preview.tsx` component contains unverified placeholder projects
-and is intentionally not rendered. Contact details are deferred until supplied.
+All 21 SVG diagrams use the same light palette, with blue for primary flow and
+core logic, red for rejected or failed paths, and amber for mocked integrations.
+Vend & Go’s system overview was restructured for larger labels. Original assets
+remain in `main` at `c21c606`; SVGs and PNGs are tracked by Git. Commit or stash the
+experimental changes before switching branches to compare designs.
+
+Diagram colours are embedded in each SVG so downloaded files retain their theme:
+canvas `#fcfcfd`, text `#202630`, secondary text `#626b78`, borders `#c6cedb`,
+primary `#285bc5`, highlighted surface `#edf2fc`, failure `#b6423a`, mock `#93621a`.
+Screenshots retain their original product colours.
+
+The homepage ends with `selected-builds-preview.tsx`, a compact section for smaller
+projects. Its three example entries are explicitly marked as placeholder content
+until verified project details are supplied. Contact details are deferred.
+
+Technology labels use plain text with dot separators on both the index and case
+studies. Project titles remain linked; the explicit action sits at the bottom of
+each project entry.
+
+The root `<html>` element uses `suppressHydrationWarning` to tolerate browser
+integrations that inject attributes before hydration (observed with Zotero’s
+`data-zotero-connector-injected` marker). This silences attribute mismatches on
+that element only; it neither disables the integration nor suppresses descendant
+hydration checks. Root attributes such as `lang` also share that exception.
 
 ## Run locally
 
@@ -39,6 +60,9 @@ npm run dev
 npm run build
 npx tsc --noEmit
 ```
+
+Development and production builds share `.next`. Stop the development server
+before building, or restart it after the build before reviewing the local preview.
 
 The existing `lint` script opens the ESLint setup prompt because this repository
 has no ESLint configuration or dependency. Configuring it is a separate decision;

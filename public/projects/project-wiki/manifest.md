@@ -2,8 +2,8 @@
 
 Six SVGs in `public/projects/project-wiki/`. All are self-contained (inline `<style>` in `<defs>`,
 no `<image>`, no external script or font import), sized on a 1600-unit grid, and carry `<title>` and
-`<desc>` for assistive technology. Five are light (warm paper, the product's own aesthetic); the
-build gate is dark.
+`<desc>` for assistive technology. All six use the portfolio’s neutral light theme with blue emphasis, updated in
+September 2026. Original artwork remains in Git on `main` at `c21c606`.
 
 Each entry gives the short label the portfolio entry already uses, in bold, followed by the fuller
 label for anywhere a longer one fits.
@@ -47,7 +47,7 @@ label for anywhere a longer one fits.
 
 ## 6. `highlight-03-gate.svg`
 
-- **Theme:** dark
+- **Theme:** light
 - **Label:** **make check** — six stages, four guards, one lesson
 - **Caption:** The single build command runs formatting, lint, strict types, the dependency rule, the test suite, and the frontend build, with the documentation-honesty guards inside the test stage.
 - **Alt:** A six-stage pipeline from formatting to the frontend build, with a callout listing the four documentation-honesty guards that run inside the test stage and a second callout describing the browser-driven init that passed its gate for months while never working, fixed by committing before scheduling.
@@ -56,15 +56,14 @@ label for anywhere a longer one fits.
 
 ## Palette used
 
-Taken from the existing portfolio SVGs so these sit in the same set.
+Matches the portfolio’s September 2026 theme. Each SVG embeds its own styles so
+it also works when opened or downloaded independently.
 
-**Light** — background `#E7E4DC`, card `#F7F5EF` on `#AAA69B` 2px, highlight card `#D5E7DE` on
-`#739486` 2px, ink `#171715`, copy `#5F625D`, muted label `#8A867C`, accent and arrowheads
-`#176348`, negative or failed path `#B24A2E`.
+Background `#fcfcfd`, card `#ffffff` on `#c6cedb`, highlighted card `#edf2fc` on
+`#91aade`, main text `#202630`, secondary text `#626b78`, accent and arrowheads
+`#285bc5`, rejected or failed path `#b6423a`, failed surface `#fcf0ee`.
 
-**Dark** — background `#171715`, foreground `#F0EEE8`, muted `#8A867C`, accent `#C8FF32`, negative
-`#ED5B3A`, hairlines `#3A3833` at 1px.
-
-**Type** — sans `Manrope, 'Helvetica Neue', Arial, sans-serif`; mono
-`'DM Mono', 'SFMono-Regular', Menlo, monospace`. Section labels are mono, small, with 2px letter
-spacing. Both stacks fall back cleanly, which matters because these render as `<img>`.
+Sans stack: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif`.
+Mono stack: `'SFMono-Regular', Menlo, monospace`. Labels use 1px letter spacing.
+Diagram text and geometry are preserved; node corners and state surfaces match
+the new theme.

@@ -1,110 +1,123 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 750">
-<defs>
-  <style>
-    text{font-family:-apple-system, 'Helvetica Neue', 'Arial', sans-serif;} .mono{font-family:'SFMono-Regular', 'Menlo', 'Consolas', monospace;}
-    .fg{fill:#202630;} .sec{fill:#626b78;} .acc{fill:#285bc5;}
-    .ln{stroke:#a8b4c5;stroke-width:1;fill:none;}
-    .lnfg{stroke:#202630;stroke-width:1.4;fill:none;}
-    .lacc{stroke:#285bc5;stroke-width:1.3;fill:none;}
-    .lbl{letter-spacing:1.5px;}
-  </style>
-  <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#626b78"/></marker>
-  <marker id="aa" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#285bc5"/></marker>
-</defs>
-<text class="sec mono" x="56" y="44" font-size="13" letter-spacing="1.5">VEND &amp; GO · SYSTEM</text>
-<text class="sec mono" x="1744" y="44" font-size="13" text-anchor="end" letter-spacing="1.5">ARCHITECTURE OVERVIEW</text>
-<line class="ln" x1="56" y1="60" x2="1744" y2="60"/>
-<text class="sec" x="56" y="88" font-size="15">Shared contracts connect the mobile and console clients to one backend. Persistence and replaceable payment and dispensing adapters sit at the boundary.</text>
-<text class="sec mono" x="56" y="132" font-size="11" letter-spacing="1.5">ACTORS</text>
-<text class="sec mono" x="230" y="132" font-size="11" letter-spacing="1.5">CLIENTS</text>
-<text class="sec mono" x="600" y="132" font-size="11" letter-spacing="1.5">APPLICATION BACKEND</text>
-<text class="acc mono" x="1290" y="132" font-size="11" letter-spacing="1.5">INFRASTRUCTURE BOUNDARY</text>
-<text class="sec mono" x="1512" y="132" font-size="11" letter-spacing="1.5">EXTERNAL</text>
-<rect x="56" y="200" width="150" height="74" rx="4" fill="none" class="ln"/>
-<text class="fg" x="70" y="230" font-size="14" font-weight="600">Customer</text>
-<text class="sec mono" x="70" y="248" font-size="10.5">mobile user</text>
-<rect x="56" y="362" width="150" height="74" rx="4" fill="none" class="ln"/>
-<text class="fg" x="70" y="392" font-size="14" font-weight="600">Admin / refiller</text>
-<text class="sec mono" x="70" y="410" font-size="10.5">operator</text>
-<rect x="230" y="196" width="250" height="92" rx="4" fill="none" class="ln"/>
-<text class="fg" x="244" y="226" font-size="14" font-weight="600">Mobile app</text>
-<text class="sec mono" x="244" y="244" font-size="10.5">apps/mobile · Expo / React Native</text>
-<rect x="230" y="352" width="250" height="92" rx="4" fill="none" class="ln"/>
-<text class="fg" x="244" y="382" font-size="14" font-weight="600">Web console</text>
-<text class="sec mono" x="244" y="400" font-size="10.5">apps/admin-web · React</text>
-<line class="ln" x1="206" y1="237" x2="230" y2="242" marker-end="url(#a)"/>
-<line class="ln" x1="206" y1="399" x2="230" y2="398" marker-end="url(#a)"/>
-<rect x="512" y="196" width="60" height="248" rx="4" fill="none" class="lacc"/>
-<text class="acc mono" x="542" y="320" font-size="12" text-anchor="middle" letter-spacing="1" transform="rotate(-90 542 320)">SHARED CONTRACTS</text>
-<text class="sec mono" x="560" y="320" font-size="9.5" text-anchor="middle" transform="rotate(-90 560 320)">packages/contracts</text>
-<line class="ln" x1="480" y1="242" x2="512" y2="255" marker-end="url(#a)"/>
-<line class="ln" x1="480" y1="398" x2="512" y2="385" marker-end="url(#a)"/>
-<rect x="600" y="150" width="650" height="420" rx="8" fill="none" class="ln"/>
-<text class="sec mono" x="618" y="176" font-size="12">Backend · apps/api  (NestJS · modular monolith)</text>
-<rect x="620" y="192" width="610" height="46" rx="4" fill="none" class="ln"/>
-<text class="fg" x="634" y="214" font-size="14" font-weight="600">REST API · controllers</text>
-<text class="sec mono" x="634" y="230" font-size="10.5">authenticated JSON over HTTPS</text>
-<line class="ln" x1="572" y1="300" x2="600" y2="278" marker-end="url(#a)"/>
-<rect x="620" y="262" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="634" y="292" font-size="13.5" font-weight="600">Auth &amp; users</text>
-<text class="sec mono" x="634" y="310" font-size="10.5">auth · users</text>
-<rect x="830" y="262" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="844" y="292" font-size="13.5" font-weight="600">Machines &amp; locations</text>
-<text class="sec mono" x="844" y="310" font-size="10.5">vending-machine</text>
-<rect x="1040" y="262" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1054" y="292" font-size="13.5" font-weight="600">Products &amp; inventory</text>
-<text class="sec mono" x="1054" y="310" font-size="10.5">product-type · batch</text>
-<rect x="620" y="354" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="634" y="384" font-size="13.5" font-weight="600">Campaigns &amp; pricing</text>
-<text class="sec mono" x="634" y="402" font-size="10.5">campaign</text>
-<rect x="830" y="354" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="844" y="384" font-size="13.5" font-weight="600">Loyalty &amp; rewards</text>
-<text class="sec mono" x="844" y="402" font-size="10.5">loyalty</text>
-<rect x="1040" y="354" width="190" height="82" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1054" y="384" font-size="13.5" font-weight="600">Purchasing &amp; checkout</text>
-<text class="sec mono" x="1054" y="402" font-size="10.5">cart · checkout · orders</text>
-<line class="ln" x1="620" y1="458" x2="1230" y2="458"/>
-<text class="fg" x="620" y="486" font-size="13" font-weight="600">Application core · use cases + domain</text>
-<text class="sec mono" x="620" y="506" font-size="10.5">presentation → application → domain · ports at the edge</text>
-<line class="lacc" x1="1272" y1="188" x2="1272" y2="586" stroke-dasharray="5 5"/>
-<line class="ln" x1="1250" y1="340" x2="1270" y2="340" marker-end="url(#a)"/>
-<text class="acc mono" x="1258" y="332" font-size="10" text-anchor="end">ports</text>
-<rect x="1292" y="196" width="196" height="64" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1306" y="226" font-size="14" font-weight="600">PostgreSQL</text>
-<text class="sec mono" x="1306" y="244" font-size="10.5">via Prisma</text>
-<rect x="1292" y="276" width="196" height="64" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1306" y="306" font-size="14" font-weight="600">File storage</text>
-<text class="sec mono" x="1306" y="324" font-size="10.5">images · logos</text>
-<rect x="1292" y="356" width="196" height="64" rx="4" fill="none" class="lacc" stroke-dasharray="4 4"/>
-<text class="fg" x="1306" y="386" font-size="14" font-weight="600">Payment adapter</text>
-<text class="sec mono" x="1306" y="404" font-size="10.5">IPaymentService</text>
-<text class="acc mono" x="1476" y="376" font-size="10" text-anchor="end" letter-spacing="0.5">MOCK</text>
-<rect x="1292" y="436" width="196" height="64" rx="4" fill="none" class="lacc" stroke-dasharray="4 4"/>
-<text class="fg" x="1306" y="466" font-size="14" font-weight="600">Dispensing adapter</text>
-<text class="sec mono" x="1306" y="484" font-size="10.5">IMachineDispenseService</text>
-<text class="acc mono" x="1476" y="456" font-size="10" text-anchor="end" letter-spacing="0.5">MOCK</text>
-<rect x="1292" y="516" width="196" height="64" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1306" y="546" font-size="14" font-weight="600">Push adapter</text>
-<text class="sec mono" x="1306" y="564" font-size="10.5">Expo SDK</text>
-<rect x="1512" y="356" width="232" height="64" rx="4" fill="none" class="lacc" stroke-dasharray="4 4"/>
-<text class="fg" x="1526" y="386" font-size="14" font-weight="600">Payment provider</text>
-<text class="sec mono" x="1526" y="404" font-size="10.5">not yet integrated</text>
-<text class="acc mono" x="1732" y="376" font-size="10" text-anchor="end" letter-spacing="0.5">MOCK</text>
-<rect x="1512" y="436" width="232" height="64" rx="4" fill="none" class="lacc" stroke-dasharray="4 4"/>
-<text class="fg" x="1526" y="466" font-size="14" font-weight="600">Vending hardware</text>
-<text class="sec mono" x="1526" y="484" font-size="10.5">physical dispense</text>
-<text class="acc mono" x="1732" y="456" font-size="10" text-anchor="end" letter-spacing="0.5">MOCK</text>
-<rect x="1512" y="516" width="232" height="64" rx="4" fill="none" class="ln"/>
-<text class="fg" x="1526" y="546" font-size="14" font-weight="600">Expo Push service</text>
-<text class="sec mono" x="1526" y="564" font-size="10.5">external</text>
-<line class="lacc" x1="1488" y1="388" x2="1512" y2="388" marker-end="url(#aa)"/>
-<line class="lacc" x1="1488" y1="468" x2="1512" y2="468" marker-end="url(#aa)"/>
-<line class="ln" x1="1488" y1="548" x2="1512" y2="548" marker-end="url(#a)"/>
-<rect x="56" y="624" width="16" height="16" rx="2" fill="none" class="lacc" stroke-dasharray="3 3"/>
-<text class="sec" x="80" y="637" font-size="12">mocked · replaceable adapter</text>
-<rect x="320" y="624" width="16" height="16" rx="2" fill="none" class="ln"/>
-<text class="sec" x="344" y="637" font-size="12">internal component</text>
-<line class="ln" x1="556" y1="632" x2="588" y2="632" marker-end="url(#a)"/>
-<text class="sec" x="596" y="637" font-size="12">request / data path</text>
-<text class="acc mono" x="1744" y="637" font-size="12" text-anchor="end">One deployable backend · Postgres persistence · Expo push</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Vend &amp; Go system architecture</title>
+  <desc id="desc">Customer and refiller clients share contracts with a NestJS modular monolith. Six backend modules own the business rules. PostgreSQL, file storage, payment, dispensing and push integrations sit at the infrastructure boundary. Payment and dispensing providers are mocked; push uses Expo.</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; fill: #202630; }
+      .bg { fill: #fcfcfd; }
+      .title { font-size: 48px; font-weight: 600; letter-spacing: -1.5px; }
+      .heading { font-size: 23px; font-weight: 600; }
+      .copy { font-size: 19px; fill: #626b78; }
+      .small { font-size: 16px; fill: #626b78; }
+      .mono { font-family: 'SFMono-Regular', Consolas, monospace; }
+      .label { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 15px; letter-spacing: 1px; fill: #626b78; }
+      .accent { fill: #285bc5; }
+      .warning { fill: #93621a; }
+      .panel { fill: #f3f5f8; stroke: #c6cedb; stroke-width: 1.5; }
+      .card { fill: #ffffff; stroke: #c6cedb; stroke-width: 1.5; }
+      .core { fill: #edf2fc; stroke: #91aade; stroke-width: 1.5; }
+      .mock { fill: #fff6e8; stroke: #ccab70; stroke-width: 1.5; stroke-dasharray: 6 5; }
+      .rule { fill: none; stroke: #c6cedb; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #285bc5; stroke-width: 2; marker-end: url(#arrow); }
+      .boundary { fill: none; stroke: #91aade; stroke-width: 1.5; stroke-dasharray: 6 6; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#285bc5"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1120"/>
+  <text class="label" x="70" y="64">VEND &amp; GO / SYSTEM ARCHITECTURE</text>
+  <text class="label" x="1530" y="64" text-anchor="end">CLIENTS · CORE · ADAPTERS</text>
+  <path class="rule" d="M70 88H1530"/>
+  <text class="title" x="68" y="164">One backend owns the business rules.</text>
+  <text class="copy" x="70" y="208">Shared contracts connect both clients. External providers stay behind replaceable interfaces.</text>
+
+  <text class="label accent" x="70" y="280">01 / CLIENTS</text>
+  <text class="label accent" x="420" y="280">02 / APPLICATION BACKEND</text>
+  <text class="label accent" x="1120" y="280">03 / INFRASTRUCTURE &amp; PROVIDERS</text>
+
+  <rect class="card" x="70" y="310" width="290" height="148" rx="6"/>
+  <text class="heading" x="94" y="350">Customer mobile app</text>
+  <text class="copy" x="94" y="386">Expo / React Native</text>
+  <text class="small mono" x="94" y="426">apps/mobile</text>
+
+  <rect class="card" x="70" y="482" width="290" height="148" rx="6"/>
+  <text class="heading" x="94" y="522">Admin / refiller console</text>
+  <text class="copy" x="94" y="558">React web client</text>
+  <text class="small mono" x="94" y="598">apps/admin-web</text>
+
+  <path class="flow" d="M215 630V672"/>
+  <path class="flow" d="M70 384H46V728H70"/>
+  <rect class="core" x="70" y="674" width="290" height="110" rx="6"/>
+  <text class="heading" x="94" y="714">Shared contracts</text>
+  <text class="small mono" x="94" y="752">packages/contracts</text>
+  <path class="flow" d="M360 728H390V414H442"/>
+
+  <rect class="panel" x="420" y="310" width="630" height="596" rx="8"/>
+  <text class="heading" x="444" y="350">NestJS · modular monolith</text>
+  <text class="small mono" x="1026" y="350" text-anchor="end">apps/api</text>
+  <rect class="card" x="444" y="374" width="582" height="90" rx="6"/>
+  <text class="heading" x="466" y="410">REST API / controllers</text>
+  <text class="small" x="466" y="443">Authenticated JSON over HTTPS</text>
+  <path class="flow" d="M735 464V500"/>
+
+  <rect class="card" x="444" y="504" width="280" height="96" rx="6"/>
+  <text class="heading" x="464" y="542">Auth &amp; users</text>
+  <text class="small mono" x="464" y="575">auth · users</text>
+  <rect class="card" x="746" y="504" width="280" height="96" rx="6"/>
+  <text class="heading" x="766" y="542">Machines &amp; locations</text>
+  <text class="small mono" x="766" y="575">vending-machine</text>
+
+  <rect class="card" x="444" y="620" width="280" height="96" rx="6"/>
+  <text class="heading" x="464" y="658">Products &amp; inventory</text>
+  <text class="small mono" x="464" y="691">product-type · batch</text>
+  <rect class="core" x="746" y="620" width="280" height="96" rx="6"/>
+  <text class="heading" x="766" y="658">Campaigns &amp; pricing</text>
+  <text class="small mono" x="766" y="691">campaign</text>
+
+  <rect class="core" x="444" y="736" width="280" height="96" rx="6"/>
+  <text class="heading" x="464" y="774">Loyalty &amp; rewards</text>
+  <text class="small mono" x="464" y="807">loyalty</text>
+  <rect class="core" x="746" y="736" width="280" height="96" rx="6"/>
+  <text class="heading" x="766" y="774">Purchasing &amp; checkout</text>
+  <text class="small mono" x="766" y="807">cart · checkout · orders</text>
+  <text class="small" x="444" y="875">Presentation → application → domain. Ports at the edge.</text>
+
+  <path class="boundary" d="M1084 310V980"/>
+  <path d="M1050 602H1100M1100 361V897" fill="none" stroke="#285bc5" stroke-width="2"/>
+  <path class="flow" d="M1100 361H1118"/>
+  <path class="flow" d="M1100 483H1118"/>
+  <path class="flow" d="M1100 617H1118"/>
+  <path class="flow" d="M1100 763H1118"/>
+  <path class="flow" d="M1100 897H1118"/>
+  <text class="label accent" x="1072" y="554" text-anchor="middle" transform="rotate(-90 1072 554)">PORTS</text>
+
+  <rect class="card" x="1120" y="310" width="410" height="102" rx="6"/>
+  <text class="heading" x="1144" y="350">PostgreSQL</text>
+  <text class="copy" x="1144" y="387">Persistent data through Prisma</text>
+
+  <rect class="card" x="1120" y="432" width="410" height="102" rx="6"/>
+  <text class="heading" x="1144" y="472">File storage</text>
+  <text class="copy" x="1144" y="509">Product images and logos</text>
+
+  <rect class="mock" x="1120" y="554" width="410" height="126" rx="6"/>
+  <text class="heading" x="1144" y="594">Payment adapter</text>
+  <text class="label warning" x="1506" y="594" text-anchor="end">MOCK</text>
+  <text class="small mono" x="1144" y="629">IPaymentService</text>
+  <text class="small" x="1144" y="658">Production provider not yet integrated</text>
+
+  <rect class="mock" x="1120" y="700" width="410" height="126" rx="6"/>
+  <text class="heading" x="1144" y="740">Dispensing adapter</text>
+  <text class="label warning" x="1506" y="740" text-anchor="end">MOCK</text>
+  <text class="small mono" x="1144" y="775">IMachineDispenseService</text>
+  <text class="small" x="1144" y="804">Physical vending hardware is mocked</text>
+
+  <rect class="card" x="1120" y="846" width="410" height="102" rx="6"/>
+  <text class="heading" x="1144" y="886">Push adapter</text>
+  <text class="copy" x="1144" y="923">Expo SDK → Expo Push service</text>
+
+  <path class="rule" d="M70 1010H1530"/>
+  <rect class="mock" x="70" y="1040" width="18" height="18" rx="3"/>
+  <text class="small" x="100" y="1055">Mocked, replaceable integration</text>
+  <rect class="core" x="450" y="1040" width="18" height="18" rx="3"/>
+  <text class="small" x="480" y="1055">Core business logic and contracts</text>
+  <text class="label" x="1530" y="1055" text-anchor="end">ONE DEPLOYABLE BACKEND</text>
 </svg>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SelectedBuildsPreview } from "@/components/selected-builds-preview";
 import { projects } from "@/content/projects";
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
             <div className="project-row-main">
               <div className="project-row-meta"><span>{project.kicker}</span><span>{project.status} · {project.year}</span></div>
               <Link className="project-title-link" href={`/projects/${project.slug}`}>
-                <h3>{project.title}</h3><span aria-hidden="true">↗</span>
+                <h3>{project.title}</h3>
               </Link>
               <p className="project-description">{project.indexSummary}</p>
               <ul className="technology-list" aria-label={`${project.title} technologies and focus`}>
@@ -51,6 +52,8 @@ export default function Home() {
           </article>
         ))}
       </section>
+
+      <SelectedBuildsPreview />
 
       <footer className="site-footer">
         <span>Adam Nielsen <span className="footer-year">/ 2026</span></span>

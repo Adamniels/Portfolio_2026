@@ -137,13 +137,13 @@ about 20–30 seconds.
 ## Simplifications made in each SVG
 
 - **Frame 1** shows what each campaign *would* consume as `[A] [B]` chips rather than drawing connector lines
-  to specific cart tiles; contention is conveyed with the coral "contested" marker and legend.
+  to specific cart tiles; contention is conveyed with the red "contested" marker and legend.
 - **Frame 2** does not draw the full recursion. It shows the optimal converging pair of orderings plus the one
   rejected greedy branch. Other explored states (e.g. `A:1|C:2`, `A:1`) are represented only where they carry
   the story; the internal baseline computed at every node is summarised as "best N" rather than itemised.
 - **Frame 2** describes the grouped-vs-unit point in one line; the fuller explanation lives in this file.
-- **Frame 3** renders assigned units as filled acid-green tiles (selected) and the rejected Meal as crossed
-  coral tiles; it omits the intermediate arithmetic already shown on frame 2.
+- **Frame 3** renders assigned units as filled blue tiles (selected) and the rejected Meal as crossed
+  red tiles; it omits the intermediate arithmetic already shown on frame 2.
 
 Colour is never the only signal: selected/optimal items also carry solid tiles and "assigned" text; rejected
 items carry an ✕ strike, the "REJECTED" heading, and "unused" labels; memoized reuse carries the
@@ -221,5 +221,5 @@ The case study's "supporting visual" slot sits beside the *Campaign optimization
    verified numbers. Do not recombine the three into a single image.
 
 Each SVG is self-contained (a `1600 × 1000` responsive `viewBox`, inline styles, system-font fallbacks —
-Manrope/Helvetica for headings, DM Mono/Menlo for technical labels). No external CSS, fonts, scripts, or
+system sans-serif for headings, SFMono/Menlo for technical labels). No external CSS, fonts, scripts, or
 images are referenced, so the files drop straight into the page.

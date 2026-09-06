@@ -1,15 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
   <defs>
     <style>
-      .bg    { fill: #171715; }
-      .fg    { fill: #F0EEE8; }
-      .muted { fill: #8A867C; }
-      .green { fill: #C8FF32; }
-      .coral { fill: #ED5B3A; }
-      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
-      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
-      .line  { stroke: #3A3833; stroke-width: 1; }
-      .linec { stroke: #ED5B3A; stroke-width: 1; }
+      .bg    { fill: #fcfcfd; }
+      .fg    { fill: #202630; }
+      .muted { fill: #626b78; }
+      .green { fill: #285bc5; }
+      .coral { fill: #b6423a; }
+      .mono  { font-family:  'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family:  'SFMono-Regular', Menlo, monospace; letter-spacing: 1px; }
+      .line  { stroke: #c6cedb; stroke-width: 1; }
+      .linec { stroke: #b6423a; stroke-width: 1; }
     </style>
   </defs>
 

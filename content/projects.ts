@@ -5,6 +5,8 @@ export type Project = {
   title: string;
   kicker: string;
   summary: string;
+  indexSummary: string;
+  technologies: string[];
   status: "Shipped" | "Prototype";
   year: string;
   disciplines: string[];
@@ -64,6 +66,8 @@ export const projects: Project[] = [
     number: "01",
     scope: "featured",
     title: "Contextual Outreach",
+    indexSummary: "A research-to-outreach pipeline that turns company evidence into relevant drafts. Built independently, with a stateful workflow engine and replaceable integrations.",
+    technologies: ["C#", "ASP.NET Core", "PostgreSQL", "Applied AI"],
     kicker: "Research-led outreach",
     summary: `A prototype for ${outreachClient} that researches prospects, identifies relevant contacts, and drafts outreach grounded in company context and previous client work.`,
     status: "Prototype",
@@ -97,7 +101,7 @@ export const projects: Project[] = [
         "Persistence and adapters",
       ],
       image: "/projects/contextual-outreach/system-overview.svg",
-      imageTheme: "dark",
+      imageTheme: "light",
       imageAlt:
         "System architecture showing prospect intake and the Vue interface flowing through an ASP.NET Core API into application use cases and domain rules, with replaceable persistence, research, AI, and delivery adapters.",
       imageCaption:
@@ -121,7 +125,7 @@ export const projects: Project[] = [
             caption:
               "Collect — parallel evidence tracks reduce dependence on a single source.",
             label: "Collect",
-            theme: "dark",
+            theme: "light",
           },
           {
             src: "/projects/contextual-outreach/enrichment-02-synthesize.svg",
@@ -150,7 +154,7 @@ export const projects: Project[] = [
             caption:
               "Context — research, identity, positioning, cases, and prompt settings become explicit inputs.",
             label: "Context",
-            theme: "dark",
+            theme: "light",
           },
           {
             src: "/projects/contextual-outreach/generation-02-refine.svg",
@@ -179,7 +183,7 @@ export const projects: Project[] = [
             caption:
               "Lifecycle — incomplete sequences are stopped before they can be activated.",
             label: "Lifecycle",
-            theme: "dark",
+            theme: "light",
           },
           {
             src: "/projects/contextual-outreach/workflow-02-boundary.svg",
@@ -187,7 +191,7 @@ export const projects: Project[] = [
             caption:
               "Boundary — orchestration is implemented while external delivery remains replaceable.",
             label: "Boundary",
-            theme: "dark",
+            theme: "light",
           },
         ],
       },
@@ -208,7 +212,7 @@ export const projects: Project[] = [
             caption:
               "Dependencies — external implementations point toward application contracts and domain rules.",
             label: "Layers",
-            theme: "dark",
+            theme: "light",
           },
         ],
       },
@@ -255,6 +259,8 @@ export const projects: Project[] = [
     number: "02",
     scope: "featured",
     title: "Vend & Go",
+    indexSummary: "Shared backend logic for vending payments, loyalty, and campaigns. From finding the best combination of discounts to handling partial dispensing and refunds.",
+    technologies: ["TypeScript", "Prisma", "Checkout orchestration", "Data analysis"],
     kicker: "Bachelor thesis",
     summary:
       "A mobile payment and loyalty prototype for vending customers and machine refillers.",
@@ -402,6 +408,8 @@ export const projects: Project[] = [
     number: "03",
     scope: "featured",
     title: "Project Wiki",
+    indexSummary: "A knowledge engine that turns code and documentation into a concept graph. Resumable AI processing and source-linked updates keep it useful for people and coding agents.",
+    technologies: ["Python", "FastAPI", "PostgreSQL", "MCP"],
     kicker: "Knowledge engine for codebases",
     summary:
       "A knowledge engine that distils a multi-repo project's git and Notion sources into a concept graph with provenance back to each source symbol, keeps it current as the code changes, and serves it to coding agents over MCP and to a person through a browser and chat.",
@@ -521,7 +529,7 @@ export const projects: Project[] = [
             caption:
               "make check — six stages, with the four documentation-honesty guards running inside the test stage.",
             label: "make check",
-            theme: "dark",
+            theme: "light",
           },
         ],
       },

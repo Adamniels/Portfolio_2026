@@ -77,7 +77,7 @@ function DiagramModal({
   return createPortal(
     <div
       ref={modal}
-      className={`diagram-modal is-${activeDiagram.theme ?? "dark"}`}
+      className={`diagram-modal is-${activeDiagram.theme ?? "light"}`}
       role="dialog"
       aria-modal="true"
       aria-label={`${activeDiagram.label} diagram`}
@@ -99,7 +99,7 @@ function DiagramModal({
           </button>
         </header>
 
-        <div className={`diagram-modal-stage is-${activeDiagram.theme ?? "dark"}`}>
+        <div className={`diagram-modal-stage is-${activeDiagram.theme ?? "light"}`}>
           <img src={activeDiagram.src} alt={activeDiagram.alt} />
         </div>
 

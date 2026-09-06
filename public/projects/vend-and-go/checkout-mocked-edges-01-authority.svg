@@ -1,21 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
   <defs>
     <style>
-      .bg    { fill: #171715; }
-      .fg    { fill: #F0EEE8; }
-      .muted { fill: #8A867C; }
-      .green { fill: #C8FF32; }
-      .coral { fill: #ED5B3A; }
-      .mono  { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; }
-      .lbl   { font-family: 'DM Mono', 'SFMono-Regular', Menlo, monospace; letter-spacing: 2px; }
-      .line  { stroke: #3A3833; stroke-width: 1; }
-      .nbox  { fill: none; stroke: #3A3833; stroke-width: 1; }
-      .nboxg { fill: none; stroke: #C8FF32; stroke-width: 1.5; }
-      .nboxc { fill: none; stroke: #ED5B3A; stroke-width: 1.5; }
-      .egreen{ stroke: #C8FF32; stroke-width: 1.5; fill: none; }
+      .bg    { fill: #fcfcfd; }
+      .fg    { fill: #202630; }
+      .muted { fill: #626b78; }
+      .green { fill: #285bc5; }
+      .coral { fill: #b6423a; }
+      .mono  { font-family:  'SFMono-Regular', Menlo, monospace; }
+      .lbl   { font-family:  'SFMono-Regular', Menlo, monospace; letter-spacing: 1px; }
+      .line  { stroke: #c6cedb; stroke-width: 1; }
+      .nbox  { fill: none; stroke: #c6cedb; stroke-width: 1; }
+      .nboxg { fill: none; stroke: #285bc5; stroke-width: 1.5; }
+      .nboxc { fill: none; stroke: #b6423a; stroke-width: 1.5; }
+      .egreen{ stroke: #285bc5; stroke-width: 1.5; fill: none; }
+    
+      rect.nbox, rect.box { fill: #ffffff; }
+      rect.nboxg, rect.boxa { fill: #edf2fc; }
+      rect.nboxc, rect.boxn { fill: #fcf0ee; }
     </style>
-    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C8FF32"/></marker>
-    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#8A867C"/></marker>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#285bc5"/></marker>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#626b78"/></marker>
   </defs>
 
   <rect class="bg" x="0" y="0" width="1600" height="1000"/>
@@ -34,7 +38,7 @@
   <line class="line" x1="80" y1="348" x2="1520" y2="348"/>
 
   <!-- client node -->
-  <rect class="nbox" x="80" y="400" width="200" height="96"/>
+  <rect rx="6" class="nbox" x="80" y="400" width="200" height="96"/>
   <text class="fg" x="180" y="440" font-size="19" text-anchor="middle">Client request</text>
   <text class="mono muted" x="180" y="466" font-size="12" text-anchor="middle">cart id · machine id</text>
   <text class="mono muted" x="180" y="484" font-size="12" text-anchor="middle">pricing snapshot</text>
@@ -47,28 +51,28 @@
   <!-- Row of 5 steps -->
   <g>
     <!-- Step 1 -->
-    <rect class="nbox" x="360" y="392" width="240" height="112"/>
+    <rect rx="6" class="nbox" x="360" y="392" width="240" height="112"/>
     <text class="mono green" x="378" y="422" font-size="14">01</text>
     <text class="fg" x="378" y="452" font-size="19">Load cart</text>
     <text class="mono muted" x="378" y="478" font-size="12">cartRepository</text>
     <text class="mono muted" x="378" y="495" font-size="12">non-empty · machine match</text>
 
     <!-- Step 2 -->
-    <rect class="nbox" x="640" y="392" width="240" height="112"/>
+    <rect rx="6" class="nbox" x="640" y="392" width="240" height="112"/>
     <text class="mono green" x="658" y="422" font-size="14">02</text>
     <text class="fg" x="658" y="452" font-size="19">Live stock check</text>
     <text class="mono muted" x="658" y="478" font-size="12">productBatchRepository</text>
     <text class="mono muted" x="658" y="495" font-size="12">available ≥ requested</text>
 
     <!-- Step 3 -->
-    <rect class="nbox" x="920" y="392" width="240" height="112"/>
+    <rect rx="6" class="nbox" x="920" y="392" width="240" height="112"/>
     <text class="mono green" x="938" y="422" font-size="14">03</text>
     <text class="fg" x="938" y="452" font-size="19">Recompute price</text>
     <text class="mono muted" x="938" y="478" font-size="12">best-campaign use case</text>
     <text class="mono muted" x="938" y="495" font-size="12">server-side, authoritative</text>
 
     <!-- Step 4 -->
-    <rect class="nboxg" x="1200" y="392" width="240" height="112"/>
+    <rect rx="6" class="nboxg" x="1200" y="392" width="240" height="112"/>
     <text class="mono green" x="1218" y="422" font-size="14">04</text>
     <text class="fg" x="1218" y="452" font-size="19">Match snapshot</text>
     <text class="mono muted" x="1218" y="478" font-size="12">recomputed == client?</text>
@@ -84,7 +88,7 @@
   <path class="egreen" marker-end="url(#ag)" d="M1320,504 L1320,566"/>
 
   <!-- Step 5 persist -->
-  <rect class="nbox" x="1080" y="574" width="360" height="128"/>
+  <rect rx="6" class="nbox" x="1080" y="574" width="360" height="128"/>
   <text class="mono green" x="1104" y="606" font-size="14">05</text>
   <text class="fg" x="1104" y="636" font-size="20">Persist order — before payment</text>
   <text class="mono muted" x="1104" y="664" font-size="13">orderRepository.create(order)</text>

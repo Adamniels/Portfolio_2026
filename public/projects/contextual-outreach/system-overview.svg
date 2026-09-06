@@ -2,9 +2,9 @@
   <title id="title">Contextual Outreach system overview</title>
   <desc id="desc">Prospect intake and user actions flow through the interface and API into application use cases and domain rules. Replaceable infrastructure adapters handle data, research, AI, and delivery.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c8ff32"/></marker>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#285bc5"/></marker>
     <style>
-      .bg{fill:#171715}.panel{fill:#22221f;stroke:#53534d;stroke-width:2}.core{fill:#294a3d;stroke:#79a18f;stroke-width:2}.edge{fill:#2b2b27;stroke:#6b6b63;stroke-width:2}.label{fill:#8f8f86;font:18px ui-monospace,monospace;letter-spacing:2px}.title{fill:#f0eee8;font:600 50px Arial,sans-serif}.h{fill:#f0eee8;font:600 24px Arial,sans-serif}.copy{fill:#b8b7ae;font:18px Arial,sans-serif}.num{fill:#c8ff32;font:18px ui-monospace,monospace}.line{fill:none;stroke:#c8ff32;stroke-width:3;marker-end:url(#arrow)}.dash{fill:none;stroke:#6d6d65;stroke-width:2;stroke-dasharray:8 9}
+      .bg{fill:#fcfcfd}.panel{fill:#f3f5f8;stroke:#c6cedb;stroke-width:2}.core{fill:#edf2fc;stroke:#91aade;stroke-width:2}.edge{fill:#f3f5f8;stroke:#c6cedb;stroke-width:2}.label{fill:#626b78;font:18px 'SFMono-Regular',Consolas,monospace;letter-spacing:1px}.title{fill:#202630;font:600 50px Arial,sans-serif}.h{fill:#202630;font:600 24px Arial,sans-serif}.copy{fill:#626b78;font:18px Arial,sans-serif}.num{fill:#285bc5;font:18px 'SFMono-Regular',Consolas,monospace}.line{fill:none;stroke:#285bc5;stroke-width:3;marker-end:url(#arrow)}.dash{fill:none;stroke:#a8b4c5;stroke-width:2;stroke-dasharray:8 9}
     </style>
   </defs>
   <rect class="bg" width="1600" height="900"/>
@@ -13,36 +13,36 @@
   <text class="copy" x="90" y="185">The application owns the workflow; external providers stay replaceable.</text>
 
   <g transform="translate(90 270)">
-    <rect class="panel" width="250" height="220"/>
+    <rect rx="6" class="panel" width="250" height="220"/>
     <text class="num" x="24" y="38">01 / INTAKE</text>
     <text class="h" x="24" y="88">Prospects enter</text>
     <text class="copy" x="24" y="125">Manual creation</text><text class="copy" x="24" y="155">CRM webhook</text><text class="copy" x="24" y="185">User ownership</text>
   </g>
   <path class="line" d="M340 380H390"/>
   <g transform="translate(390 270)">
-    <rect class="panel" width="250" height="220"/>
+    <rect rx="6" class="panel" width="250" height="220"/>
     <text class="num" x="24" y="38">02 / CLIENT</text>
     <text class="h" x="24" y="88">Vue workspace</text>
     <text class="copy" x="24" y="125">Research</text><text class="copy" x="24" y="155">Drafting</text><text class="copy" x="24" y="185">Sequences</text>
   </g>
   <path class="line" d="M640 380H690"/>
   <g transform="translate(690 245)">
-    <rect class="core" width="300" height="270"/>
+    <rect rx="6" class="core" width="300" height="270"/>
     <text class="num" x="24" y="38">03 / APPLICATION CORE</text>
     <text class="h" x="24" y="91">Use cases + domain</text>
     <text class="copy" x="24" y="133">Claim and enrich prospect</text><text class="copy" x="24" y="165">Build outreach context</text><text class="copy" x="24" y="197">Validate workflow state</text>
-    <rect x="24" y="222" width="252" height="24" fill="#c8ff32"/><text x="37" y="240" fill="#17221d" font-family="ui-monospace,monospace" font-size="13">BUSINESS RULES STAY HERE</text>
+    <rect x="24" y="222" width="252" height="24" fill="#285bc5"/><text x="37" y="240" fill="#ffffff" font-family="'SFMono-Regular',Consolas,monospace" font-size="13">BUSINESS RULES STAY HERE</text>
   </g>
   <path class="line" d="M990 380H1040"/>
   <g transform="translate(1040 270)">
-    <rect class="panel" width="250" height="220"/>
+    <rect rx="6" class="panel" width="250" height="220"/>
     <text class="num" x="24" y="38">04 / SERVICES</text>
     <text class="h" x="24" y="88">Research + AI</text>
     <text class="copy" x="24" y="125">Evidence collection</text><text class="copy" x="24" y="155">Structured synthesis</text><text class="copy" x="24" y="185">Draft generation</text>
   </g>
   <path class="line" d="M1290 380H1340"/>
   <g transform="translate(1340 270)">
-    <rect class="edge" width="170" height="220"/>
+    <rect rx="6" class="edge" width="170" height="220"/>
     <text class="num" x="20" y="38">05 / EDGE</text>
     <text class="h" x="20" y="88">Adapters</text>
     <text class="copy" x="20" y="125">Database</text><text class="copy" x="20" y="155">Email mock</text><text class="copy" x="20" y="185">LinkedIn mock</text>
@@ -50,9 +50,9 @@
 
   <path class="dash" d="M90 585H1510"/>
   <text class="label" x="90" y="635">REPLACEABLE INFRASTRUCTURE</text>
-  <g transform="translate(90 670)"><rect class="edge" width="250" height="105"/><text class="h" x="22" y="45">PostgreSQL</text><text class="copy" x="22" y="76">Repositories</text></g>
-  <g transform="translate(380 670)"><rect class="edge" width="250" height="105"/><text class="h" x="22" y="45">CRM</text><text class="copy" x="22" y="76">Webhook intake</text></g>
-  <g transform="translate(670 670)"><rect class="edge" width="250" height="105"/><text class="h" x="22" y="45">Web research</text><text class="copy" x="22" y="76">Pages + signals</text></g>
-  <g transform="translate(960 670)"><rect class="edge" width="250" height="105"/><text class="h" x="22" y="45">AI providers</text><text class="copy" x="22" y="76">Synthesis + drafts</text></g>
-  <g transform="translate(1250 670)"><rect class="edge" width="260" height="105"/><text class="h" x="22" y="45">Channel actions</text><text class="copy" x="22" y="76">Prototype mocks</text></g>
+  <g transform="translate(90 670)"><rect rx="6" class="edge" width="250" height="105"/><text class="h" x="22" y="45">PostgreSQL</text><text class="copy" x="22" y="76">Repositories</text></g>
+  <g transform="translate(380 670)"><rect rx="6" class="edge" width="250" height="105"/><text class="h" x="22" y="45">CRM</text><text class="copy" x="22" y="76">Webhook intake</text></g>
+  <g transform="translate(670 670)"><rect rx="6" class="edge" width="250" height="105"/><text class="h" x="22" y="45">Web research</text><text class="copy" x="22" y="76">Pages + signals</text></g>
+  <g transform="translate(960 670)"><rect rx="6" class="edge" width="250" height="105"/><text class="h" x="22" y="45">AI providers</text><text class="copy" x="22" y="76">Synthesis + drafts</text></g>
+  <g transform="translate(1250 670)"><rect rx="6" class="edge" width="260" height="105"/><text class="h" x="22" y="45">Channel actions</text><text class="copy" x="22" y="76">Prototype mocks</text></g>
 </svg>

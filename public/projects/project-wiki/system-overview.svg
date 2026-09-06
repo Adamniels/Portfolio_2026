@@ -1,24 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
   <title id="title">Project Wiki system overview</title>
   <desc id="desc">Git and Notion connectors ingest sources into Postgres as stable coordinates, a retrieval index and a batched distillation engine turn them into a concept graph whose nodes thread back to source, and a browser, chat, and MCP server read that graph.</desc>
   <defs>
     <style>
-      .bg{fill:#E7E4DC}
-      .ink{fill:#171715}
-      .copy{fill:#5F625D}
-      .muted{fill:#8A867C}
-      .accent{fill:#176348}
-      .card{fill:#F7F5EF;stroke:#AAA69B;stroke-width:2}
-      .hi{fill:#D5E7DE;stroke:#739486;stroke-width:2}
-      .rule{fill:none;stroke:#AAA69B;stroke-width:1}
-      .split{fill:none;stroke:#739486;stroke-width:1;stroke-dasharray:6 6}
-      .mono{font-family:'DM Mono','SFMono-Regular',Menlo,monospace}
-      .lbl{font-family:'DM Mono','SFMono-Regular',Menlo,monospace;letter-spacing:2px}
-      .flow{fill:none;stroke:#176348;stroke-width:2;marker-end:url(#ar)}
-      .thread{fill:none;stroke:#739486;stroke-width:1.5;stroke-dasharray:5 5;marker-end:url(#at)}
+      .bg{fill:#fcfcfd}
+      .ink{fill:#202630}
+      .copy{fill:#626b78}
+      .muted{fill:#626b78}
+      .accent{fill:#285bc5}
+      .card{fill:#ffffff;stroke:#c6cedb;stroke-width:2}
+      .hi{fill:#edf2fc;stroke:#91aade;stroke-width:2}
+      .rule{fill:none;stroke:#c6cedb;stroke-width:1}
+      .split{fill:none;stroke:#91aade;stroke-width:1;stroke-dasharray:6 6}
+      .mono{font-family:'SFMono-Regular',Menlo,monospace}
+      .lbl{font-family:'SFMono-Regular',Menlo,monospace;letter-spacing:1px}
+      .flow{fill:none;stroke:#285bc5;stroke-width:2;marker-end:url(#ar)}
+      .thread{fill:none;stroke:#91aade;stroke-width:1.5;stroke-dasharray:5 5;marker-end:url(#at)}
     </style>
-    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#176348"/></marker>
-    <marker id="at" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#739486"/></marker>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#285bc5"/></marker>
+    <marker id="at" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#91aade"/></marker>
   </defs>
 
   <rect class="bg" x="0" y="0" width="1600" height="1000"/>
@@ -45,18 +45,18 @@
   <text class="lbl accent" x="1214" y="336" font-size="13">04 / SERVE</text>
 
   <!-- column A: sources -->
-  <rect class="card" x="80" y="356" width="280" height="140"/>
+  <rect rx="6" class="card" x="80" y="356" width="280" height="140"/>
   <text class="ink" x="100" y="396" font-size="21" font-weight="600">git connector</text>
   <text class="mono copy" x="100" y="426" font-size="13">dulwich · local clone</text>
   <text class="mono copy" x="100" y="450" font-size="13">tree-sitter symbol coords</text>
   <text class="mono copy" x="100" y="474" font-size="13">Python · JS · TS · C#</text>
 
-  <rect class="card" x="80" y="516" width="280" height="120"/>
+  <rect rx="6" class="card" x="80" y="516" width="280" height="120"/>
   <text class="ink" x="100" y="556" font-size="21" font-weight="600">Notion connector</text>
   <text class="mono copy" x="100" y="586" font-size="13">notion-client · workspace</text>
   <text class="mono copy" x="100" y="610" font-size="13">page + block coordinates</text>
 
-  <rect class="card" x="80" y="656" width="280" height="134"/>
+  <rect rx="6" class="card" x="80" y="656" width="280" height="134"/>
   <text class="ink" x="100" y="696" font-size="21" font-weight="600">Postgres coordinates</text>
   <text class="mono copy" x="100" y="726" font-size="13">document · source_ref</text>
   <text class="mono copy" x="100" y="750" font-size="13">git_symbol · git_lines</text>
@@ -65,20 +65,20 @@
   <path class="flow" d="M360 560H406"/>
 
   <!-- column B: engine -->
-  <rect class="card" x="412" y="356" width="336" height="140"/>
+  <rect rx="6" class="card" x="412" y="356" width="336" height="140"/>
   <text class="ink" x="432" y="396" font-size="21" font-weight="600">Retrieval index</text>
   <text class="mono copy" x="432" y="426" font-size="13">structural, heading-aware chunks</text>
   <text class="mono copy" x="432" y="450" font-size="13">pgvector · text-embedding-3-small</text>
   <text class="mono copy" x="432" y="474" font-size="13">budget from the embedder's tokenizer</text>
 
-  <rect class="hi" x="412" y="516" width="336" height="170"/>
+  <rect rx="6" class="hi" x="412" y="516" width="336" height="170"/>
   <text class="ink" x="432" y="556" font-size="21" font-weight="600">Batched distillation</text>
   <text class="mono accent" x="432" y="586" font-size="13">file-aware batches · one call each</text>
   <text class="mono accent" x="432" y="610" font-size="13">one transaction per batch, committed</text>
   <text class="mono accent" x="432" y="634" font-size="13">dedup + merge · typed edges routed</text>
   <text class="mono accent" x="432" y="658" font-size="13">a failed batch is isolated, not fatal</text>
 
-  <rect class="card" x="412" y="706" width="336" height="84"/>
+  <rect rx="6" class="card" x="412" y="706" width="336" height="84"/>
   <text class="ink" x="432" y="746" font-size="21" font-weight="600">Organise + review</text>
   <text class="mono copy" x="432" y="774" font-size="13">domains · cross-source edges · queue</text>
 
@@ -86,21 +86,21 @@
   <path class="flow" d="M748 601H828"/>
 
   <!-- column C: concept graph -->
-  <rect class="hi" x="832" y="376" width="290" height="64"/>
+  <rect rx="6" class="hi" x="832" y="376" width="290" height="64"/>
   <text class="ink" x="852" y="404" font-size="19" font-weight="600">business rule</text>
   <text class="mono accent" x="852" y="426" font-size="12">layer · nature · lifecycle</text>
 
   <path class="flow" d="M977 440V482"/>
   <text class="mono accent" x="990" y="468" font-size="12">implements</text>
 
-  <rect class="card" x="832" y="486" width="290" height="64"/>
+  <rect rx="6" class="card" x="832" y="486" width="290" height="64"/>
   <text class="ink" x="852" y="514" font-size="19" font-weight="600">contract / interface</text>
   <text class="mono copy" x="852" y="536" font-size="12">shared between two repos</text>
 
   <path class="flow" d="M977 550V592"/>
   <text class="mono accent" x="990" y="578" font-size="12">belongs-to-domain</text>
 
-  <rect class="card" x="832" y="596" width="290" height="64"/>
+  <rect rx="6" class="card" x="832" y="596" width="290" height="64"/>
   <text class="ink" x="852" y="624" font-size="19" font-weight="600">domain / area</text>
   <text class="mono copy" x="852" y="646" font-size="12">structural chapter</text>
 
@@ -113,18 +113,18 @@
   <path class="flow" d="M1162 560H1210"/>
 
   <!-- column D: consumers -->
-  <rect class="card" x="1214" y="356" width="306" height="140"/>
+  <rect rx="6" class="card" x="1214" y="356" width="306" height="140"/>
   <text class="ink" x="1234" y="396" font-size="21" font-weight="600">React browser</text>
   <text class="mono copy" x="1234" y="426" font-size="13">book view + provenance panel</text>
   <text class="mono copy" x="1234" y="450" font-size="13">relationships · history · graph</text>
   <text class="mono copy" x="1234" y="474" font-size="13">review queue · admin console</text>
 
-  <rect class="card" x="1214" y="516" width="306" height="120"/>
+  <rect rx="6" class="card" x="1214" y="516" width="306" height="120"/>
   <text class="ink" x="1234" y="556" font-size="21" font-weight="600">In-product chat</text>
   <text class="mono copy" x="1234" y="586" font-size="13">wiki first, drops to source</text>
   <text class="mono copy" x="1234" y="610" font-size="13">every answer states its scope</text>
 
-  <rect class="card" x="1214" y="656" width="306" height="134"/>
+  <rect rx="6" class="card" x="1214" y="656" width="306" height="134"/>
   <text class="ink" x="1234" y="696" font-size="21" font-weight="600">Coding agent · MCP</text>
   <text class="mono copy" x="1234" y="726" font-size="13">search_concepts · get_concept</text>
   <text class="mono copy" x="1234" y="750" font-size="13">list_chapters · whats_diverged</text>

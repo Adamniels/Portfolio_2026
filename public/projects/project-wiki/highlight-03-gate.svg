@@ -1,23 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
   <title id="title">The build gate</title>
   <desc id="desc">The single build command runs six stages from formatting to the frontend build, with the four documentation-honesty guards inside the test stage and a callout describing the browser-init failure a green gate once hid.</desc>
   <defs>
     <style>
-      .bg{fill:#171715}
-      .fg{fill:#F0EEE8}
-      .muted{fill:#8A867C}
-      .accent{fill:#C8FF32}
-      .neg{fill:#ED5B3A}
-      .box{fill:none;stroke:#3A3833;stroke-width:1}
-      .boxa{fill:none;stroke:#C8FF32;stroke-width:1.5}
-      .boxn{fill:none;stroke:#ED5B3A;stroke-width:1.5}
-      .line{fill:none;stroke:#3A3833;stroke-width:1}
-      .mono{font-family:'DM Mono','SFMono-Regular',Menlo,monospace}
-      .lbl{font-family:'DM Mono','SFMono-Regular',Menlo,monospace;letter-spacing:2px}
-      .flow{fill:none;stroke:#C8FF32;stroke-width:1.5;marker-end:url(#ag)}
-      .tap{fill:none;stroke:#C8FF32;stroke-width:1.5;stroke-dasharray:5 4;marker-end:url(#ag)}
+      .bg{fill:#fcfcfd}
+      .fg{fill:#202630}
+      .muted{fill:#626b78}
+      .accent{fill:#285bc5}
+      .neg{fill:#b6423a}
+      .box{fill:none;stroke:#c6cedb;stroke-width:1}
+      .boxa{fill:none;stroke:#285bc5;stroke-width:1.5}
+      .boxn{fill:none;stroke:#b6423a;stroke-width:1.5}
+      .line{fill:none;stroke:#c6cedb;stroke-width:1}
+      .mono{font-family:'SFMono-Regular',Menlo,monospace}
+      .lbl{font-family:'SFMono-Regular',Menlo,monospace;letter-spacing:1px}
+      .flow{fill:none;stroke:#285bc5;stroke-width:1.5;marker-end:url(#ag)}
+      .tap{fill:none;stroke:#285bc5;stroke-width:1.5;stroke-dasharray:5 4;marker-end:url(#ag)}
+    
+      rect.nbox, rect.box { fill: #ffffff; }
+      rect.nboxg, rect.boxa { fill: #edf2fc; }
+      rect.nboxc, rect.boxn { fill: #fcf0ee; }
     </style>
-    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C8FF32"/></marker>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#285bc5"/></marker>
   </defs>
 
   <rect class="bg" x="0" y="0" width="1600" height="1000"/>
@@ -30,21 +34,21 @@
   <text class="muted" x="80" y="228" font-size="20">Every claim the project makes about itself is a test that runs in the ordinary build — written after a case where a green build lied.</text>
 
   <!-- pipeline -->
-  <rect class="box" x="80" y="300" width="220" height="150"/>
+  <rect rx="6" class="box" x="80" y="300" width="220" height="150"/>
   <text class="lbl accent" x="100" y="330" font-size="12">01</text>
   <text class="fg" x="100" y="364" font-size="21" font-weight="600">fmt-check</text>
   <text class="mono muted" x="100" y="396" font-size="11">ruff format --check .</text>
 
   <path class="flow" d="M300 375H320"/>
 
-  <rect class="box" x="324" y="300" width="220" height="150"/>
+  <rect rx="6" class="box" x="324" y="300" width="220" height="150"/>
   <text class="lbl accent" x="344" y="330" font-size="12">02</text>
   <text class="fg" x="344" y="364" font-size="21" font-weight="600">lint</text>
   <text class="mono muted" x="344" y="396" font-size="11">ruff check .</text>
 
   <path class="flow" d="M544 375H564"/>
 
-  <rect class="box" x="568" y="300" width="220" height="150"/>
+  <rect rx="6" class="box" x="568" y="300" width="220" height="150"/>
   <text class="lbl accent" x="588" y="330" font-size="12">03</text>
   <text class="fg" x="588" y="364" font-size="21" font-weight="600">typecheck</text>
   <text class="mono muted" x="588" y="396" font-size="11">pyright, strict mode</text>
@@ -52,7 +56,7 @@
 
   <path class="flow" d="M788 375H808"/>
 
-  <rect class="box" x="812" y="300" width="220" height="150"/>
+  <rect rx="6" class="box" x="812" y="300" width="220" height="150"/>
   <text class="lbl accent" x="832" y="330" font-size="12">04</text>
   <text class="fg" x="832" y="364" font-size="21" font-weight="600">imports</text>
   <text class="mono muted" x="832" y="396" font-size="11">lint-imports</text>
@@ -61,7 +65,7 @@
 
   <path class="flow" d="M1032 375H1052"/>
 
-  <rect class="boxa" x="1056" y="300" width="220" height="150"/>
+  <rect rx="6" class="boxa" x="1056" y="300" width="220" height="150"/>
   <text class="lbl accent" x="1076" y="330" font-size="12">05</text>
   <text class="fg" x="1076" y="364" font-size="21" font-weight="600">test</text>
   <text class="mono muted" x="1076" y="396" font-size="11">pytest, ~775 tests</text>
@@ -70,7 +74,7 @@
 
   <path class="flow" d="M1276 375H1296"/>
 
-  <rect class="box" x="1300" y="300" width="220" height="150"/>
+  <rect rx="6" class="box" x="1300" y="300" width="220" height="150"/>
   <text class="lbl accent" x="1320" y="330" font-size="12">06</text>
   <text class="fg" x="1320" y="364" font-size="21" font-weight="600">web-check</text>
   <text class="mono muted" x="1320" y="396" font-size="11">tsc --noEmit</text>
@@ -80,7 +84,7 @@
   <path class="tap" d="M1100 450V490H420V522"/>
 
   <!-- callout 1 -->
-  <rect class="boxa" x="80" y="530" width="700" height="340"/>
+  <rect rx="6" class="boxa" x="80" y="530" width="700" height="340"/>
   <text class="lbl accent" x="104" y="568" font-size="13">INSIDE STAGE 05 — FOUR DOCUMENTATION-HONESTY GUARDS</text>
   <path class="line" d="M104 584H756"/>
 
@@ -97,7 +101,7 @@
   <text class="mono muted" x="104" y="830" font-size="12">a pointer that leads nowhere is followed, and then trusted</text>
 
   <!-- callout 2 -->
-  <rect class="boxn" x="820" y="530" width="700" height="340"/>
+  <rect rx="6" class="boxn" x="820" y="530" width="700" height="340"/>
   <text class="lbl neg" x="844" y="568" font-size="13">THE LESSON — A GREEN GATE THAT LIED</text>
   <path class="line" d="M844 584H1496"/>
 

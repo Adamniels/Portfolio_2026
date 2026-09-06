@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
   <title id="title">Distillation step 1 — file-aware packing</title>
   <desc id="desc">Documents shown as stacks of source units are packed into batches against a token budget, with one oversized unit sub-split into three pieces that keep their parent's coordinate.</desc>
   <defs>
     <style>
-      .bg{fill:#E7E4DC}
-      .ink{fill:#171715}
-      .copy{fill:#5F625D}
-      .muted{fill:#8A867C}
-      .accent{fill:#176348}
-      .neg{fill:#B24A2E}
-      .card{fill:#F7F5EF;stroke:#AAA69B;stroke-width:2}
-      .hi{fill:#D5E7DE;stroke:#739486;stroke-width:2}
-      .over{fill:#F7F5EF;stroke:#B24A2E;stroke-width:2}
-      .rule{fill:none;stroke:#AAA69B;stroke-width:1}
-      .mono{font-family:'DM Mono','SFMono-Regular',Menlo,monospace}
-      .lbl{font-family:'DM Mono','SFMono-Regular',Menlo,monospace;letter-spacing:2px}
-      .flow{fill:none;stroke:#176348;stroke-width:2;marker-end:url(#ar)}
-      .split{fill:none;stroke:#B24A2E;stroke-width:2;marker-end:url(#an)}
+      .bg{fill:#fcfcfd}
+      .ink{fill:#202630}
+      .copy{fill:#626b78}
+      .muted{fill:#626b78}
+      .accent{fill:#285bc5}
+      .neg{fill:#b6423a}
+      .card{fill:#ffffff;stroke:#c6cedb;stroke-width:2}
+      .hi{fill:#edf2fc;stroke:#91aade;stroke-width:2}
+      .over{fill:#ffffff;stroke:#b6423a;stroke-width:2}
+      .rule{fill:none;stroke:#c6cedb;stroke-width:1}
+      .mono{font-family:'SFMono-Regular',Menlo,monospace}
+      .lbl{font-family:'SFMono-Regular',Menlo,monospace;letter-spacing:1px}
+      .flow{fill:none;stroke:#285bc5;stroke-width:2;marker-end:url(#ar)}
+      .split{fill:none;stroke:#b6423a;stroke-width:2;marker-end:url(#an)}
     </style>
-    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#176348"/></marker>
-    <marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#B24A2E"/></marker>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#285bc5"/></marker>
+    <marker id="an" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#b6423a"/></marker>
   </defs>
 
   <rect class="bg" x="0" y="0" width="1600" height="1000"/>
@@ -53,14 +53,14 @@
   <text class="mono copy" x="276" y="614" font-size="13">3 units</text>
 
   <text class="ink" x="80" y="700" font-size="19" font-weight="600">document C</text>
-  <rect class="over" x="80" y="714" width="180" height="100"/>
+  <rect rx="6" class="over" x="80" y="714" width="180" height="100"/>
   <text class="mono neg" x="80" y="842" font-size="13">1 unit, over budget</text>
   <text class="mono neg" x="80" y="864" font-size="13">— sub-split</text>
 
   <path class="flow" d="M420 410H476"/>
 
   <!-- packing rule -->
-  <rect class="hi" x="480" y="350" width="330" height="120"/>
+  <rect rx="6" class="hi" x="480" y="350" width="330" height="120"/>
   <text class="ink" x="500" y="388" font-size="20" font-weight="600">SizeBudget</text>
   <text class="mono accent" x="500" y="416" font-size="13">a TokenCounter behind a</text>
   <text class="mono accent" x="500" y="438" font-size="13">SizeBudget port</text>
@@ -82,7 +82,7 @@
   <path class="flow" d="M810 410H866"/>
 
   <!-- batches -->
-  <rect class="hi" x="870" y="350" width="650" height="160"/>
+  <rect rx="6" class="hi" x="870" y="350" width="650" height="160"/>
   <text class="lbl accent" x="890" y="384" font-size="13">ORDINAL 0</text>
   <text class="ink" x="890" y="422" font-size="22" font-weight="600">document A + document B</text>
   <text class="mono accent" x="890" y="454" font-size="13">7 units · one model call · one transaction</text>
@@ -91,17 +91,17 @@
   <text class="lbl muted" x="870" y="556" font-size="13">DOCUMENT C — ONE OVERSIZED UNIT, SUB-SPLIT</text>
   <path class="rule" d="M870 572H1520"/>
 
-  <rect class="card" x="870" y="592" width="200" height="112"/>
+  <rect rx="6" class="card" x="870" y="592" width="200" height="112"/>
   <text class="lbl accent" x="890" y="624" font-size="12">ORDINAL 1</text>
   <text class="ink" x="890" y="656" font-size="17" font-weight="600">piece 1 of 3</text>
   <text class="mono copy" x="890" y="682" font-size="12">parent coordinate</text>
 
-  <rect class="card" x="1095" y="592" width="200" height="112"/>
+  <rect rx="6" class="card" x="1095" y="592" width="200" height="112"/>
   <text class="lbl accent" x="1115" y="624" font-size="12">ORDINAL 2</text>
   <text class="ink" x="1115" y="656" font-size="17" font-weight="600">piece 2 of 3</text>
   <text class="mono copy" x="1115" y="682" font-size="12">parent coordinate</text>
 
-  <rect class="card" x="1320" y="592" width="200" height="112"/>
+  <rect rx="6" class="card" x="1320" y="592" width="200" height="112"/>
   <text class="lbl accent" x="1340" y="624" font-size="12">ORDINAL 3</text>
   <text class="ink" x="1340" y="656" font-size="17" font-weight="600">piece 3 of 3</text>
   <text class="mono copy" x="1340" y="682" font-size="12">parent coordinate</text>

@@ -3,10 +3,19 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { smallerProjects } from "@/content/smaller-projects";
 
+const description =
+  "Utilities, experiments, and embedded builds by Adam Nielsen. Smaller projects for exploring an idea or solving an everyday problem.";
+
 export const metadata: Metadata = {
   title: "Smaller projects — Adam Nielsen",
-  description:
-    "Utilities, experiments, and embedded builds by Adam Nielsen. Smaller projects for exploring an idea or solving an everyday problem.",
+  description,
+  alternates: { canonical: "/smaller-projects" },
+  openGraph: {
+    type: "website",
+    title: "Smaller projects — Adam Nielsen",
+    description,
+    url: "/smaller-projects",
+  },
 };
 
 export default function SmallerProjectsPage() {

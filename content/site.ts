@@ -1,11 +1,13 @@
+// Canonical production origin. Used for metadataBase, Open Graph URLs, robots,
+// and the sitemap. It must match the origin the site is actually served from:
+// configure the registrar so the other of apex/www 301s here, or previews and
+// canonical URLs will disagree.
+export const siteUrl = "https://adamnielsdev.com";
+
 // Contact details rendered in the site footer.
-//
-// githubUrl is inferred from the local git user name and is NOT confirmed.
-// linkedinUrl is intentionally empty: an unverified profile URL would link to
-// the wrong person. Empty values are omitted from the footer rather than
-// rendered as dead links, so filling these in is the only step needed.
+// Empty values are omitted rather than rendered as dead links.
 export const contact = {
   email: "nielsenadam44@gmail.com",
   githubUrl: "https://github.com/Adamniels",
-  linkedinUrl: "",
+  linkedinUrl: "https://www.linkedin.com/in/adam-nielsen-5a333131a",
 };

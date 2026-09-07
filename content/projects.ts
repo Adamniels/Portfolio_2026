@@ -57,7 +57,7 @@ export type Project = {
   }>;
 };
 
-// Replace with the approved public client name when attribution is cleared.
+// The client is referred to generically by choice, not pending attribution.
 const outreachClient = "an IT consultancy";
 
 export const projects: Project[] = [

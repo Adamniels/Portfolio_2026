@@ -49,8 +49,35 @@ paragraphs.
 
 Footer contact details live in `content/site.ts` and are rendered by
 `components/site-footer.tsx` on every page. Empty values are omitted rather than
-rendered as dead links. `githubUrl` is inferred from the local git user name and
-is unconfirmed; `linkedinUrl` is empty and must be filled before release.
+rendered as dead links.
+
+## Metadata and social previews
+
+`siteUrl` in `content/site.ts` is the canonical production origin and feeds
+`metadataBase`, canonical links, `robots.txt`, and `sitemap.xml`. It must match
+the origin actually served: configure the registrar so the other of apex/www
+301s to it.
+
+Open Graph cards are generated at build time by `next/og`, not hand-made images.
+`components/og-card.tsx` holds the shared card layout; each route supplies its
+own content through an `opengraph-image.tsx`:
+
+- `app/opengraph-image.tsx` — homepage
+- `app/smaller-projects/opengraph-image.tsx` — smaller projects index
+- `app/projects/[slug]/opengraph-image.tsx` — one card per case study, built
+  from that project's kicker, title, `indexSummary`, and technologies
+
+Adding a project therefore produces its card automatically. Satori, which
+renders these, supports only a subset of CSS: flexbox only, no grid, and any
+element with more than one child needs an explicit `display`. Card copy is
+verified by building and fetching `/opengraph-image` — the output must be a
+1200x630 PNG.
+
+Per-project `alt` text is currently the generic string exported from the route;
+making it per-project would need `generateImageMetadata`.
+
+`app/sitemap.ts` derives its URLs from the `projects` array so it cannot drift
+from the routes that exist.
 
 Technology labels use plain text with dot separators on both the index and case
 studies. Project titles remain linked; the explicit action sits at the bottom of

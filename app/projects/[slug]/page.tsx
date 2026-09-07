@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DiagramCarousel, DiagramViewer } from "@/components/diagram-viewer";
 import { ProjectVisual } from "@/components/project-visuals";
+import { SiteFooter } from "@/components/site-footer";
 import { getProject, projects } from "@/content/projects";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -159,10 +160,7 @@ export default async function ProjectPage({ params }: Props) {
       <Link className="next-project" href={`/projects/${nextProject.slug}`}>
         <span>Next project</span><strong>{nextProject.title}</strong><i aria-hidden="true">↗</i>
       </Link>
-      <footer className="site-footer">
-        <Link href="/">Adam Nielsen <span className="footer-year">/ 2026</span></Link>
-        <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

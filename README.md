@@ -33,9 +33,24 @@ canvas `#fcfcfd`, text `#202630`, secondary text `#626b78`, borders `#c6cedb`,
 primary `#285bc5`, highlighted surface `#edf2fc`, failure `#b6423a`, mock `#93621a`.
 Screenshots retain their original product colours.
 
-The homepage ends with `selected-builds-preview.tsx`, a compact section for smaller
-projects. Its three example entries are explicitly marked as placeholder content
-until verified project details are supplied. Contact details are deferred.
+## Smaller projects
+
+Utilities, experiments, and embedded builds live in `content/smaller-projects.ts`.
+That single array feeds both the homepage teaser (`selected-builds-preview.tsx`)
+and the `/smaller-projects` index page, so adding an entry updates both. `summary`
+is the homepage card line; `body` is the prose on the index page. `status`, `year`,
+`technologies`, and `links` are optional and are omitted from the page when absent
+rather than rendered empty.
+
+Each `body` currently repeats its `summary` and should be expanded into real
+paragraphs.
+
+## Contact
+
+Footer contact details live in `content/site.ts` and are rendered by
+`components/site-footer.tsx` on every page. Empty values are omitted rather than
+rendered as dead links. `githubUrl` is inferred from the local git user name and
+is unconfirmed; `linkedinUrl` is empty and must be filled before release.
 
 Technology labels use plain text with dot separators on both the index and case
 studies. Project titles remain linked; the explicit action sits at the bottom of

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SelectedBuildsPreview } from "@/components/selected-builds-preview";
+import { SiteFooter } from "@/components/site-footer";
 import { projects } from "@/content/projects";
 
 export default function Home() {
@@ -55,10 +56,7 @@ export default function Home() {
 
       <SelectedBuildsPreview />
 
-      <footer className="site-footer">
-        <span>Adam Nielsen <span className="footer-year">/ 2026</span></span>
-        <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
-      </footer>
+      <SiteFooter home />
     </main>
   );
 }

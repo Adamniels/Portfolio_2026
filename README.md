@@ -73,11 +73,21 @@ element with more than one child needs an explicit `display`. Card copy is
 verified by building and fetching `/opengraph-image` — the output must be a
 1200x630 PNG.
 
-Per-project `alt` text is currently the generic string exported from the route;
-making it per-project would need `generateImageMetadata`.
+The case-study route uses `generateImageMetadata` rather than a module-level
+`alt` export, so each card carries alt text describing that project. This is why
+its image URL ends in `/opengraph-image/card`.
 
 `app/sitemap.ts` derives its URLs from the `projects` array so it cannot drift
 from the routes that exist.
+
+## Icons and error page
+
+`app/icon.svg` is the browser-tab icon; `app/apple-icon.tsx` generates the
+180x180 home-screen icon through the same `next/og` path as the social cards,
+filling the square edge to edge because iOS applies its own mask.
+
+`app/not-found.tsx` is the 404, using the site nav, hero styles, and shared
+footer. It returns a real 404 status.
 
 Technology labels use plain text with dot separators on both the index and case
 studies. Project titles remain linked; the explicit action sits at the bottom of

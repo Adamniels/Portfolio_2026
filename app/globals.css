@@ -27,10 +27,9 @@ h1, h2, h3 { text-wrap: balance; }
 .nav { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
 .wordmark { display: inline-flex; align-items: center; gap: 14px; font-size: .9375rem; font-weight: 600; letter-spacing: -.015em; }
 .monogram { color: var(--accent); font-family: var(--mono); font-size: 1.25rem; font-weight: 600; }
-.nav-work, .nav-links { font-size: .875rem; color: var(--muted); }
+.nav-work { font-size: .875rem; color: var(--muted); }
 .nav-work span { margin-left: 12px; color: var(--accent); }
 .nav a:hover, .site-footer a:hover { color: var(--accent); }
-.nav-links { display: flex; gap: 24px; }
 .home-hero { padding: 76px 0 66px; }
 .eyebrow { font-family: var(--mono); font-size: .8125rem; color: var(--muted); }
 .home-hero h1 { font-size: clamp(2.75rem, 5vw, 4.25rem); font-weight: 550; line-height: 1.09; letter-spacing: -.055em; margin: 22px 0 24px; }
@@ -85,6 +84,7 @@ h1, h2, h3 { text-wrap: balance; }
 .build-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 22px; font-size: .875rem; }
 .build-links a { color: var(--accent); }
 .build-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.notfound-actions { display: flex; flex-wrap: wrap; gap: 14px 30px; margin-top: 30px; }
 
 /* Case studies use a narrow reading column with wider diagrams. */
 .case-hero { padding: 56px 0 34px; }

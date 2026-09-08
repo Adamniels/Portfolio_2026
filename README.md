@@ -54,9 +54,10 @@ rendered as dead links.
 ## Metadata and social previews
 
 `siteUrl` in `content/site.ts` is the canonical production origin and feeds
-`metadataBase`, canonical links, `robots.txt`, and `sitemap.xml`. It must match
-the origin actually served: configure the registrar so the other of apex/www
-301s to it.
+`metadataBase`, canonical links, `robots.txt`, and `sitemap.xml`. It is set to
+`https://www.adamnielsdev.com`; the apex 301s to it, configured under Domains in
+the Vercel project. Changing one without the other makes canonical URLs point at
+a host that only redirects.
 
 Open Graph cards are generated at build time by `next/og`, not hand-made images.
 `components/og-card.tsx` holds the shared card layout; each route supplies its

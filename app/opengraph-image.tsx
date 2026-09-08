@@ -11,7 +11,7 @@ export default function Image() {
     (
       <OgCard
         eyebrow="Software engineering · Uppsala, Sweden"
-        title="Behind the interface. Inside the system."
+        title="Things I've built and how they work."
         description="M.Sc. Information Technology student at Uppsala University. I build backend systems and embedded projects, work with applied AI, and care about how software fits together."
         footer="Backend development · Embedded systems · System architecture · Applied AI"
       />

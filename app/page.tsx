@@ -18,7 +18,7 @@ export default function Home() {
 
       <header className="home-hero">
         <p className="eyebrow">Software engineering · Uppsala, Sweden</p>
-        <h1>Behind the interface.<br /><span>Inside the system.</span></h1>
+        <h1>Things I've built <span>and how they work.</span></h1>
         <p className="hero-intro">
           I'm Adam, an M.Sc. Information Technology student at Uppsala University. I build backend systems and embedded projects, work with applied AI, and care about how software fits together.
         </p>

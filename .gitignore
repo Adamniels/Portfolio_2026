@@ -7,3 +7,13 @@ node_modules
 
 # typescript
 *.tsbuildinfo
+
+# tool caches / editor cruft (not part of the app)
+.openai
+.pnpm-store
+
+# npm is the package manager for this project; keep detection unambiguous
+pnpm-lock.yaml
+pnpm-workspace.yaml
+yarn.lock
+bun.lockb

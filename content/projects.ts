@@ -82,7 +82,7 @@ export const projects: Project[] = [
     metricLabel: "research-to-outreach prototype built independently",
     challengeTitle:
       "Outreach only sounds personal if the system actually knows something.",
-    challenge: `Developed independently through exploratory discussions with ${outreachClient}, the prototype examined how prospect research could become outreach that still felt specific to the sender. It needed to find and enrich relevant contacts, understand the target company, connect its situation to previous client work, and preserve user control over tone. The harder boundary was delivery: LinkedIn restricts unauthorized automation, so generating useful content and safely executing a multi-channel sequence were fundamentally different problems.`,
+    challenge: `This started as a side project after some open ended conversations with ${outreachClient}. The question I kept coming back to was whether research on a prospect could actually turn into outreach that sounds like a person wrote it. To get there it had to find the right contacts, understand what the company is actually dealing with, tie that to work the consultancy had already done, and still let the sender decide the tone. Delivery turned out to be the harder half. LinkedIn doesn't allow unauthorized automation, so writing something worth sending and actually sending it across channels are two very different problems.`,
     approach: [
       "Separated prospect intake, enrichment, contact selection, drafting, and workflow scheduling into explicit use cases",
       "Collected first-party website evidence and external signals before synthesizing reusable company intelligence",

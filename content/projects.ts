@@ -66,10 +66,10 @@ export const projects: Project[] = [
     number: "01",
     scope: "featured",
     title: "Contextual Outreach",
-    indexSummary: "A research-to-outreach pipeline that turns company evidence into relevant drafts. Built independently, with a stateful workflow engine and replaceable integrations.",
+    indexSummary: "A pipeline that researches a company and turns what it finds into drafts worth actually sending. Built on my own, with a workflow engine underneath and every integration swappable.",
     technologies: ["C#", "ASP.NET Core", "PostgreSQL", "Applied AI"],
     kicker: "Research-led outreach",
-    summary: `A prototype for ${outreachClient} that researches prospects, identifies relevant contacts, and drafts outreach grounded in company context and previous client work.`,
+    summary: `A prototype built around ${outreachClient}'s problem: research a prospect, work out who's worth talking to, and draft outreach that's grounded in what the company actually does and the work the consultancy has already done.`,
     status: "Prototype",
     year: "2025–26",
     disciplines: [
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     metric: "End-to-end",
     metricLabel: "research-to-outreach prototype built independently",
     challengeTitle:
-      "Useful personalization required more context than a generic sales sequence could provide.",
+      "Outreach only sounds personal if the system actually knows something.",
     challenge: `Developed independently through exploratory discussions with ${outreachClient}, the prototype examined how prospect research could become outreach that still felt specific to the sender. It needed to find and enrich relevant contacts, understand the target company, connect its situation to previous client work, and preserve user control over tone. The harder boundary was delivery: LinkedIn restricts unauthorized automation, so generating useful content and safely executing a multi-channel sequence were fundamentally different problems.`,
     approach: [
       "Separated prospect intake, enrichment, contact selection, drafting, and workflow scheduling into explicit use cases",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     ],
     architecture: {
       title:
-        "Explicit boundaries kept research, business rules, generation, and delivery independently replaceable.",
+        "Clear boundaries meant research, rules, generation, and delivery could each be swapped without disturbing the others.",
       summary:
         "A Vue interface calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. This allowed the complete research-to-workflow path to be built while keeping uncertain email and LinkedIn execution at the infrastructure edge.",
       flow: [
@@ -112,7 +112,7 @@ export const projects: Project[] = [
         title: "Multi-source company and contact enrichment",
         visualTitle: "Enrichment / Two evidence tracks",
         summary:
-          "The enrichment pipeline turns a company name and domain into reusable sales intelligence without treating one source or model response as ground truth.",
+          "Give it a company name and a domain and it builds a picture of that company. The rule underneath is that no single source and no single model answer gets to be the truth on its own.",
         details: [
           "First-party website analysis and external signal discovery run concurrently before their evidence is merged",
           "Synthesis prioritizes company-owned material for stable facts and external sources for recent hooks",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
         title: "Context-aware outreach generation",
         visualTitle: "Generation / Context before content",
         summary:
-          "Drafting is treated as context construction rather than a single prompt, preserving user control while grounding suggestions in research and previous work.",
+          "Writing a draft isn't one prompt. Most of the work is deciding what the model should know before it writes anything, and the sender still owns how it sounds.",
         details: [
           "The context builder combines prospect intelligence, the active contact, sender identity, company positioning, previous cases, and a channel prompt",
           "Separate strategies support collected-data and web-search paths for email and LinkedIn content",
@@ -170,7 +170,7 @@ export const projects: Project[] = [
         title: "Stateful multi-channel workflow engine",
         visualTitle: "Workflow / Validate before execution",
         summary:
-          "Reusable sequences become prospect-specific workflow instances whose content dependencies and schedule are validated before activation.",
+          "A sequence you wrote once becomes a real schedule for one specific prospect. Before it's allowed to start, the system checks that everything it's going to need actually exists.",
         details: [
           "Ordered steps support email, LinkedIn messages, connection requests, waits, and lightweight interactions",
           "Activation validates enrichment and generation requirements before converting local offsets into scheduled timestamps",
@@ -199,7 +199,7 @@ export const projects: Project[] = [
         title: "Clean Architecture around volatile integrations",
         visualTitle: "Architecture / Dependencies point inward",
         summary:
-          "The backend was refactored around domain, application, infrastructure, and API boundaries so external providers do not own the business workflow.",
+          "I rebuilt the backend around clear layers so no external provider ends up owning the logic. The workflow is mine. The integrations just plug into the edge of it.",
         details: [
           "Domain entities encapsulate prospect ownership, active-contact selection, workflow transitions, ordering, and activation rules",
           "Single-action use cases expose one entry point while thin endpoints translate HTTP concerns",
@@ -219,12 +219,12 @@ export const projects: Project[] = [
     ],
     evaluation: {
       title:
-        "The prototype was evaluated through tests and walkthroughs, not production use.",
+        "Tested and walked through. Never actually used in production.",
       summary:
-        "The repository contains unit tests for selected domain rules and application use cases, while recurring walkthroughs grounded the workflow in a real consultancy context. These establish implemented behavior and relevance to the explored problem, but not adoption, conversion, deliverability, or business impact.",
+        "There are unit tests over the domain rules and the main use cases, and I walked the workflow through with the consultancy repeatedly to check it matched how they actually sell. That tells you the thing behaves as built and that the problem was real. It tells you nothing about adoption, reply rates, deliverability, or whether it would have made anyone money.",
       details: [
-        "The repository contains unit tests for selected domain rules and application use cases, while recurring walkthroughs grounded the workflow in a real consultancy context. These establish implemented behavior and relevance to the explored problem, but not adoption, conversion, deliverability, or business impact.",
-        "The system was never deployed. During development, the consultancy adopted an established commercial platform that already addressed its LinkedIn outreach requirement, so the independent prototype remained exploratory rather than moving toward production.",
+        "There are unit tests over the domain rules and the main use cases, and I walked the workflow through with the consultancy repeatedly to check it matched how they actually sell. That tells you the thing behaves as built and that the problem was real. It tells you nothing about adoption, reply rates, deliverability, or whether it would have made anyone money.",
+        "It was never deployed. Partway through, the consultancy bought an existing commercial tool that already handled the LinkedIn side, so my version stayed what it started as: an exploration.",
       ],
       textOnly: true,
       evidence: [
@@ -236,21 +236,21 @@ export const projects: Project[] = [
     outcome:
       "The project delivered a working research-to-outreach prototype and made its hardest external integration constraint concrete.",
     outcomeTitle:
-      "A working prototype that made both the opportunity and the hardest integration constraint concrete.",
+      "A working prototype, and a clear answer about where the real wall is.",
     outcomeSummary:
-      "The project connected prospect intake, company and contact research, previous client work, editable AI drafting, and workflow orchestration. It also showed why build-versus-buy decisions depend on difficult external integrations—not only the quality of the application itself.",
+      "It connects the whole path: pull in a prospect, research the company and the people in it, bring in previous client work, generate a draft you can edit and argue with, then schedule the sequence. It also made something clear I hadn't expected going in. Whether you build or buy a tool like this comes down to which integrations you're allowed to make, not to how good your application is.",
     outcomeHighlights: [
       {
         label: "Delivered",
-        text: "An end-to-end prototype covering prospect intake, research, contact enrichment, personalized drafting, conversational revision, configuration, and workflow orchestration.",
+        text: "The whole path end to end: prospect intake, research, contact enrichment, drafting, revising by conversation, settings, and workflow scheduling.",
       },
       {
         label: "Validated",
-        text: "Exploratory discussions grounded the workflow in a real consultancy context, while source-level tests and interface walkthroughs established implemented behavior.",
+        text: "Regular conversations with the consultancy kept it tied to how they actually work, and tests plus interface walkthroughs confirmed the parts that exist behave the way they should.",
       },
       {
         label: "Next",
-        text: "Production delivery would require approved channel integrations, stronger source traceability, broader integration testing, and evaluation with real users.",
+        text: "Sending anything for real would need approved channel integrations, better traceability back to sources, wider integration tests, and actual users.",
       },
     ],
   },
@@ -259,11 +259,11 @@ export const projects: Project[] = [
     number: "02",
     scope: "featured",
     title: "Vend & Go",
-    indexSummary: "Shared backend logic for vending payments, loyalty, and campaigns. From finding the best combination of discounts to handling partial dispensing and refunds.",
+    indexSummary: "Backend logic for vending payments, loyalty, and campaigns. Working out the best combination of discounts, and dealing with what happens when the machine only drops half your order.",
     technologies: ["TypeScript", "Prisma", "Checkout orchestration", "Data analysis"],
     kicker: "Bachelor thesis",
     summary:
-      "A mobile payment and loyalty prototype for vending customers and machine refillers.",
+      "My bachelor thesis: a mobile payment and loyalty app for the people buying from vending machines, and for the people refilling them.",
     status: "Prototype",
     year: "2026",
     disciplines: [
@@ -276,9 +276,9 @@ export const projects: Project[] = [
     metric: "7.4M",
     metricLabel: "historical vending sale rows analyzed",
     challengeTitle:
-      "An app had to offer more value than an effortless card tap.",
+      "Tapping a card already works. An app has to beat that.",
     challenge:
-      "Existing vending machines offered a familiar card-terminal experience that was already quick, but added transaction costs for operators. The thesis examined whether mobile payment and visible loyalty rewards could make switching worthwhile without adding too much registration, navigation, or reward complexity.",
+      "Vending machines already have card terminals, and tapping one takes about two seconds. That's a hard baseline to beat. What it costs the operator in transaction fees is invisible to the customer, so there's no reason for them to care. The thesis asked whether mobile payment plus loyalty rewards you can actually see would be worth switching for, without burying people in registration steps and reward rules on the way there.",
     approach: [
       "Built a synchronized mobile client, admin interface, API, and database so the concept could be evaluated as a working flow",
       "Kept pricing, campaign selection, loyalty rules, and checkout validation server-side with shared contracts across clients",
@@ -286,7 +286,7 @@ export const projects: Project[] = [
     ],
     architecture: {
       title:
-        "A modular architecture connected the mobile experience, business logic, and vending infrastructure.",
+        "One backend behind both apps, with the machines and the payment provider kept at arm's length.",
       summary:
         "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, allowing the clients and external integrations to evolve without moving core business rules out of the application.",
       flow: [
@@ -303,7 +303,7 @@ export const projects: Project[] = [
         title: "Campaign optimization algorithm",
         visualTitle: "Campaign optimizer / Three-part walkthrough",
         summary:
-          "Bundle offers and product discounts can compete for the same items, so choosing each campaign independently can produce the wrong total.",
+          "Two campaigns can want the same can of soda. Take the biggest looking discount first and you can easily end up charging more than you should have.",
         details: [
           "Cart units are represented as grouped product quantities rather than expanded individual objects",
           "A memoized recursive search evaluates valid, non-overlapping campaign assignments",
@@ -337,7 +337,7 @@ export const projects: Project[] = [
         title: "Checkout with mocked edges",
         visualTitle: "Checkout / Mocked-edges walkthrough",
         summary:
-          "The application flow stays authoritative while external payment and machine dispensing remain replaceable adapters.",
+          "The server decides what everything costs and what happens next. Payment and the machine itself sit behind interfaces, so either can be swapped for a real provider later.",
         details: [
           "The server recomputes prices and chooses the best campaign assignment before payment",
           "The use case reserves payment, invokes dispensing, updates inventory and payment state, and returns item-level results",
@@ -369,12 +369,12 @@ export const projects: Project[] = [
       },
     ],
     evaluation: {
-      title: "A functional prototype made the concept testable.",
+      title: "We tested a working app, not a mockup.",
       summary:
-        "Rather than evaluating a static design, we tested a working application connected to its backend, loyalty logic, campaign system, and persistent data. This allowed participants to complete realistic flows and receive actual pricing, discounts, and loyalty feedback.",
+        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and watch real prices, real discounts, and real points land.",
       details: [
-        "Rather than evaluating a static design, we tested a working application connected to its backend, loyalty logic, campaign system, and persistent data. This allowed participants to complete realistic flows and receive actual pricing, discounts, and loyalty feedback.",
-        "The core purchase journey worked well, while registration and some loyalty concepts needed clearer communication. Survey responses and historical sales analysis provided additional context around adoption barriers, reward preferences, and differences between vending environments.",
+        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and watch real prices, real discounts, and real points land.",
+        "The buying part worked. Registration and some of the loyalty concepts didn't land as clearly as we'd hoped. The survey and the sales data filled in the rest: what puts people off signing up, which rewards they actually want, and how differently machines behave depending on where they're standing.",
       ],
       textOnly: true,
       evidence: [
@@ -385,21 +385,21 @@ export const projects: Project[] = [
     },
     outcome:
       "We delivered and evaluated a functional prototype spanning the customer app, admin interface, backend, and persistent data.",
-    outcomeTitle: "An end-to-end prototype, built to be tested and extended.",
+    outcomeTitle: "A prototype complete enough to test, and built so it could keep going.",
     outcomeSummary:
-      "Vend & Go connected the customer and refiller experiences to shared backend logic for campaigns, loyalty, checkout, inventory, and persistent data. The historical sales analysis also created a foundation for future tools that could recommend relevant discounts and campaign timing to refillers.",
+      "Vend & Go ties both apps to one backend handling campaigns, loyalty, checkout, inventory, and storage. The sales analysis turned into something separate and more interesting on the side: a starting point for tools that could tell refillers which discounts to run and when to run them.",
     outcomeHighlights: [
       {
         label: "Delivered",
-        text: "A functional customer app, refiller interface, backend, campaign and loyalty system, checkout flow, and persistent data layer.",
+        text: "A working customer app, a refiller interface, the backend behind both, the campaign and loyalty system, checkout, and the data layer underneath.",
       },
       {
         label: "Validated",
-        text: "Machine selection, product browsing, and checkout were generally understandable when tested through the working application.",
+        text: "Picking a machine, browsing products, and checking out mostly made sense to people once they had the real app in their hands.",
       },
       {
         label: "Next",
-        text: "Connect production payment and dispensing providers, simplify registration, and communicate loyalty rewards more clearly.",
+        text: "Wire up real payment and dispensing providers, cut registration down, and make the loyalty rewards easier to understand.",
       },
     ],
   },
@@ -408,11 +408,11 @@ export const projects: Project[] = [
     number: "03",
     scope: "featured",
     title: "Project Wiki",
-    indexSummary: "A knowledge engine that turns code and documentation into a concept graph. Resumable AI processing and source-linked updates keep it useful for people and coding agents.",
+    indexSummary: "Turns a codebase and its docs into a map of concepts rather than files. It keeps itself current as the code moves, and serves people and coding agents from the same place.",
     technologies: ["Python", "FastAPI", "PostgreSQL", "MCP"],
     kicker: "Knowledge engine for codebases",
     summary:
-      "A knowledge engine that distils a multi-repo project's git and Notion sources into a concept graph with provenance back to each source symbol, keeps it current as the code changes, and serves it to coding agents over MCP and to a person through a browser and chat.",
+      "A knowledge engine for projects spread across several repositories and a Notion workspace. It distils them into a graph of concepts, keeps a link from every concept back to the exact code it came from, and updates itself as the sources change. Coding agents read it over MCP. I read it in a browser or just ask it.",
     status: "Prototype",
     year: "2026",
     disciplines: [
@@ -423,9 +423,9 @@ export const projects: Project[] = [
     metric: "68 / 69",
     metricLabel: "requirements verified by a requirement-tagged test",
     challengeTitle:
-      "Every engineer and every coding agent re-learns a multi-repo project by reading the same files again.",
+      "Everyone relearns the same project by reading the same files again. Including the agents.",
     challenge:
-      "On a project spread across several repositories and a Notion workspace, the understanding of how it fits together lives nowhere durable. A person rebuilds it by reading source. A coding agent rebuilds it every session by pulling raw files into a context window, paying for the same reading each time. Generated API docs mirror the folder tree and decay with it, and full-text search returns text rather than understanding. Nothing captures what no single file states, such as a wire contract that two repositories both depend on. The goal was a knowledge base organised by concept rather than by file, where every concept links back to the exact symbol it was distilled from, that stays current as the sources move, and that serves both a human and an agent without either re-reading the raw material.",
+      "When a project is spread across several repos and a Notion workspace, the understanding of how it all fits together doesn't live anywhere. A person rebuilds it by reading source. A coding agent rebuilds it from scratch every session, pulling the same files into its context window and paying for the same reading again. Generated API docs just mirror the folder tree and rot along with it, and full text search hands you text rather than understanding. Some things aren't written down in any single file at all, like a wire contract two repositories both quietly depend on. So I wanted a knowledge base organised by concept instead of by file, where every concept points back to the exact symbol it came from, that keeps up as the code moves, and that a person and an agent can both read without going back to the raw material.",
     approach: [
       "Separate raw info from distilled knowledge by modelling the wiki as a graph of typed concept nodes stored in the product, each carrying at least one provenance link to a source coordinate",
       "Make guided init resumable and human-in-the-loop: file-aware batched LLM distillation with a per-batch transaction and failure-aware retry, wrapped in a checkpointed graph that pauses for a person only on a genuine contradiction",
@@ -433,7 +433,7 @@ export const projects: Project[] = [
     ],
     architecture: {
       title:
-        "A strict hexagonal core with three thin entry points, so every surface and the maintenance loop are adapters over one read model rather than parallel implementations.",
+        "A strict hexagonal core with thin entry points, so every surface and the maintenance loop are adapters over one read model instead of three separate implementations.",
       summary:
         "Four rings with dependencies pointing inward only, enforced by two import-linter contracts: an ordinary layer contract, and a forbidden-imports contract that names every framework, database driver, and model SDK the domain and application rings may not touch. Sources enter through pluggable connectors as stable coordinates in Postgres. A retrieval index and a batched distillation engine turn them into a provenance-linked concept graph, while an organisation pass and a review queue add domains, cross-source edges, and human adjudication of anything contested. A Typer CLI, a FastAPI read API, and an MCP server are transport-agnostic drivers over the same application use cases. Maintenance re-runs a narrow slice of that pipeline whenever a source moves.",
       flow: [
@@ -455,7 +455,7 @@ export const projects: Project[] = [
         title: "Batched, resumable, self-correcting distillation pipeline",
         visualTitle: "Distillation pipeline / Three-part walkthrough",
         summary:
-          "Init is a long, paid, failure-prone job. One model call over a whole repository truncates at the output cap, loses everything on a single failure, and spreads the model's attention thin. The pipeline turns it into bounded work that survives partial failure.",
+          "Init is long, expensive, and likely to break somewhere. One model call over a whole repository hits the output cap, loses everything the moment it fails, and spreads the model's attention too thin to be useful. The pipeline turns it into small pieces of work that survive failing halfway.",
         details: [
           "File-aware packing groups a file's units together up to a token budget and sub-splits a single oversized unit, so the model always distils a symbol alongside its local context",
           "Each batch commits in its own transaction, so partial progress survives a later failure and re-running init skips batches already done; a failed batch is isolated, recorded with its failure kind, and the run finishes the rest",
@@ -493,7 +493,7 @@ export const projects: Project[] = [
         title: "Provenance and incremental maintenance from git",
         visualTitle: "Maintenance / A merged pull request through the loop",
         summary:
-          "Keeping the wiki current without redoing it is the harder half of the product. Maintenance is driven from git itself, scoped to what a change actually touched, and constrained so a change can only ever cost knowledge the system can prove is gone.",
+          "Keeping the wiki current without rebuilding it is the harder half of the problem. Maintenance runs off git itself, only looks at what a change actually touched, and can never throw away knowledge it can't prove is gone.",
         details: [
           "What changed is computed from git directly, never from a webhook payload, because a pull-request payload carries no file list and a push payload truncates past 20 commits",
           "Only the touched documents are re-ingested, and only the concepts whose provenance points at those coordinates are re-examined, through the same batch path init uses, so the two cannot drift",
@@ -515,7 +515,7 @@ export const projects: Project[] = [
         title: "Architecture and verification discipline as a system",
         visualTitle: "Verification / The build gate",
         summary:
-          "The project treats its own correctness and honesty as testable properties, after a concrete case where a green build lied.",
+          "I made the project's own correctness and honesty into things you can test, after a green build lied to me for months.",
         details: [
           "Strict hexagonal, four rings, enforced by two import-linter contracts, one of them a forbidden-imports list naming every framework, driver, and model SDK the domain and application rings may not import",
           "A test that stubs the seam it is testing proves nothing: browser-driven init passed its gate for months while never working, because the endpoint flushed instead of committing and the fake background task never touched the database; every scheduling site now commits before scheduling and a test drives real scheduled work against Postgres",
@@ -536,13 +536,13 @@ export const projects: Project[] = [
     ],
     evaluation: {
       title:
-        "Validated by a requirement-tagged test suite and two end-to-end runs against real models, each scored against a key written before the run.",
+        "Checked by a requirement-tagged test suite, plus two full runs against real models scored against a key I wrote before starting.",
       summary:
         "The engine and surfaces are covered by a green build gate. The parts a fake cannot judge honestly were driven by hand against the real language and embedding models and scored against a pre-written assessment key.",
       details: [
         "The gate is the single build command: roughly 775 backend tests and 127 frontend tests, plus ruff, strict pyright, and the import-linter dependency rule, all green. 68 of 69 registered requirements are verified by a requirement-tagged test. The 69th, engine-proposed reading paths, is deliberately unbuilt and named as such on the generated status page, so the denominator is every requirement the project knows about.",
         "The proof runs drove guided init and the full maintenance loop end to end against a two-repository fixture pair with real Anthropic and OpenAI models, on 1 and 14 August 2026. Each run was scored against an assessment key written beforehand. In the maintenance run, 8 of 9 checks passed, 1 was unevaluable, and 1 surfaced a real defect: a concept left asserting what its source no longer said, because the reconciliation judge was scoped by source reference rather than by document. That was fixed. Measured cost for both fixtures was about $1.10.",
-        "Not yet evaluated is behaviour at the scale of a real multi-repo project, including review-queue volume, coverage skewed toward prose, and the single-process maintenance bound. That evaluation comes next, by using the tool on my own multi-repo platform and improving it from what that surfaces, not as a one-off result to claim now.",
+        "What I haven't tested is how it behaves at the size of a real project: how big the review queue gets, whether coverage skews toward prose, and where the single process maintenance loop gives out. That's next, by actually running it on my own platform and fixing what shows up, rather than something I want to claim now.",
       ],
       textOnly: false,
       evidence: [
@@ -567,7 +567,7 @@ export const projects: Project[] = [
     outcomeTitle:
       "An unfinished knowledge engine that proves its own claims, now going into real use on my own projects.",
     outcomeSummary:
-      "The distinctive engineering is in place and tested: a resumable, self-correcting paid-LLM pipeline, provenance-tracked incremental maintenance constrained so it cannot lose unprovable knowledge, and a build that fails when its own documentation drifts from the code. It is not finished. The next phase is to run it against my own multi-repo platform, judge what is actually there against real work, and improve it incrementally from that use rather than in the abstract.",
+      "The interesting engineering is in place and tested: a resumable, self correcting pipeline over a paid model, incremental maintenance that tracks provenance and refuses to drop anything it can't prove is gone, and a build that fails when its own documentation drifts away from the code. It isn't finished. The next phase is pointing it at my own platform, seeing how what I built holds up against real work, and improving it from that instead of in the abstract.",
     outcomeHighlights: [
       {
         label: "Delivered",

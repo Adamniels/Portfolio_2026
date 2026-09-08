@@ -23,9 +23,9 @@ export const smallerProjects: SmallerProject[] = [
     category: "Mobile utility",
     title: "Habit tracker",
     summary:
-      "A focused app for tracking recurring habits and time-based reminders.",
+      "An app for the handful of habits I actually wanted to keep, with reminders that turn up when they're useful rather than whenever.",
     body: [
-      "A focused app for tracking recurring habits and time-based reminders.",
+      "An app for the handful of habits I actually wanted to keep, with reminders that turn up when they're useful rather than whenever.",
     ],
   },
   {
@@ -33,9 +33,9 @@ export const smallerProjects: SmallerProject[] = [
     category: "Desktop utility",
     title: "Second-screen widget",
     summary:
-      "A desktop widget for keeping useful information visible on a dedicated second screen.",
+      "A desktop widget that parks the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
     body: [
-      "A desktop widget for keeping useful information visible on a dedicated second screen.",
+      "A desktop widget that parks the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
     ],
   },
   {
@@ -43,9 +43,9 @@ export const smallerProjects: SmallerProject[] = [
     category: "Embedded system",
     title: "Pomodoro timer",
     summary:
-      "A physical focus timer built as a smaller embedded-systems project.",
+      "A focus timer I built as a physical object, mostly as an excuse to do something embedded with my hands.",
     body: [
-      "A physical focus timer built as a smaller embedded-systems project.",
+      "A focus timer I built as a physical object, mostly as an excuse to do something embedded with my hands.",
     ],
   },
 ];

@@ -20,11 +20,13 @@ export default function Home() {
         <p className="eyebrow">Software engineering · Uppsala, Sweden</p>
         <h1>Behind the interface.<br /><span>Inside the system.</span></h1>
         <p className="hero-intro">
-          I’m Adam, an M.Sc. Information Technology student at Uppsala University.
-          I build backend systems, work with applied AI, and care about how software fits together.
+          I'm Adam, an M.Sc. Information Technology student at Uppsala University. I build backend systems and embedded projects, work with applied AI, and care about how software fits together.
+        </p>
+        <p className="hero-intro">
+          I like building things, whether that's a small automation for my own workflow or a project I've been chipping away at for months. What I enjoy is figuring out how things work, solving the problems along the way, and getting to be creative about it.
         </p>
         <div className="hero-focus" aria-label="Areas of focus">
-          <span>Backend development</span><span>System architecture</span><span>Applied AI</span>
+          <span>Backend development</span><span>Embedded systems</span><span>System architecture</span><span>Applied AI</span>
         </div>
       </header>
 

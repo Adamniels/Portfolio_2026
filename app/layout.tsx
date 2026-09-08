@@ -3,7 +3,7 @@ import { siteUrl } from "@/content/site";
 import "./globals.css";
 
 const description =
-  "Selected projects by Adam Nielsen, an M.Sc. Information Technology student at Uppsala University focused on backend systems, software architecture, and applied AI.";
+  "Selected projects by Adam Nielsen, an M.Sc. Information Technology student at Uppsala University focused on backend systems, embedded projects, software architecture, and applied AI.";
 
 // metadataBase resolves the relative URLs below, and the og:image that Next
 // attaches from each route's opengraph-image, into absolute URLs. Crawlers

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CurrentlyWorkingOnPreview } from "@/components/currently-working-on-preview";
 import { SelectedBuildsPreview } from "@/components/selected-builds-preview";
 import { SiteFooter } from "@/components/site-footer";
 import { projects } from "@/content/projects";
@@ -55,6 +56,8 @@ export default function Home() {
           </article>
         ))}
       </section>
+
+      <CurrentlyWorkingOnPreview />
 
       <SelectedBuildsPreview />
 

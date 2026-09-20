@@ -45,6 +45,24 @@ rather than rendered empty.
 Each `body` currently repeats its `summary` and should be expanded into real
 paragraphs.
 
+## Currently working on
+
+Active side projects that aren't case studies yet live in
+`content/currently-working-on.ts`, a single array feeding both the homepage
+section (`components/currently-working-on-preview.tsx`, between "Selected
+projects" and "Smaller projects") and a `/currently-working-on/[slug]`
+detail page. This tier exists because a project can be too early or too
+informal for the full case-study schema in `content/projects.ts` (no shipped
+metrics to evaluate) while being too substantial, or too image-heavy, for
+`content/smaller-projects.ts`.
+
+Each entry's images live in `public/currently-working-on/<slug>/`. The first
+entry, Operation Rollout, keeps its full sourcing context (where each image
+came from, licensing caveats, facts verified against the game repo) in
+`public/currently-working-on/operation-rollout/context.md` for future
+reference. The game's own repository is never written to; its images are
+copied out read-only and optimised as copies here.
+
 ## Contact
 
 Footer contact details live in `content/site.ts` and are rendered by

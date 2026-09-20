@@ -63,6 +63,19 @@ came from, licensing caveats, facts verified against the game repo) in
 reference. The game's own repository is never written to; its images are
 copied out read-only and optimised as copies here.
 
+An entry's `imageGroups` is per-project, not a fixed layout: each group is a
+labelled block on the detail page, either one large `"feature"` image or a
+small `"grid"` of a few. Operation Rollout uses "Main menu" (feature) and
+"Mini games" (grid); a future entry can use whatever groups fit its own
+material, including none.
+
+To prepare a new entry for this section, copy the contents of
+`prompts/prepare-project-for-currently-working-on.md` into an agent running
+inside that project. Unlike the case-study prompt, it's calibrated for an
+early-stage, unevaluated project: no invented metrics, no highlight-list
+tone, plain prose. It produces a `CURRENTLY_WORKING_ON_HANDOFF.md` ready to
+bring back here.
+
 ## Contact
 
 Footer contact details live in `content/site.ts` and are rendered by

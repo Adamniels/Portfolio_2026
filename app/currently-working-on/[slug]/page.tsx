@@ -51,34 +51,42 @@ export default async function CurrentlyWorkingOnPage({ params }: Props) {
         </ul>
       </header>
 
-      <figure className="cwo-banner">
-        <img src={entry.bannerImage.src} alt={entry.bannerImage.alt} loading="eager" />
-      </figure>
+      {entry.bannerImage && (
+        <figure className="cwo-banner">
+          <img src={entry.bannerImage.src} alt={entry.bannerImage.alt} loading="eager" />
+        </figure>
+      )}
 
       <section className="cwo-intro" id="overview" aria-label="About the project">
         {entry.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </section>
 
-      <section className="cwo-gallery" aria-label={`${entry.title} images`}>
-        <div className="cwo-gallery-group">
-          <h3>Main menu</h3>
-          <figure className="cwo-gallery-hero">
-            <img src={entry.menuImage.src} alt={entry.menuImage.alt} loading="lazy" />
-            <figcaption>{entry.menuImage.caption}</figcaption>
-          </figure>
-        </div>
-        <div className="cwo-gallery-group">
-          <h3>Mini games</h3>
-          <div className="cwo-gallery-thumbs">
-            {entry.miniGameImages.map((image) => (
-              <figure key={image.src}>
-                <img src={image.src} alt={image.alt} loading="lazy" />
-                <figcaption>{image.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
+      {!!entry.imageGroups?.length && (
+        <section className="cwo-gallery" aria-label={`${entry.title} images`}>
+          {entry.imageGroups.map((group) => (
+            <div className="cwo-gallery-group" key={group.heading}>
+              <h3>{group.heading}</h3>
+              {group.layout === "feature" ? (
+                group.images.map((image) => (
+                  <figure className="cwo-gallery-hero" key={image.src}>
+                    <img src={image.src} alt={image.alt} loading="lazy" />
+                    <figcaption>{image.caption}</figcaption>
+                  </figure>
+                ))
+              ) : (
+                <div className="cwo-gallery-thumbs">
+                  {group.images.map((image) => (
+                    <figure key={image.src}>
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+      )}
 
       <SiteFooter />
     </main>

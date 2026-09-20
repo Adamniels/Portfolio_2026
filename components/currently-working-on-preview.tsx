@@ -13,26 +13,17 @@ export function CurrentlyWorkingOnPreview() {
       </div>
       {currentlyWorkingOn.map((entry) => (
         <article className="cwo-card" key={entry.slug}>
-          <Link
-            className="cwo-card-image"
-            href={`/currently-working-on/${entry.slug}`}
-            aria-label={`Open ${entry.title}`}
-          >
-            <img src={entry.heroImage.src} alt={entry.heroImage.alt} loading="lazy" />
+          <p className="cwo-card-status">{entry.status}</p>
+          <Link className="project-title-link" href={`/currently-working-on/${entry.slug}`}>
+            <h3>{entry.title}</h3>
           </Link>
-          <div className="cwo-card-body">
-            <p className="cwo-card-status">{entry.status}</p>
-            <Link className="project-title-link" href={`/currently-working-on/${entry.slug}`}>
-              <h3>{entry.title}</h3>
-            </Link>
-            <p className="cwo-card-hook">{entry.hook}</p>
-            <ul className="technology-list" aria-label={`${entry.title} technologies`}>
-              {entry.technologies.map((technology) => <li key={technology}>{technology}</li>)}
-            </ul>
-            <Link className="text-link" href={`/currently-working-on/${entry.slug}`}>
-              Read more <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+          <p className="cwo-card-hook">{entry.hook}</p>
+          <ul className="technology-list" aria-label={`${entry.title} technologies`}>
+            {entry.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+          </ul>
+          <Link className="text-link" href={`/currently-working-on/${entry.slug}`}>
+            Read more <span aria-hidden="true">→</span>
+          </Link>
         </article>
       ))}
     </section>

@@ -33,9 +33,9 @@ export const smallerProjects: SmallerProject[] = [
     category: "Desktop utility",
     title: "Second-screen widget",
     summary:
-      "A desktop widget that parks the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
+      "A desktop widget that puts the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
     body: [
-      "A desktop widget that parks the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
+      "A desktop widget that puts the things I keep checking on my second monitor, so I stop alt tabbing to find them.",
     ],
   },
   {

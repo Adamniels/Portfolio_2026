@@ -76,9 +76,9 @@ export const projects: Project[] = [
     number: "01",
     scope: "featured",
     title: "Contextual Outreach",
-    indexSummary: "A pipeline that researches a company and turns what it finds into drafts worth actually sending. Built on my own, with a workflow engine underneath and every integration swappable.",
+    indexSummary: "A pipeline that researches a company and turns what it finds into drafts worth actually sending. I built it on my own, with a workflow engine for scheduling and integrations that can be swapped out.",
     technologies: ["C#", "ASP.NET Core", "PostgreSQL", "Applied AI"],
-    kicker: "Research-led outreach",
+    kicker: "Side project",
     summary: `A prototype built around ${outreachClient}'s problem: research a prospect, work out who's worth talking to, and draft outreach that's grounded in what the company actually does and the work the consultancy has already done.`,
     status: "Prototype",
     year: "2025–26",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       title:
         "Clear boundaries meant research, rules, generation, and delivery could each be swapped without disturbing the others.",
       summary:
-        "A Vue interface calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. This allowed the complete research-to-workflow path to be built while keeping uncertain email and LinkedIn execution at the infrastructure edge.",
+        "A Vue interface calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. That let me build the whole path from research to a scheduled workflow, while the uncertain part, actually sending email and LinkedIn messages, stayed at the edge where it's easy to replace.",
       flow: [
         "Prospect intake",
         "Authenticated interface",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
         details: [
           "First-party website analysis and external signal discovery run concurrently before their evidence is merged",
           "Synthesis prioritizes company-owned material for stable facts and external sources for recent hooks",
-          "Freshness, source quality, deduplication, and traceability remain production extension points",
+          "Freshness, source quality, deduplication, and traceability aren't handled yet and would be needed before real use",
         ],
         visuals: [
           {
@@ -184,7 +184,7 @@ export const projects: Project[] = [
         details: [
           "Ordered steps support email, LinkedIn messages, connection requests, waits, and lightweight interactions",
           "Activation validates enrichment and generation requirements before converting local offsets into scheduled timestamps",
-          "A background worker and executor are implemented, but channel actions remain mock adapters rather than production delivery claims",
+          "A background worker and executor are implemented, but channel actions are still mock adapters, so nothing is actually sent yet",
         ],
         visuals: [
           {
@@ -209,11 +209,11 @@ export const projects: Project[] = [
         title: "Clean Architecture around volatile integrations",
         visualTitle: "Architecture / Dependencies point inward",
         summary:
-          "I rebuilt the backend around clear layers so no external provider ends up owning the logic. The workflow is mine. The integrations just plug into the edge of it.",
+          "I rebuilt the backend around clear layers so no external provider ends up owning the logic. The integrations plug in at the edges and can be replaced without touching the core.",
         details: [
           "Domain entities encapsulate prospect ownership, active-contact selection, workflow transitions, ordering, and activation rules",
           "Single-action use cases expose one entry point while thin endpoints translate HTTP concerns",
-          "The additional types and wiring improve replaceability, but consistent authorization and integration coverage still require production review",
+          "The additional types and wiring improve replaceability, but consistent authorization and integration coverage haven't been reviewed for production",
         ],
         visuals: [
           {
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     ],
     evaluation: {
       title:
-        "Tested and walked through. Never actually used in production.",
+        "Tested and reviewed with the consultancy, but never used in production.",
       summary:
         "I built it alongside an ongoing dialogue with the consultancy. We walked through the workflow together at regular points, and their feedback on how they actually find and approach prospects decided what I built next, from how contacts get selected to how much control the sender keeps over tone. Unit tests over the domain rules and main use cases back that up, so the parts that exist behave the way we agreed they should.",
       details: [
@@ -246,9 +246,9 @@ export const projects: Project[] = [
     outcome:
       "The project delivered a working research-to-outreach prototype, developed in regular dialogue with an IT consultancy.",
     outcomeTitle:
-      "A working prototype, shaped by the people it was built for.",
+      "A working prototype, built together with the people who would use it.",
     outcomeSummary:
-      "It connects the whole path: pull in a prospect, research the company and the people in it, bring in previous client work, generate a draft you can edit and argue with, then schedule the sequence. Building it next to the people who would actually use it meant every step had to hold up against how they really sell, not how I imagined they did.",
+      "It connects the whole path: pull in a prospect, research the company and the people in it, bring in previous client work, generate a draft you can edit and revise by chatting with it, then schedule the sequence. Building it next to the people who would actually use it meant every step had to hold up against how they really sell, not how I imagined they did.",
     outcomeHighlights: [
       {
         label: "Delivered",
@@ -296,9 +296,9 @@ export const projects: Project[] = [
     ],
     architecture: {
       title:
-        "One backend behind both apps, with the machines and the payment provider kept at arm's length.",
+        "One backend behind both apps, with the machines and the payment provider kept behind interfaces.",
       summary:
-        "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, allowing the clients and external integrations to evolve without moving core business rules out of the application.",
+        "Customer and refiller interfaces share contracts with a backend that centralizes machines, inventory, products, campaigns, loyalty, and purchasing. Persistent storage and replaceable payment and dispensing adapters sit at the infrastructure boundary, so the apps and integrations can change without the business rules moving out of the backend.",
       flow: [
         "Customer & refiller clients",
         "Shared contracts",
@@ -381,9 +381,9 @@ export const projects: Project[] = [
     evaluation: {
       title: "We tested a working app, not a mockup.",
       summary:
-        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and watch real prices, real discounts, and real points land.",
+        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and see the prices, discounts, and points the real system calculated.",
       details: [
-        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and watch real prices, real discounts, and real points land.",
+        "Instead of putting a static design in front of people, we tested a real app wired to its backend, loyalty logic, campaign system, and database. Participants could complete an actual purchase and see the prices, discounts, and points the real system calculated.",
         "The buying part worked. Registration and some of the loyalty concepts didn't land as clearly as we'd hoped. The survey and the sales data filled in the rest: what puts people off signing up, which rewards they actually want, and how differently machines behave depending on where they're standing.",
       ],
       textOnly: true,
@@ -418,11 +418,11 @@ export const projects: Project[] = [
     number: "03",
     scope: "featured",
     title: "Project Wiki",
-    indexSummary: "Turns a codebase and its docs into a map of concepts rather than files. It keeps itself current as the code moves, and serves people and coding agents from the same place.",
+    indexSummary: "Turns a codebase and its docs into a map of concepts instead of files. It updates itself as the code changes, and both people and coding agents read from it.",
     technologies: ["Python", "FastAPI", "PostgreSQL", "MCP"],
     kicker: "Knowledge engine for codebases",
     summary:
-      "A knowledge engine for projects spread across several repositories and a Notion workspace. It distils them into a graph of concepts, keeps a link from every concept back to the exact code it came from, and updates itself as the sources change. Coding agents read it over MCP. I read it in a browser or just ask it.",
+      "A knowledge engine for projects spread across several repositories and tools, starting with git and Notion. It turns them into a graph of concepts, keeps a link from every concept back to the exact code it came from, and updates itself as the sources change. Coding agents read it over MCP. I read it in a browser or just ask it.",
     status: "Prototype",
     year: "2026",
     disciplines: [
@@ -434,9 +434,9 @@ export const projects: Project[] = [
     metricLabel: "requirements verified by a requirement-tagged test",
     hideOverviewMetric: true,
     challengeTitle:
-      "Everyone relearns the same project by reading the same files again. Including the agents.",
+      "Everyone relearns the same project by reading the same files again, including the agents.",
     challenge:
-      "When a project is spread across several repos and a Notion workspace, the understanding of how it all fits together doesn't live anywhere. A person rebuilds it by reading source. A coding agent rebuilds it from scratch every session, pulling the same files into its context window and paying for the same reading again. Generated API docs just mirror the folder tree and rot along with it, and full text search hands you text rather than understanding. Some things aren't written down in any single file at all, like a wire contract two repositories both quietly depend on. So I wanted a knowledge base organised by concept instead of by file, where every concept points back to the exact symbol it came from, that keeps up as the code moves, and that a person and an agent can both read without going back to the raw material.",
+      "The knowledge about a project is usually spread out: code in a few repositories, decisions and specs in Notion, and more in whatever other tools the team uses. The understanding of how it all fits together doesn't live in any of them. A person rebuilds it by reading the source. A coding agent rebuilds it from scratch every session, pulling the same files into its context window and paying for the same reading again. Generated API docs just mirror the folder structure and go out of date with it, and full text search gives you text, not understanding. Some things aren't written down in any single file at all, like a wire contract that two repositories both depend on. So I wanted a knowledge base organised by concept instead of by file. Every concept should point back to the exact code it came from, keep up as the code changes, and be readable by both people and agents without going back to the raw sources.",
     approach: [
       "Separate raw info from distilled knowledge by modelling the wiki as a graph of typed concept nodes stored in the product, each carrying at least one provenance link to a source coordinate",
       "Make guided init resumable and human-in-the-loop: file-aware batched LLM distillation with a per-batch transaction and failure-aware retry, wrapped in a checkpointed graph that pauses for a person only on a genuine contradiction",
@@ -444,9 +444,9 @@ export const projects: Project[] = [
     ],
     architecture: {
       title:
-        "A strict hexagonal core with thin entry points, so every surface and the maintenance loop are adapters over one read model instead of three separate implementations.",
+        "One core, with the CLI, the API, and the MCP server as thin layers on top.",
       summary:
-        "Four rings with dependencies pointing inward only, enforced by two import-linter contracts: an ordinary layer contract, and a forbidden-imports contract that names every framework, database driver, and model SDK the domain and application rings may not touch. Sources enter through pluggable connectors as stable coordinates in Postgres. A retrieval index and a batched distillation engine turn them into a provenance-linked concept graph, while an organisation pass and a review queue add domains, cross-source edges, and human adjudication of anything contested. A Typer CLI, a FastAPI read API, and an MCP server are transport-agnostic drivers over the same application use cases. Maintenance re-runs a narrow slice of that pipeline whenever a source moves.",
+        "The core follows a hexagonal architecture with four layers, where dependencies only point inward. Two import-linter rules enforce this, and one of them lists every framework, database driver, and model SDK the inner layers aren't allowed to import. Sources come in through connectors, git and Notion so far, and adding a new kind of source means writing a new connector rather than changing the core. Everything is stored in Postgres as stable references. A retrieval index and a batched distillation step turn them into a concept graph where every concept links back to its source. An organising step groups concepts into domains and connects them across sources, and anything contested goes to a review queue for a person to decide. The CLI, the API, and the MCP server all call the same use cases, and maintenance reruns a small part of the same pipeline whenever a source changes.",
       flow: [
         "Git & Notion connectors",
         "Retrieval index",
@@ -466,7 +466,7 @@ export const projects: Project[] = [
         title: "Batched, resumable, self-correcting distillation pipeline",
         visualTitle: "Distillation pipeline / Three-part walkthrough",
         summary:
-          "Init is long, expensive, and likely to break somewhere. One model call over a whole repository hits the output cap, loses everything the moment it fails, and spreads the model's attention too thin to be useful. The pipeline turns it into small pieces of work that survive failing halfway.",
+          "The initial build is slow, expensive, and likely to fail somewhere. A single model call over a whole repository hits the output limit, loses everything if it fails, and spreads the model's attention too thin. So the pipeline splits the work into small batches, and a failure halfway through only costs the batch that failed.",
         details: [
           "File-aware packing groups a file's units together up to a token budget and sub-splits a single oversized unit, so the model always distils a symbol alongside its local context",
           "Each batch commits in its own transaction, so partial progress survives a later failure and re-running init skips batches already done; a failed batch is isolated, recorded with its failure kind, and the run finishes the rest",
@@ -504,7 +504,7 @@ export const projects: Project[] = [
         title: "Provenance and incremental maintenance from git",
         visualTitle: "Maintenance / A merged pull request through the loop",
         summary:
-          "Keeping the wiki current without rebuilding it is the harder half of the problem. Maintenance runs off git itself, only looks at what a change actually touched, and can never throw away knowledge it can't prove is gone.",
+          "Keeping the wiki up to date without rebuilding it is the hardest part. Maintenance works from git, only looks at what a change touched, and never removes knowledge unless it can show it's gone.",
         details: [
           "What changed is computed from git directly, never from a webhook payload, because a pull-request payload carries no file list and a push payload truncates past 20 commits",
           "Only the touched documents are re-ingested, and only the concepts whose provenance points at those coordinates are re-examined, through the same batch path init uses, so the two cannot drift",
@@ -523,10 +523,10 @@ export const projects: Project[] = [
         ],
       },
       {
-        title: "Architecture and verification discipline as a system",
+        title: "Making correctness something the build checks",
         visualTitle: "Verification / The build gate",
         summary:
-          "I made the project's own correctness and honesty into things you can test, after a green build lied to me for months.",
+          "After a green build lied to me for months, I made the build check both the code and whether the documentation still matches it.",
         details: [
           "Strict hexagonal, four rings, enforced by two import-linter contracts, one of them a forbidden-imports list naming every framework, driver, and model SDK the domain and application rings may not import",
           "A test that stubs the seam it is testing proves nothing: browser-driven init passed its gate for months while never working, because the endpoint flushed instead of committing and the fake background task never touched the database; every scheduling site now commits before scheduling and a test drives real scheduled work against Postgres",
@@ -548,7 +548,7 @@ export const projects: Project[] = [
     process: {
       title: "Plan first, build in small increments, verify against reality.",
       summary:
-        "I built Project Wiki solo over about ten weeks. Most of what kept a project this size on track wasn't the code. It was the working system around the code: decisions written down before building, requirements that had to be proven rather than claimed, and checks against the running product, not only the test suite.",
+        "I built Project Wiki on my own. What kept a project this size on track was mostly how I worked around the code: decisions written down before building, requirements that had to be proven by tests, and regular checks against the running product, not just the test suite.",
       principles: [
         {
           title: "Plan first",
@@ -559,7 +559,7 @@ export const projects: Project[] = [
           text: "I wrote the requirements before building, as a chain: use cases, then requirements with stable IDs, then work items that moved through plan, implement, verify, and done. Every test is tagged with the requirements it proves, and a requirement only counts as verified when one of those tests passes. That's what \"68 of 69\" means further down: a number generated from the test run, not one I wrote by hand.",
         },
         {
-          title: "Small increments, seams not stubs",
+          title: "Small increments, real interfaces early",
           text: "The work ran in seven phases, each with its own plan, split into small commits that reference the work items they deliver. Anything deferred got a real interface straight away, so later work could plug in without rewriting what was already there. Months later, a rollback feature took about two hours because the data model had been built for it from the start.",
         },
         {
@@ -568,19 +568,19 @@ export const projects: Project[] = [
         },
         {
           title: "Verify against reality",
-          text: "After each phase I ran the product end to end in a real browser, against two test repositories with planted behaviours and an answer key written in advance. Findings became numbered fixes in later phases, and known limitations went into their own catalogue instead of being hidden. That habit started with a feature that passed every test and had never actually worked.",
+          text: "After each phase I ran the product end to end in a real browser, against two test repositories with planted behaviours and an answer key written in advance. Findings became numbered fixes in later phases, and known limitations went into their own catalogue instead of being hidden. That habit started with a feature that passed every test and had never worked.",
         },
       ],
     },
     evaluation: {
       title:
-        "Checked by a requirement-tagged test suite, plus two full runs against real models scored against a key I wrote before starting.",
+        "Tested against the requirements, plus two full runs with real models.",
       summary:
         "The engine and surfaces are covered by a green build gate. The parts a fake cannot judge honestly were driven by hand against the real language and embedding models and scored against a pre-written assessment key.",
       details: [
-        "The gate is the single build command: roughly 775 backend tests and 127 frontend tests, plus ruff, strict pyright, and the import-linter dependency rule, all green. 68 of 69 registered requirements are verified by a requirement-tagged test. The 69th, engine-proposed reading paths, is deliberately unbuilt and named as such on the generated status page, so the denominator is every requirement the project knows about.",
+        "The gate is the single build command: roughly 775 backend tests and 127 frontend tests, plus ruff, strict pyright, and the import-linter dependency rule, all green. 68 of 69 registered requirements are verified by a requirement-tagged test. The 69th, engine-proposed reading paths, isn't built yet, and the status page says so, so the count includes every requirement the project has.",
         "The proof runs drove guided init and the full maintenance loop end to end against a two-repository fixture pair with real Anthropic and OpenAI models, on 1 and 14 August 2026. Each run was scored against an assessment key written beforehand. In the maintenance run, 8 of 9 checks passed, 1 was unevaluable, and 1 surfaced a real defect: a concept left asserting what its source no longer said, because the reconciliation judge was scoped by source reference rather than by document. That was fixed. Measured cost for both fixtures was about $1.10.",
-        "What I haven't tested is how it behaves at the size of a real project: how big the review queue gets, whether coverage skews toward prose, and where the single process maintenance loop gives out. That's next, by actually running it on my own platform and fixing what shows up, rather than something I want to claim now.",
+        "What I haven't tested is how it behaves at the size of a real project: how big the review queue gets, whether coverage skews toward prose, and where the single process maintenance loop gives out. That's the next step: running it on my own platform and fixing what comes up, instead of guessing now.",
       ],
       textOnly: false,
       evidence: [
@@ -603,9 +603,9 @@ export const projects: Project[] = [
     outcome:
       "The engine and all four v1 surfaces are built on a strict hexagonal core with a self-checking build, and two end-to-end runs against real models, scored against pre-written keys, validated the pipeline and caught a real defect. No real project has been pointed at it yet, and that is the deliberate next step.",
     outcomeTitle:
-      "An unfinished knowledge engine that proves its own claims, now going into real use on my own projects.",
+      "Not finished, but tested, and now going into real use on my own projects.",
     outcomeSummary:
-      "The interesting engineering is in place and tested: a resumable, self correcting pipeline over a paid model, incremental maintenance that tracks provenance and refuses to drop anything it can't prove is gone, and a build that fails when its own documentation drifts away from the code. It isn't finished. The next phase is pointing it at my own platform, seeing how what I built holds up against real work, and improving it from that instead of in the abstract.",
+      "The core parts are built and tested: a pipeline that can resume and recover when model calls fail, maintenance that updates the wiki from git without dropping anything it can't show is gone, and a build that fails if the documentation stops matching the code. It isn't finished. Next I'm using it on my own platform to see how it holds up in real work, and improving it based on that.",
     outcomeHighlights: [
       {
         label: "Delivered",
@@ -617,7 +617,7 @@ export const projects: Project[] = [
       },
       {
         label: "Next",
-        text: "Project Wiki is not a finished product. I am putting it to work on my own multi-repo platform, using that to evaluate what exists today and to improve it over time as real use shows what matters (review-queue volume, prose-skewed coverage, single-process maintenance). The one unbuilt requirement, engine-proposed reading paths, comes first.",
+        text: "I'm putting it to work on my own multi-repo platform and improving it based on what real use shows, like how big the review queue gets, whether coverage leans toward prose, and where single-process maintenance hits its limits. The one unbuilt requirement, engine-proposed reading paths, comes first.",
       },
     ],
   },

@@ -12,7 +12,7 @@ export default function Image() {
       <OgCard
         eyebrow="Utilities, experiments, and embedded builds"
         title="Smaller projects"
-        description="Smaller projects for exploring an idea or solving an everyday problem. Each one is short enough to finish, and narrow enough to learn something specific from."
+        description="Smaller things I've built to solve a problem I had or to try out an idea, usually learning something new along the way."
         footer={smallerProjects.map((build) => build.title).join(" · ")}
       />
     ),

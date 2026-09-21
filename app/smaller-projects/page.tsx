@@ -37,9 +37,8 @@ export default function SmallerProjectsPage() {
         </div>
         <h1>Smaller projects</h1>
         <p>
-          Smaller projects for exploring an idea or solving an everyday problem.
-          Each one is short enough to finish, and narrow enough to learn something
-          specific from.
+          Smaller things I've built to solve a problem I had or to try out an
+          idea, usually learning something new along the way.
         </p>
       </header>
 

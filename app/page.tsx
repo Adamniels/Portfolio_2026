@@ -33,14 +33,14 @@ export default function Home() {
         </h1>
         <p className="hero-intro">
           I'm Adam, an M.Sc. Information Technology student at Uppsala
-          University. I like to work on and build backend systems and embedded
-          projects, and I also do a lot of work with applied AI.
+          University. I mostly work on backend systems and embedded projects,
+          and a lot of what I build involves applied AI.
         </p>
         <p className="hero-intro">
-          I like building things, whether that's a small automation for my own
-          workflow or a project I've been chipping away at for months. What I
-          enjoy is figuring out how things work, solving the problems along the
-          way, and getting to be creative about it.
+          I like building things, whether it's a small automation for my own
+          workflow or a project I've worked on for months. What I enjoy most is
+          figuring out how things work, solving the problems along the way, and
+          getting to be creative about it.
         </p>
         <div className="hero-focus" aria-label="Areas of focus">
           <span>Backend development</span>
@@ -93,7 +93,7 @@ export default function Home() {
                   <strong>{project.metric}</strong> {project.metricLabel}
                 </p>
                 <Link className="text-link" href={`/projects/${project.slug}`}>
-                  Explore the project <span aria-hidden="true">→</span>
+                  Read more <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>

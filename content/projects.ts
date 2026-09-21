@@ -221,10 +221,10 @@ export const projects: Project[] = [
       title:
         "Tested and walked through. Never actually used in production.",
       summary:
-        "There are unit tests over the domain rules and the main use cases, and I walked the workflow through with the consultancy repeatedly to check it matched how they actually sell. That tells you the thing behaves as built and that the problem was real. It tells you nothing about adoption, reply rates, deliverability, or whether it would have made anyone money.",
+        "I built it alongside an ongoing dialogue with the consultancy. We walked through the workflow together at regular points, and their feedback on how they actually find and approach prospects decided what I built next, from how contacts get selected to how much control the sender keeps over tone. Unit tests over the domain rules and main use cases back that up, so the parts that exist behave the way we agreed they should.",
       details: [
-        "There are unit tests over the domain rules and the main use cases, and I walked the workflow through with the consultancy repeatedly to check it matched how they actually sell. That tells you the thing behaves as built and that the problem was real. It tells you nothing about adoption, reply rates, deliverability, or whether it would have made anyone money.",
-        "It was never deployed. Partway through, the consultancy bought an existing commercial tool that already handled the LinkedIn side, so my version stayed what it started as: an exploration.",
+        "I built it alongside an ongoing dialogue with the consultancy. We walked through the workflow together at regular points, and their feedback on how they actually find and approach prospects decided what I built next, from how contacts get selected to how much control the sender keeps over tone. Unit tests over the domain rules and main use cases back that up, so the parts that exist behave the way we agreed they should.",
+        "Around the same time, they adopted a commercial tool that already had approved LinkedIn access, the one integration I couldn't build on my own terms. That settled the build or buy question for them, and it's why this stayed a prototype.",
       ],
       textOnly: true,
       evidence: [
@@ -234,11 +234,11 @@ export const projects: Project[] = [
       ],
     },
     outcome:
-      "The project delivered a working research-to-outreach prototype and made its hardest external integration constraint concrete.",
+      "The project delivered a working research-to-outreach prototype, developed in regular dialogue with an IT consultancy.",
     outcomeTitle:
-      "A working prototype, and a clear answer about where the real wall is.",
+      "A working prototype, shaped by the people it was built for.",
     outcomeSummary:
-      "It connects the whole path: pull in a prospect, research the company and the people in it, bring in previous client work, generate a draft you can edit and argue with, then schedule the sequence. It also made something clear I hadn't expected going in. Whether you build or buy a tool like this comes down to which integrations you're allowed to make, not to how good your application is.",
+      "It connects the whole path: pull in a prospect, research the company and the people in it, bring in previous client work, generate a draft you can edit and argue with, then schedule the sequence. Building it next to the people who would actually use it meant every step had to hold up against how they really sell, not how I imagined they did.",
     outcomeHighlights: [
       {
         label: "Delivered",

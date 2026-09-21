@@ -154,6 +154,10 @@ h1, h2, h3 { text-wrap: balance; }
 .outcome-highlights > div { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); }
 .outcome-highlights span { font-size: .8125rem; color: var(--accent); font-family: var(--mono); padding-top: 2px; }
 .outcome-highlights p { color: var(--muted); }
+.process-principles { margin-top: 25px; }
+.process-principles > div { padding: 18px 0; border-top: 1px solid var(--line); }
+.process-principles h3 { font-size: 1.0625rem; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; margin-bottom: 6px; }
+.process-principles p { color: var(--muted); line-height: 1.8; }
 .next-project { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 32px 0; border-bottom: 1px solid var(--line); }
 .next-project > span { grid-column: 1 / -1; color: var(--muted); font-size: .8125rem; }
 .next-project strong { font-size: 1.75rem; font-weight: 550; letter-spacing: -.035em; }

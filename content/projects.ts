@@ -12,6 +12,8 @@ export type Project = {
   disciplines: string[];
   metric: string;
   metricLabel: string;
+  /** Keeps the metric on the homepage card but leaves it out of the case page overview. */
+  hideOverviewMetric?: boolean;
   challengeTitle: string;
   challenge: string;
   approach: string[];
@@ -37,6 +39,14 @@ export type Project = {
       theme?: "light" | "dark";
     }>;
   }>;
+  process?: {
+    title: string;
+    summary: string;
+    principles: Array<{
+      title: string;
+      text: string;
+    }>;
+  };
   evaluation: {
     title: string;
     summary: string;
@@ -422,6 +432,7 @@ export const projects: Project[] = [
     ],
     metric: "68 / 69",
     metricLabel: "requirements verified by a requirement-tagged test",
+    hideOverviewMetric: true,
     challengeTitle:
       "Everyone relearns the same project by reading the same files again. Including the agents.",
     challenge:
@@ -534,6 +545,33 @@ export const projects: Project[] = [
         ],
       },
     ],
+    process: {
+      title: "Plan first, build in small increments, verify against reality.",
+      summary:
+        "I built Project Wiki solo over about ten weeks. Most of what kept a project this size on track wasn't the code. It was the working system around the code: decisions written down before building, requirements that had to be proven rather than claimed, and checks against the running product, not only the test suite.",
+      principles: [
+        {
+          title: "Plan first",
+          text: "The first days went into planning with no production code: scope, architecture, data model, and the order to build in. Every significant decision got its own short record with the reasoning behind it, about 50 in total. Open questions stayed on a list instead of being decided too early.",
+        },
+        {
+          title: "Requirements up front, proven by tests",
+          text: "I wrote the requirements before building, as a chain: use cases, then requirements with stable IDs, then work items that moved through plan, implement, verify, and done. Every test is tagged with the requirements it proves, and a requirement only counts as verified when one of those tests passes. That's what \"68 of 69\" means further down: a number generated from the test run, not one I wrote by hand.",
+        },
+        {
+          title: "Small increments, seams not stubs",
+          text: "The work ran in seven phases, each with its own plan, split into small commits that reference the work items they deliver. Anything deferred got a real interface straight away, so later work could plug in without rewriting what was already there. Months later, a rollback feature took about two hours because the data model had been built for it from the start.",
+        },
+        {
+          title: "One place per fact",
+          text: "Project status lives in exactly three places: a generated page showing what's verified, a page for where the build stands, and an ordered roadmap. I added that rule after a review found documents contradicting each other because the same fact was written in several places.",
+        },
+        {
+          title: "Verify against reality",
+          text: "After each phase I ran the product end to end in a real browser, against two test repositories with planted behaviours and an answer key written in advance. Findings became numbered fixes in later phases, and known limitations went into their own catalogue instead of being hidden. That habit started with a feature that passed every test and had never actually worked.",
+        },
+      ],
+    },
     evaluation: {
       title:
         "Checked by a requirement-tagged test suite, plus two full runs against real models scored against a key I wrote before starting.",

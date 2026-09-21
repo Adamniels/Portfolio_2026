@@ -35,6 +35,21 @@ export default async function ProjectPage({ params }: Props) {
   const currentIndex = orderedProjects.findIndex(({ slug }) => slug === project.slug);
   const nextProject = orderedProjects[(currentIndex + 1) % orderedProjects.length];
 
+  // Optional sections shift the numbering, so labels are derived from this list.
+  const sections = [
+    { id: "overview", nav: "Overview", label: "The problem" },
+    { id: "architecture", nav: "Architecture", label: "Architecture" },
+    { id: "engineering", nav: "Engineering", label: "Engineering" },
+    { id: "product", nav: "Product", label: "Product walkthrough" },
+    ...(project.process ? [{ id: "how-i-work", nav: "How I work", label: "How I work" }] : []),
+    { id: "evaluation", nav: "Evaluation", label: "Evaluation" },
+    { id: "outcome", nav: "Outcome", label: "Outcome" },
+  ];
+  const sectionLabel = (id: string) => {
+    const index = sections.findIndex((section) => section.id === id);
+    return `${String(index + 1).padStart(2, "0")} / ${sections[index].label}`;
+  };
+
   return (
     <main className="site-shell case-page" id="top">
       <a className="skip-link" href="#overview">Skip to project content</a>
@@ -58,25 +73,22 @@ export default async function ProjectPage({ params }: Props) {
       </header>
 
       <nav className="case-toc" aria-label="On this page">
-        <a href="#overview">Overview</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#engineering">Engineering</a>
-        <a href="#product">Product</a>
-        <a href="#evaluation">Evaluation</a>
-        <a href="#outcome">Outcome</a>
+        {sections.map(({ id, nav }) => <a key={id} href={`#${id}`}>{nav}</a>)}
       </nav>
 
       <section className="case-section" id="overview" aria-labelledby="overview-heading">
-        <p className="case-label">01 / The problem</p>
+        <p className="case-label">{sectionLabel("overview")}</p>
         <div className="case-copy">
           <h2 id="overview-heading">{project.challengeTitle}</h2>
           <p>{project.challenge}</p>
         </div>
-        <div className="case-stat"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div>
+        {!project.hideOverviewMetric && (
+          <div className="case-stat"><strong>{project.metric}</strong><span>{project.metricLabel}</span></div>
+        )}
       </section>
 
       <section className="case-section" id="architecture" aria-labelledby="architecture-heading">
-        <p className="case-label">02 / Architecture</p>
+        <p className="case-label">{sectionLabel("architecture")}</p>
         <div className="case-copy">
           <h2 id="architecture-heading">{project.architecture.title}</h2>
           <p>{project.architecture.summary}</p>
@@ -103,7 +115,7 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       <section className="case-section" id="engineering" aria-labelledby="engineering-heading">
-        <p className="case-label">03 / Engineering</p>
+        <p className="case-label">{sectionLabel("engineering")}</p>
         <div className="technical-content">
           <h2 id="engineering-heading">The decisions behind the system.</h2>
           <div className="technical-list">
@@ -127,12 +139,27 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       <section className="case-section" id="product" aria-labelledby="product-heading">
-        <p className="case-label" id="product-heading">04 / Product walkthrough</p>
+        <p className="case-label" id="product-heading">{sectionLabel("product")}</p>
         <ProjectVisual slug={project.slug} />
       </section>
 
+      {project.process && (
+        <section className="case-section" id="how-i-work" aria-labelledby="how-i-work-heading">
+          <p className="case-label">{sectionLabel("how-i-work")}</p>
+          <div className="case-copy">
+            <h2 id="how-i-work-heading">{project.process.title}</h2>
+            <p>{project.process.summary}</p>
+            <div className="process-principles">
+              {project.process.principles.map(({ title, text }) => (
+                <div key={title}><h3>{title}</h3><p>{text}</p></div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="case-section" id="evaluation" aria-labelledby="evaluation-heading">
-        <p className="case-label">05 / Evaluation</p>
+        <p className="case-label">{sectionLabel("evaluation")}</p>
         <div className="case-copy">
           <h2 id="evaluation-heading">{project.evaluation.title}</h2>
           <div className="evaluation-copy">
@@ -149,7 +176,7 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       <section className="case-section" id="outcome" aria-labelledby="outcome-heading">
-        <p className="case-label">06 / Outcome</p>
+        <p className="case-label">{sectionLabel("outcome")}</p>
         <div className="case-copy">
           <h2 id="outcome-heading">{project.outcomeTitle ?? "What the project delivered."}</h2>
           {project.outcomeSummary ? <p>{project.outcomeSummary}</p> :

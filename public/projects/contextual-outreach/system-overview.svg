@@ -22,7 +22,7 @@
   <g transform="translate(390 270)">
     <rect rx="6" class="panel" width="250" height="220"/>
     <text class="num" x="24" y="38">02 / CLIENT</text>
-    <text class="h" x="24" y="88">Vue workspace</text>
+    <text class="h" x="24" y="88">Vue frontend</text>
     <text class="copy" x="24" y="125">Research</text><text class="copy" x="24" y="155">Drafting</text><text class="copy" x="24" y="185">Sequences</text>
   </g>
   <path class="line" d="M640 380H690"/>

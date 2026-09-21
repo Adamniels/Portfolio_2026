@@ -102,7 +102,7 @@ export const projects: Project[] = [
       title:
         "Clear boundaries meant research, rules, generation, and delivery could each be swapped without disturbing the others.",
       summary:
-        "A Vue interface calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. That let me build the whole path from research to a scheduled workflow, while the uncertain part, actually sending email and LinkedIn messages, stayed at the edge where it's easy to replace.",
+        "A Vue frontend calls thin ASP.NET Core endpoints, which delegate to single-purpose application use cases and domain entities. Repository and service interfaces isolate PostgreSQL, CRM intake, web research, AI providers, and channel delivery. That let me build the whole path from research to a scheduled workflow, while the uncertain part, actually sending email and LinkedIn messages, stayed at the edge where it's easy to replace.",
       flow: [
         "Prospect intake",
         "Authenticated interface",

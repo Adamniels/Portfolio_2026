@@ -113,7 +113,7 @@ export const projects: Project[] = [
       image: "/projects/contextual-outreach/system-overview.svg",
       imageTheme: "light",
       imageAlt:
-        "System architecture showing prospect intake and the Vue interface flowing through an ASP.NET Core API into application use cases and domain rules, with replaceable persistence, research, AI, and delivery adapters.",
+        "System architecture showing prospect intake and the Vue frontend flowing through an ASP.NET Core API into application use cases and domain rules, with replaceable persistence, research, AI, and delivery adapters.",
       imageCaption:
         "Whole-system overview — stable application rules sit inside volatile research, AI, CRM, and delivery integrations.",
     },
